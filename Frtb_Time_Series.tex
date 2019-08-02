@@ -1,0 +1,709 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Monday, May 27, 2019 17:14:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{FRTB Time Series}
+\author{T.\ Monedero \\
+%EndAName
+Natixis Fixed Income Department:\\
+quantitative analysis }
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+.
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Introduction}
+
+The aim of this document is to provide some technical elements that are
+required for the reconstruction of implied volatility time series according
+to today's market conventions.
+
+\subsection{Notations}
+
+$\ \ \ \ \ D(t,T)$ : Stochastic discount factor at time $t$ for the maturity 
+$T$.
+
+\bigskip
+
+$P(t,T)$ : $T$-maturity zero coupon bond value at time $t\leq T$.
+
+\bigskip
+
+$L(T_{R},T_{S,}T_{S}+\tau )$ : Simply compounded Libor rate resetting at
+time $T_{R}$ for the start date $T_{S}$ and the tenor $\tau $.
+
+\bigskip
+
+$S(T_{R},T_{S,}T_{E})$ : Swap rate resetting at time $T_{R}$ for the start
+date $T_{S}$ and the end date $T_{E}$.
+
+\subsection{Fixed Income Instruments}
+
+\subsubsection{Forward Rate Agreement}
+
+A Forword Rate Agreement $(FRA)$ is a contract in which a fixed rate payment
+is exchanged against a payment based on the $T_{R}$ spot Libor for the
+period $\left[ T_{S},T_{S}+\tau \right] $ with payments made in $T_{S}+\tau
+. $ The value of a standard payer $FRA$ at time $0\leq t\leq T_{R}$ for a
+fixed rate $K$ is given by%
+\begin{eqnarray*}
+FRA(t) &=&\mathbb{E}_{t}^{Q}\left[ D(t,T_{S}+\tau )(L(T_{R},T_{S},T_{S}+\tau
+)-K)\right] \\
+&=&P(t,T_{S}+\tau )\mathbb{E}_{t}^{Q^{T_{S}+\tau }}\left[ \left(
+L(T_{R},T_{S},T_{S}+\tau )-K\right) \right]
+\end{eqnarray*}%
+Its fair value at time $t$ is obtained for 
+\begin{equation*}
+K^{\ast }=F(t,T_{S,}T_{S}+\tau )\overset{\Delta }{=}\mathbb{E}%
+_{t}^{Q^{T_{S}+\tau }}\left[ \left( L(T_{R},T_{S},T_{S}+\tau )\right) \right]
+\end{equation*}%
+and then rewrites as%
+\begin{equation*}
+FRA(t)=P(t,T_{S}+\tau )\left( F(t,T_{S,}T_{S}+\tau )-K\right)
+\end{equation*}
+
+$F(t,T_{S,}T_{S}+\tau )$ is called a forward rate and is by construction
+martingale under the forward measure $Q^{T_{S}+\tau }.$
+
+\subsubsection{Interest Rate Swap}
+
+A standard Interest Rate Swap $(IRS)$ resetting at time $T_{R}$ for the
+start date $T_{S}$ and the end date $T_{E}$ is equivalent to a N-period $FRA$
+with $T_{R}=T_{R}^{1}$, $T_{S}=T_{S}^{1}$, $T_{E}=T_{S}^{N}+\tau $ and \ $N=%
+\frac{T_{E}-T_{S}}{\tau }.$ Its value at time $0\leq t\leq T_{R}$ for a
+fixed rate $K$ is given by
+
+\begin{eqnarray*}
+IRS(t) &=&\mathbb{E}_{t}^{Q}\left[ \tsum_{i=1}^{N}\tau
+_{i}D(t,T_{S}^{i}+\tau )(L(T_{R}^{i},T_{S}^{i},T_{S}^{i}+\tau )-K)\right] \\
+&=&\tsum_{i=1}^{N}\tau _{i}P(t,T_{S}^{i}+\tau )\mathbb{E}_{t}^{Q^{T_{S}^{i}+%
+\tau }}\left[ L(T_{R}^{i},T_{S}^{i},T_{S}^{i}+\tau )-K\right]
+\end{eqnarray*}
+
+Its fair value at time $t$ is obtained for 
+\begin{equation*}
+K^{\ast }=S(t,T_{S,}T_{E})\overset{\Delta }{=}\frac{\tsum_{i=1}^{N}\tau
+_{i}P(t,T_{S}^{i}+\tau )F(t,T_{S,}^{i}T_{S}^{i}+\tau )}{\tsum_{i=1}^{N}\tau
+_{i}P(t,T_{S}^{i}+\tau )}
+\end{equation*}
+
+and then rewrites as%
+\begin{equation*}
+IRS(t)=A(t)\left( S(t,T_{S,}T_{E})-K\right)
+\end{equation*}
+
+$S(t,T_{S,}T_{E})$ is called a forward swap rate and is martingale under the
+annuity measure $Q^{A}$ defined by the annuity process $A(t)=\tsum_{i=1}^{N}%
+\tau _{i}P(t,T_{S}^{i}+\tau ).$
+
+\subsection{Interest Rate Options (1D)}
+
+\subsubsection{Interest Rate Guarantee}
+
+A payer $IRG$ option (or Caplet) is a type of option that gives the option
+holder the opportunity to enter into a payer $FRA$. 
+\begin{eqnarray*}
+V_{Caplet}(t) &=&\mathbb{E}_{t}^{Q}\left[ D(t,T)\left( FRA(T)\right) _{+}%
+\right] \\
+&=&\mathbb{E}_{t}^{Q}\left[ D(t,T)P(T,T_{S}+\tau )\left(
+F(T,T_{S,}T_{S}+\tau )-K\right) _{+}\right] \\
+&=&P(t,T_{S}+\tau )\mathbb{E}_{t}^{Q^{T_{S}+\tau }}\left[ \left(
+F(T,T_{S,}T_{S}+\tau )-K\right) _{+}\right]
+\end{eqnarray*}
+
+$.$
+
+\subsubsection{European Swaptions}
+
+\paragraph{Physical settlement}
+
+A payer swaption with physical settlement is an option giving the right to
+enter into a payer $IRS$ \bigskip 
+\begin{eqnarray*}
+V_{Swaption}^{Physical}(t) &=&\mathbb{E}_{t}^{Q}\left[ D(t,T)\left(
+IRS(T)\right) _{+}\right] \\
+&=&\mathbb{E}_{t}^{Q}\left[ D(t,T)A(T)\left( S(T,T_{S,}T_{E})-K\right) _{+}%
+\right] \\
+&=&A(t)\text{ }\mathbb{E}_{t}^{A}\left[ \left( S(T,T_{S,}T_{E})-K\right) _{+}%
+\right]
+\end{eqnarray*}
+
+\paragraph{Cash settlement}
+
+The value of a payer swaption with cash settlement is given by \bigskip 
+\begin{eqnarray*}
+V_{Swaption}^{Cash}(t) &=&\mathbb{E}_{t}^{Q}\left[ D(t,T_{S})A_{c}(T)\left(
+S(T,T_{S,}T_{E})-K\right) _{+}\right] \\
+&=&\mathbb{E}_{t}^{Q}\left[ \mathbb{E}_{T}^{Q}\left[ D(T,T_{S})\right]
+D(t,T)A_{c}(T)\left( S(T,T_{S,}T_{E})-K\right) _{+}\right] \\
+&=&\mathbb{E}_{t}^{Q}\left[ P(T,T_{s})D(t,T)A_{c}(T)\left(
+S(T,T_{S,}T_{E})-K\right) _{+}\right] \\
+&\mathbb{=}&A(t)\mathbb{E}_{t}^{A}\left[ \frac{P(T,T_{s})A_{c}(T)}{A(T)}%
+\left( S(T,T_{S,}T_{E})-K\right) _{+}\right]
+\end{eqnarray*}%
+with $A_{c}(T)=\tsum_{i=1}^{N}\frac{\tau _{i}}{(1+S_{T})^{\tau _{i}}}\simeq 
+\frac{1}{S_{T}}\left( 1-\frac{1}{(1+S_{T})^{T_{E}-T_{S}}}\right) $ the cash
+annuity process and $S_{T}=S(T,T_{S,}T_{E})$ the swap forward rate.
+
+\bigskip
+
+\bigskip There are several ways to value this payoff. The standard market
+formula is based on the hypothesis of the low variance of the process $H_{t}$
+define by 
+\begin{equation*}
+H_{t}=\frac{P(t,T_{s})A_{c}(t)}{A(t)}\approx \frac{P(T,T_{s})A_{c}(T)}{A(T)}
+\end{equation*}%
+to finally establish\bigskip 
+\begin{equation*}
+V_{Cash}^{Swaption}(t)\approx P(t,T_{p})A_{c}(t)\mathbb{E}_{t}^{A}\left[
+\left( S(T,T_{S,}T_{E})-K\right) _{+}\right]
+\end{equation*}
+
+A cash-settlement swaption can also be priced using more sophisticated
+approximations and static replication for example.
+
+\subsection{Interest Rate Options (2D)}
+
+\subsubsection{Spread Options}
+
+\bigskip The payoff of a spread option is given by%
+\begin{equation*}
+\left( S_{T}^{1}-S_{T}^{2}-K\right) _{+}
+\end{equation*}
+
+where $S_{T}^{1}$, $S_{T}^{2}$ are two swap rates of differents tenors
+fixing at time $T$ and starting at time $T_{S}$.
+
+\bigskip
+
+The value of a single look spread option (forward prenium and payment in $%
+T_{S}$) at time $t$ is therefore given by%
+\begin{eqnarray*}
+V_{SLSO}(t) &=&\frac{1}{P(t,T_{S})}\mathbb{E}_{t}^{Q}\left[ D(t,T_{S})\left(
+S_{T}^{1}-S_{T}^{2}-K\right) _{+}\right]  \\
+&=&\mathbb{E}_{t}^{T_{S}}\left[ \left( S_{T}^{1}-S_{T}^{2}-K\right) _{+}%
+\right] 
+\end{eqnarray*}
+
+The value of a standard spread option (spot prenium and payment at the end
+of each periods) at time $t$ is  given by%
+\begin{eqnarray*}
+V_{SO}(t) &=&\mathbb{E}_{t}^{Q}\left[ \tsum\limits_{i=1}^{N}\tau
+_{i}D(t,T_{E}^{i})\left( S_{T_{i}}^{1}-S_{T_{i}}^{2}-K\right) _{+}\right]  \\
+&=&\tsum\limits_{i=1}^{N}\tau _{i}P(t,T_{E}^{i})\mathbb{E}_{t}^{T_{E}^{i}}%
+\left[ \left( S_{T_{i}}^{1}-S_{T_{i}}^{2}-K\right) _{+}\right]  \\
+&\cong &\tsum\limits_{i=1}^{N}\tau _{i}P(t,T_{E}^{i})\mathbb{E}%
+_{t}^{T_{S}^{i}}\left[ \left( S_{T_{i}}^{1}-S_{T_{i}}^{2}-K\right) _{+}%
+\right]  \\
+&=&\tsum\limits_{i=1}^{N}\tau _{i}P(t,T_{E}^{i})V_{SLSO}^{i}(t),\text{ \ \ }%
+\tau _{i}=T_{E}^{i}-T_{S}^{i}
+\end{eqnarray*}
+
+\section{ATM implied volatility}
+
+\bigskip
+
+\subsection{Model conversion}
+
+We note $Q$ an arbitrary probability measure and $W_{t}$ the brownian motion
+under this probability. We assume the underlying asset $X_{t}$ being a
+martingale under $Q$.
+
+\subsubsection{Bachelier's model}
+
+In the Bachelier's model, the dynamics of $X_{t}$ is given by
+
+\begin{equation*}
+dX_{t}=\sigma _{N}\text{ }dW_{t}
+\end{equation*}
+
+with $\sigma _{N}$ the normal volatility of $X_{t}$ and the price of a $T$
+maturity call option at time $t$ is given by
+
+\begin{eqnarray*}
+\mathbb{E}_{t}^{Q}\left[ \left( X_{T}-K\right) _{+}\right]
+&=&C_{t}^{N}(\sigma _{N\text{ }},X_{t},K,T) \\
+&=&\sigma _{N\text{ }}\sqrt{T-t}\text{ }\left( \text{ }d\text{ }\Phi \left(
+d\right) +\phi (d)\right)
+\end{eqnarray*}%
+with
+
+\begin{equation*}
+d=\frac{X_{t}-K}{\sigma _{N}\text{ }\sqrt{T-t}}
+\end{equation*}
+
+\subsubsection{Black's model}
+
+In the Black's model, the dynamics of $X_{t}$ is assumed to be
+
+\begin{equation*}
+dX_{t}=\sigma _{LN}\text{ }X_{t}\text{ }dW_{t}
+\end{equation*}
+
+with $\sigma _{LN}$ the lognormal volatility of $X_{t}$ and the price of a $%
+T $ maturity call option at time $t$ is given by
+
+\begin{eqnarray*}
+\mathbb{E}_{t}^{Q}\left[ \left( X_{T}-K\right) _{+}\right]
+&=&C_{t}^{LN}(\sigma _{LN\text{ }},X_{t},K,T) \\
+&=&X_{t}\Phi (d_{1})-K\Phi (d_{2})
+\end{eqnarray*}%
+with
+
+\begin{eqnarray*}
+d_{1} &=&\frac{1}{\sigma _{LN}\text{ }\sqrt{T-t}}\left( \ln \left( \frac{%
+X_{t}}{K}\right) +\frac{\sigma _{LN}^{2}}{2}\left( T-t\right) \right) \\
+d2 &=&d1-\sigma _{LN}\sqrt{T-t}
+\end{eqnarray*}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+For the same option price, Bachelier and Black ATM implied volatilities are
+related by :
+
+\begin{eqnarray*}
+C_{t}^{N}(\sigma _{N\text{ }},X_{t},X_{t},T) &=&\sigma _{N\text{ }}\sqrt{%
+\frac{T-t}{2\pi }} \\
+C_{t}^{LN}(\sigma _{LN\text{ }},X_{t},X_{t},T) &=&X_{t}.\left( 2\Phi \left( 
+\frac{\sqrt{T-t}}{2}\sigma _{LN}\right) -1\right)
+\end{eqnarray*}%
+which is equivalent to
+
+\begin{equation*}
+\sigma _{N}=X_{t}.\left( 2\Phi \left( \frac{\sqrt{T-t}}{2}\sigma
+_{LN}\right) -1\right) .\sqrt{\frac{2\pi }{T-t}}
+\end{equation*}
+
+\bigskip
+
+\bigskip
+
+\subsection{Stripping conversion}
+
+\bigskip
+
+\subsubsection{Monocurve framework}
+
+\bigskip In the monocurve framework, we assume that the Libor rate
+represents an investment based on the risk free rate. For the $T_{R}$ spot
+Libor rate, in absence of arbitrage this assumption leads to%
+\begin{equation*}
+L(T_{R},T_{S},T_{S}+\tau )\overset{AOA}{=}\frac{1}{\tau }\left( \frac{%
+P(T_{R},T_{S})}{P(T_{R},T_{S}+\tau )}-1\right)
+\end{equation*}%
+resulting in that the Libor process is a $Q^{T_{S}+\tau }$ martingale. In
+other words, we have 
+\begin{equation*}
+F(t,T_{S,}T_{S}+\tau )\overset{\Delta }{=}\mathbb{E}_{t}^{Q^{T_{S}+\tau }}%
+\left[ L(T_{R},T_{S},T_{S}+\tau )\right] =L(t,T_{S},T_{S}+\tau )=\frac{1}{%
+\tau }\left( \frac{P(t,T_{S})}{P(t,T_{S}+\tau )}-1\right)
+\end{equation*}%
+Libor forward rates (and swap forward rates by extension) are just a
+combination of spot Libor curve zero coupon bonds.
+
+\subsubsection{Bicurve framework}
+
+The Libor being an interbank interest rate, it has an imbedded credit risk
+which makes unclear whether it is a suitable proxies for a risk free rate.
+We must therefore use two curves (a) the libor\ pseudo discount\ curve\ used
+to project the libor based floating cash flows\ and a real discount curve
+used to discount all cash flows
+
+\begin{eqnarray*}
+&&P^{d}(t,T)\overset{}{=}\mathbb{E}_{t}^{Q_{d}}\left[ D(t,T)\right] \\
+&&F(t,T_{S,}T_{S}+\tau )\overset{\Delta }{=}\mathbb{E}_{t}^{Q_{d}^{T_{S}+%
+\tau }}\left[ L(T_{R},T_{S},T_{S}+\tau )\right] \overset{\Delta }{=}\frac{1}{%
+\tau }\left( \frac{P^{f}(t,T_{S})}{P^{f}(t,T_{S}+\tau )}-1\right)
+\end{eqnarray*}
+
+where $Q_{d}^{T_{S}+\tau }$ stands for the forward neutral probability
+associated with the numeraire $P^{d}(t,T_{S}+\tau ).$ If we assume that
+option preniums are market invariants, we can using bachelier's
+representation summurize the impact of stripping on the ATM implied
+volatility as follow
+
+\bigskip
+
+\begin{itemize}
+\item Irg option
+\end{itemize}
+
+\begin{equation*}
+\sigma _{N}^{B}=\frac{P(t,T_{S}+\tau )}{P^{d}(t,T_{S}+\tau )}\sigma _{N}^{M}
+\end{equation*}
+
+\begin{itemize}
+\item Swaption physical settlement
+\end{itemize}
+
+\begin{equation*}
+\sigma _{N}^{B}=\frac{A^{M}(t)}{A^{B}(t)}\sigma _{N}^{M}=\frac{%
+\tsum\nolimits_{i=1}^{N}\tau _{i}P(t,T_{S}^{i}+\tau )}{\tsum%
+\nolimits_{i=1}^{N}\tau _{i}P^{d}(t,T_{S}^{i}+\tau )}\sigma _{N}^{M}
+\end{equation*}
+
+\begin{itemize}
+\item Swaption cash settlement
+\end{itemize}
+
+\begin{equation*}
+\sigma _{N}^{B}=\frac{P(t,T_{S}).A_{c}^{M}(t)}{P^{d}(t,T_{S}).A_{c}^{B}(t)}%
+\sigma _{N}^{M}
+\end{equation*}%
+with%
+\begin{equation*}
+\frac{A_{c}^{M}(t)}{A_{c}^{B}(t)}=\frac{S_{t}^{B}}{S_{t}^{M}}.\frac{%
+((1+S_{t}^{M})^{\tau }-1).(1+S_{t}^{B})^{\tau }}{((1+S_{t}^{B})^{\tau
+}-1).(1+S_{t}^{M})^{\tau }}\overset{}{\simeq }1+\tau \frac{%
+(S_{t}^{B}-S_{t}^{M})}{(1+\tau S_{t}^{M})}\simeq 1
+\end{equation*}%
+we finally get
+
+\begin{equation*}
+\sigma _{N}^{B}=\frac{P(t,T_{S})}{P^{d}(t,Ts)}\sigma _{N}^{M}
+\end{equation*}
+
+where superscripts $B,M$ stand for monocurve and bicurve framework and where 
+$P(t,T)$ is the zero coupon bond in the monocurve framework.
+
+\bigskip
+
+\section{Smiled implied volatility}
+
+\subsection{SABR Model}
+
+The SABR model is a stochastic volatility model producing an estimate of the
+implied volatility curve used as an input in Black's model and is described
+by the following equations%
+\begin{eqnarray*}
+dF_{t} &=&\alpha _{t}F_{t}^{\beta }dW_{t} \\
+d\alpha _{t} &=&\eta \alpha _{t}dZ_{t} \\
+\mathbb{E}\left[ dW_{t}dZ_{t}\right] &=&\rho dt
+\end{eqnarray*}
+
+with $F_{t\text{ }}$ and $\alpha _{t}$ the forward rate and the volatility
+processes. The parameters are
+
+\bigskip
+
+\begin{itemize}
+\item $F=F_{0}$ the initial forward
+
+\item $\alpha =\alpha _{0}$ the initial volatility
+
+\item $\eta $ the volatility of volatility
+
+\item $\beta $ the exponent of the forward rate
+
+\item $\rho $ the correlation between the brownian motions $W_{t}$ and $%
+Z_{t} $
+\end{itemize}
+
+$\bigskip $
+
+The implied volatility provided by the SABR model is given by
+
+\bigskip
+
+\begin{equation*}
+\sigma _{SABR}(\alpha ,\rho ,\eta ,F,K,T)=\frac{z}{\chi (z)}.\frac{\alpha
+.\left( 1+(T-t).\left[ \frac{\xi ^{2}}{6}.\frac{\alpha ^{2}}{(F.K)^{2\xi }}+%
+\frac{\alpha \rho \beta \eta }{4(F.K)^{\xi }}+\frac{2-3\rho ^{2}}{24}\eta
+^{2}\right] \right) }{(F.K)^{\xi }.\left[ 1+\frac{\xi ^{2}}{6}\ln ^{2}\left( 
+\frac{F}{K}\right) +\frac{\xi ^{4}}{120}\ln ^{4}\left( \frac{F}{K}\right) %
+\right] }
+\end{equation*}%
+with
+
+\begin{eqnarray*}
+\xi &=&\frac{1-\beta }{2} \\
+z &=&\frac{\eta }{\alpha }.(F.K)^{\xi }.\ln \left( \frac{F}{K}\right) \\
+\chi (z) &=&\ln \left( \frac{\sqrt{1-2\rho z+z^{2}}+z-\rho }{1-\rho }\right)
+\end{eqnarray*}
+
+\bigskip
+
+In practice the choice of $\beta $ has little effect and is generally set to 
+$\frac{1}{2}.$ $\rho $ and $\eta $ represent respectively the skew and the
+convexity of the volatility smile
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\subsection{Calibration}
+
+For a given maturity $T$ and a set of $M$ prices, the estimation of $\alpha
+,\rho ,$and $\eta $ can be performed by minimizing the errors between the
+model and market prices%
+\begin{equation*}
+I_{MSE}^{T}=\left( \tsum\nolimits_{i=1}^{M}\omega _{i}\left[
+P(F,K_{i,}T)_{Mkt}-C_{0}^{LN}(F_{0},k_{i,}T,\sigma _{SABR}(\alpha ,\rho
+,\eta ,F,K_{i},T))\right] ^{2}\right)
+\end{equation*}
+
+\bigskip Other issues should be considered in the choice of a calibration
+norm, including the term structure smoothness and time stationarity of
+parameters%
+\begin{eqnarray*}
+I_{TS} &=&\left( \tsum\nolimits_{i=1}^{N-1}\omega _{TS,i}^{\rho }\left[ \rho
+_{i+1}(t)-\rho _{i}(t)\right] ^{2}+\omega _{TS,i}^{\eta }\left[ \eta
+_{i+1}(t)-\eta _{i}(t)\right] ^{2}\right) \\
+I_{\Delta } &=&\left( \tsum\nolimits_{i=1}^{N}\omega _{\Delta ,i}^{\rho } 
+\left[ \rho _{i}(t)-\rho _{i}(t-1)\right] ^{2}+\omega _{\Delta ,i}^{\eta }%
+\left[ \rho _{i}(t)-\rho _{i}(t-1)\right] ^{2}\right)
+\end{eqnarray*}
+
+The problem can be cast as a minimisation of the following function
+
+\begin{equation*}
+\left( \alpha ^{\ast },\rho ^{\ast },\eta ^{\ast }\right) =\underset{\left(
+\alpha ,\rho ,\eta \right) }{\min }\left[ \omega _{MSE}.I_{MSE}+\omega
+_{TS}.I_{TS}+\omega _{\Delta }.I_{\Delta }\right]
+\end{equation*}
+
+with $I_{MSE}=\tsum\limits_{i=1}^{N}I_{MSE}^{T_{i}}$. The weights $\omega
+_{MSE}$, $\omega _{TS}$ and $\omega _{\Delta }$ determine relative
+importance for achieving smoothness and time stationarity of parameters over
+a good fit to market prices. In practice, due to the different order of
+magnitude of these error functions, defining these weights and resolving
+this global problem with an suitable solution is quite difficult.
+
+\bigskip
+
+\bigskip
+
+One can solve this problem by a three step calibration procedure :
+
+\begin{itemize}
+\item (a) : For each maturity\ $T_{i}$, proceed to the first calibration
+step by minimizing the precision error function $I_{MSE}^{T_{i}}$ and give a
+confidence interval $\left[ P_{-}^{k},P_{+}^{k}\right] $ for each price.
+
+\item (b) : Compute the rescaling factors
+\end{itemize}
+
+\begin{eqnarray*}
+\xi \Delta &=&\frac{\max (I_{MSE},I_{TS},I_{\Delta })}{I_{\Delta }} \\
+\xi _{TS} &=&\frac{\max (I_{MSE},I_{TS},I_{\Delta })}{I_{TS}} \\
+\xi _{MSE} &=&\frac{\max (I_{MSE},I_{TS},I_{\Delta })}{I_{MSE}}
+\end{eqnarray*}%
+and set 
+\begin{equation*}
+I^{\ast }=\omega _{\Delta }.\xi \Delta .I_{\Delta }+\omega _{TS}.\xi
+_{TS}.I_{TS}+\omega _{MSE}.\xi _{MSE}.I_{MSE}
+\end{equation*}
+
+\bigskip
+
+\begin{itemize}
+\item (c) : With a convex combination of $\omega _{MSE}$, $\omega _{TS}$ and 
+$\omega _{\Delta }$, minimize the new problem
+\end{itemize}
+
+\begin{equation*}
+\left( \alpha ^{\ast },\rho ^{\ast },\eta ^{\ast }\right) =\underset{\left(
+\alpha ,\rho ,\eta \right) }{\min }\left[ I^{\ast }+M(I^{\ast
+})\tsum\limits_{k=1}^{M.N}\delta _{\overset{-}{X}}^{k}\right]
+\end{equation*}
+
+\bigskip
+
+where $\delta _{\overset{-}{X}}^{k}=\left\{ 
+\begin{array}{c}
+1\text{ if }P^{k}\notin \left[ P_{-}^{k},P_{+}^{k}\right] \\ 
+0,\text{otherwise}%
+\end{array}%
+\right. $and $M(I^{\ast })>>I^{\ast }$. The confidence intervals can be
+choosen arbitrarily or according to market bid/ask spread.
+
+\bigskip
+
+\bigskip
+
+\section{Smiled implied correlation}
+
+The convexity adjusted constant maturity swap rate is classicaly defined by%
+\begin{equation*}
+CMS_{t}\overset{\Delta }{=}\mathbb{E}_{t}^{T_{S}}\left[ S_{T}\right]
+\end{equation*}
+
+Using the fact that $CMS_{T}=S_{T}$, the spread option value rewrites as%
+\begin{equation*}
+V_{SO}(t)=P(t,T_{S})\mathbb{E}_{t}^{T_{S}}\left[ \left(
+CMS_{T}^{1}-CMS_{T}^{2}-K\right) _{+}\right]
+\end{equation*}
+
+The gaussian model provides a convenient common langage for quoting spread
+options and gives an analytical expression of the implied spread correlation 
+$\rho (t,T,K)$ between $CMS^{1}$ and $CMS^{2}$and is described by%
+\begin{eqnarray*}
+dCMS_{t}^{1} &=&\sigma _{N}^{1}\text{ }dW_{t}^{1} \\
+dCMS_{t}^{2} &=&\sigma _{N}^{2}\text{ }dW_{t}^{2}
+\end{eqnarray*}%
+sqf $CMS_{T}^{1}-CMS_{T}^{2}\overset{d}{=}N(CMS_{t}^{1}-CMS_{t}^{2},)$
+
+\section{Results}
+
+In order to reconstruct the implied volatility time series we make the
+following assumptions
+
+\begin{itemize}
+\item The prenium of atm option are market invariants and are stripping
+independant
+
+\item $\rho $ and $\eta $ are smile relative parameters and are also
+stripping independant
+\end{itemize}
+
+\subsection{ATM Implied Volatility}
+
+\paragraph{Input}
+
+\bigskip 
+\begin{tabular}{c|c|c|c|c|c|}
+\cline{2-6}
+& MC & BC & BLACK & NOR & SOURCE \\ \hline
+\multicolumn{1}{|c|}{OSW\_EUR} & 02/01/2007 & 21/07/2011 & $\phi $ & All & 
+Icap \\ \hline
+\multicolumn{1}{|c|}{OSW\_USD} & 02/01/2007 &  & $\phi $ & All & Icap \\ 
+\hline
+\multicolumn{1}{|c|}{IRG\_EUR} & 02/01/2007 & 19/10/2012 & 02/01/2007 & 
+25/11/2013 & Summit \\ \hline
+\multicolumn{1}{|c|}{IRG\_USD} & 02/01/2007 & 19/10/2012 & 02/01/2007 & 
+25/11/2013 & Summit \\ \hline
+\end{tabular}
+
+\paragraph{Process}
+
+\bigskip
+
+\bigskip 
+\begin{tabular}{c|c|c|c|}
+\cline{2-4}
+& MC --\TEXTsymbol{>}BC & BLACK --\TEXTsymbol{>} NOR & OTHER \\ \hline
+\multicolumn{1}{|c|}{OSW\_EUR} & 02/01/2007\_21/07/2011 & $\phi $ & Spline
+int for missing 12Y expiry \\ \hline
+\multicolumn{1}{|c|}{OSW\_USD} & 02/01/2007 & $\phi $ & Spline int for
+missing 12Y expiry \\ \hline
+\multicolumn{1}{|c|}{IRG\_EUR} & 02/01/2007\_18/10/2012 & 
+02/01/2007\_22/11/2013 & $\phi $ \\ \hline
+\multicolumn{1}{|c|}{IRG\_USD} & 02/01/2007\_18/10/2012 & 
+02/01/2007\_22/11/2013 & $\phi $ \\ \hline
+\end{tabular}
+
+\bigskip \FRAME{ftbphFU}{5.1906in}{3.128in}{0pt}{\Qcb{OSW EUR 10Y10Y}}{}{%
+capture.png}{\special{language "Scientific Word";type
+"GRAPHIC";maintain-aspect-ratio TRUE;display "USEDEF";valid_file "F";width
+5.1906in;height 3.128in;depth 0pt;original-width 5.1353in;original-height
+3.0831in;cropleft "0";croptop "1";cropright "1";cropbottom "0";filename
+'Capture.PNG';file-properties "XNPEU";}}
+
+\subsection{Smiled Implied Volatility}
+
+\paragraph{Input}
+
+\qquad \bigskip 
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+FWD\_ANNUITY & MC & BC & MDM & TOTEM \\ \hline
+OSW\_EUR & 01/2007 &  & All & $\phi $ \\ \hline
+OSW\_USD & 01/2007 &  & All & $\phi $ \\ \hline
+IRG\_EUR & 01/2007 & 10/2012 & $\phi $ & All \\ \hline
+IRG\_USD & 01/2007 & 10/2012 & $\phi $ & All \\ \hline
+\end{tabular}
+
+\paragraph{Process}
+
+\ 
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+SABR\_PARAM & POND & PRICE & CALIB & OUTLIERS \\ \hline
+OSW\_EUR & Vega\_r & Totem & $I_{MSE}$ (LM) & $I_{MSE}$ + $I_{TS}$+ $%
+I_{\Delta }$ (GRG) \\ \hline
+OSW\_USD & Vega\_r & Totem & $I_{MSE}$ (LM) & $I_{MSE}$ + $I_{TS}$+ $%
+I_{\Delta }$ (GRG) \\ \hline
+IRG\_EUR & Flat & Totem & $I_{MSE}$ (LM) & $I_{MSE}$ + $I_{TS}$+ $I_{\Delta
+} $ (GRG) \\ \hline
+IRG\_USD & Flat & Totem & $I_{MSE}$ (LM) & $I_{MSE}$ + $I_{TS}$+ $I_{\Delta
+} $ (GRG) \\ \hline
+\end{tabular}
+
+\bigskip
+
+\end{document}
