@@ -1,0 +1,352 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Monday, August 05, 2019 17:53:54}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{Yield Curve Econometric}
+\author{T.\ Monedero \\
+%EndAName
+Quantitative Research\\
+Fixed Income, Natixis\\
+}
+\maketitle
+
+\begin{abstract}
+The aim of this document is to provide some technical elements required for
+the Fundamental Review of the Trading Book and more specifically for the
+Internal Models Approach of the Yield Curve Econometric in the Historical
+Simulation framework.
+\end{abstract}
+
+\tableofcontents
+
+.
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Introduction}
+
+Defined by the Basel Committee of Banking Supervision, the Fundamental
+Review of the Trading Book (FRTB) aims to improve the Basel II.5 regulation
+rules and to build a new market risk framework as a response to the
+financial crisis. These new standards address a number of both qualitative
+and quantitative issues such as\ capital arbitrage between booking and
+trading books as well as under-capitalization of the trading book.
+
+\subsection{Standardised Approach}
+
+The Standardised Approach (SA) refers to a set of general risk measurement
+techniques proposed in the FRTB, giving a market risk overview of all
+bankink institutions. Needed to be calculated and reported to the relevant
+supervisor on a monthly basis, this method provide minimum capital
+requirements as the sum of three metrics :
+
+\bigskip
+
+\begin{itemize}
+\item the sensitivities-based method (SBM)
+
+\item the default risk capital\ (DRC)
+
+\item the residual risk add-on\ (RRAO)
+\end{itemize}
+
+\bigskip
+
+Through risk agregation rules, the SBM use the sensitivities of financial
+instruments to a predefined risk factor list for each risk classes (Interest
+Rate, Credit, Equity, Commodity and Foreign Exchange) to calculate the
+delta, vega and curvature risk capital requirements. The DRC is intented to
+capture jump-to-default risk that may not be captured by credit spread
+shocks under the SBM. To address possible limitations in the SA, the RRAO is
+introduced to ensure sufficient coverage of market risks. (trouver des
+synonymes et donner plus de details et trouver un moyen \ de glisser limite
+de SA avec diversification des classe de risk par exemple dans IMA)
+
+\subsection{Internal Models Approach}
+
+In order to reduce capital requirements, banks can also use the Internal
+Models Approach (IMA) for a more accurate measure of their own market risks.
+This method, however, entails additional cost of calculation and complexity
+and is subject to the supervisory authority agreement at trading desk level\
+which must meet two quantitative criteria :
+
+\bigskip
+
+\begin{itemize}
+\item P\&L Attribution, a test to determine if P\&L based on risk factors
+used by the desks risk management model captures the material drivers of
+Actual P\&L
+
+\item Backtesting, a test to determine how well the risks in an internal
+model are captured
+\end{itemize}
+
+\bigskip
+
+Toujours un module de risque de default plus ou moins similaire decrire les
+etapes pla et backtesting =\TEXTsymbol{>} necessit\'{e} hitorique propre
+
+si homologation test avec ES + NMRF pour valider interet de l'approche
+standard.
+
+\bigskip
+
+\bigskip Minimum capital requirements p 81
+
+An important part of a bank's trading desk internal risk management model is
+the specification
+
+of an appropriate set of market risk factors. Bucketing approach for the RFET
+
+\begin{itemize}
+\item definir les risques factors
+
+\item Comment deformer les risk factors (contraintes technique (nb rf) et
+fonctionelle (pertinence de la defomation intra et cross rf))
+
+\item Mesure et application des deformations
+\end{itemize}
+
+$\ \ \ \ \ $
+
+Most banks should perform quantitative impact studies to compare the two
+methods for their trading business.
+
+\section{Yield Curve Econometric}
+
+Yield curve represents the global (majeur le plus important) risk for all
+interest rate instruments including derivatives by extension. 
+
+\subsection{Par-Point}
+
+In this approach, all pillars of the yield curve are considered independents
+and the econometrics are directly applied to their facial values. Now, the
+question is how to compare theses values at different dates. In fact, (
+selon la date d'observation et la description des instruments (business days
+vs calendar days), on peut avoir d'es instrument differents)
+
+\bigskip
+
+The first way is to extract zero coupon curves from past dates and use them
+to value the current yield curve. (ajouter graph)$\times D$
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+The second way is to consider that rates with sliding maturities such as
+money market and swap rates, can be compared regardless the date of
+observation. For other rates induced by rolling securities such as Euribor
+futures whose maturities are fixed dates, an immediate comparison is
+impossible. An alternative can be to compute the current value of theses
+rates from the past yield curves using some interpolation rules.
+
+\bigskip 
+
+\section{Historical Simulation Framework}
+
+Historical simulation is a method which assumes that probability law of a
+set of variable rely on their past evolution, allowing to capture stylized
+facts of financial time series such as fat tails or volatility clustering
+without modelling assumptions. For a given time horizion $\alpha $ and a
+risk factor $R$ defined on a domain $D$ and\ whose spot level at time $t$ is
+noted $R_{t}$, this translates into 
+
+\begin{equation*}
+R_{t+1}=f(R_{t},R_{s+h},R_{s}),\text{ \ \ }t-\alpha \leq s<t-h
+\end{equation*}
+
+\bigskip 
+
+where function $f$ specifies how to measure past return between $s$ and $s+h$
+and how to apply it between $t$ and $t+1.$ Beyond statistical
+considerations, $f$ is said wheel defined on $D\times D\times D$ \ if the
+following criterias are satisfied:
+
+\bigskip 
+
+\begin{itemize}
+\item A total order exist on $D.$
+
+\item The image of $f$ is $D$
+
+\item 
+\end{itemize}
+
+\subsection{Absolute returns}
+
+The absolute return is defined as%
+\begin{eqnarray*}
+R_{t+1} &=&R_{t}+R_{s+h}-R_{s} \\
+&=&R_{t}+\delta _{A}
+\end{eqnarray*}
+
+\subsection{Relative returns}
+
+\bigskip The reletive return is defined as%
+\begin{eqnarray*}
+R_{t+1} &=&R_{t}.\left( \frac{R_{s+h}}{R_{s}}\right)  \\
+&=&R_{t}+\delta _{R},\text{ \ \ }\delta _{R}=R_{t}.\frac{\left(
+R_{s+h}-R_{s}\right) }{R_{s}}
+\end{eqnarray*}
+
+\subsection{Absolute-Relative returns}
+
+\bigskip
+
+\subsubsection{Convexe combination}
+
+The most simple way to define an absolute-relative return is to use a
+convexe combination between theses two shocks with $\lambda \in \left[ 0,1%
+\right] $ 
+\begin{equation*}
+\delta _{AR}=\lambda .\delta _{A}+(1-\lambda ).\delta _{R}
+\end{equation*}
+
+\subsubsection{p-Space}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+The Lambert function is the inverse function of 
+\begin{equation*}
+y=x.\exp (x)\Longleftrightarrow x=W(y)
+\end{equation*}
+
+\bigskip using this function, it is possible to define a p-variable $Y_{t}$
+by
+
+\bigskip
+
+\begin{equation*}
+Y_{t}=p.X_{t}+(1-p).\ln (X_{t})
+\end{equation*}
+
+and then%
+\begin{equation*}
+X_{t}=\left\{ 
+\begin{array}{c}
+Y_{t},\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+}p=1 \\ 
+\\ 
+\exp (Y_{t}),\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=0
+\\ 
+\\ 
+\left( \frac{1-p}{p}\right) .W\left( \frac{p}{1-p}.\exp \left( \frac{Y_{t}}{%
+1-p}\right) \right) ,\text{ }p\in \left] 0,1\right[%
+\end{array}%
+\right.
+\end{equation*}
+
+\begin{equation*}
+y_{1}^{^{\prime }}=y_{1}+y_{2}-y_{3}
+\end{equation*}
+
+and then retrieve $\delta _{AR}$ by%
+\begin{equation*}
+\delta _{AR}=f^{-1}\left( y_{1}^{^{\prime }}\right) -x_{1}
+\end{equation*}
+
+\subsection{Case of bounded risk factors}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+https://www.pwc.com/gx/en/advisory-services/basel-iv/basel-iv-revised-standardised-.pdf
+
+https://acpr.banque-france.fr/sites/default/files/medias/documents/eifr%
+\_acpr\_presentation\_frtb\_2019.pdf
+
+https://quanteam.fr/2018/07/interview-frtb-bale-iv/
+
+http://finance.sia-partners.com/trading-book-vs-banking-book-la-nouvelle-reglementation
+
+https://www.accenture.com/%
+\_acnmedia/pdf-56/accenture-fundamental-review-of-the-trading-book-theory-to-action.pdf
+
+https://www.agefi.fr/asset-management/actualites/video/20190621/natixis-paie-sensibilite-marches-risque-liquidite-277450
+
+https://www.bis.org/bcbs/publ/d457.pdf
+
+https://www.bis.org/bcbs/publ/d352.pdf
+
+https://www.clarusft.com/frtb-internal-models-or-standardised-approach/
+
+https://www.quantifisolutions.com/explaining-the-two-key-frtb-frameworks
+
+https://laithanomics.com/the-fundamental-review-of-the-trading-book-frtb/
+
+https://www.cfainstitute.org/membership/professional-development/refresher-readings/2019/measuring-and-managing-market-risk
+
+https://www.researchgate.net/publication/303719319\_Quelques\_conseils\_pour%
+\_ecrire\_un\_article\_scientifique\_en\_anglais
+
+https://www.clarusft.com/fundamental-review-of-the-trading-book-what-you-need-to-know/
+
+C:\TEXTsymbol{\backslash}Users\TEXTsymbol{\backslash}tmonedero\TEXTsymbol{%
+\backslash}Downloads\TEXTsymbol{\backslash}ddjp.pdf
+
+\bigskip 
+
+statistical properties to satisfie how to measure past change of risk
+factors still remain to define
+
+\end{document}
