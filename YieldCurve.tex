@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Monday, August 05, 2019 17:53:54}
+%TCIDATA{LastRevised=Tuesday, August 06, 2019 17:45:33}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -68,7 +68,33 @@ Simulation framework.
 
 \bigskip
 
-\bigskip
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
 
 \section{Introduction}
 
@@ -161,8 +187,24 @@ methods for their trading business.
 
 \section{Yield Curve Econometric}
 
+\bigskip distinguer ce qui est observable (risk factors) de ce que l'on
+souhaite modeliser par des consideration techniques et functionelle fonction
+appliquer sur risk factor. contamination d'observabilit\'{e} =\TEXTsymbol{>}
+sur determination du systeme ???
+
+Hypoth\`{e}se du zero coupon traitable et observabilit\'{e} que de quelques
+instruments =\TEXTsymbol{>} systeme sous determin\'{e}
+
+Projection des instruments de taux par des raisonement d'arbitrage et des
+definition propre a chaque banque et algo  Diffusion de la courbe de taux
+
+=\TEXTsymbol{>} Le vrai risque facteur : courbe des instruments de
+taux.(justification par donn\'{e}e re\'{e}llement observables).
+
+Interest rate modelling purpose is to describe the random dynamic of a set
+of zero coupon bond curves through time starting from an initial condition.
 Yield curve represents the global (majeur le plus important) risk for all
-interest rate instruments including derivatives by extension. 
+interest rate instruments including derivatives by extension.
 
 \subsection{Par-Point}
 
@@ -192,161 +234,191 @@ rates from the past yield curves using some interpolation rules.
 
 \bigskip 
 
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
 \section{Historical Simulation Framework}
 
 Historical simulation is a method which assumes that probability law of a
 set of variable rely on their past evolution, allowing to capture stylized
 facts of financial time series such as fat tails or volatility clustering
 without modelling assumptions. For a given time horizion $\alpha $ and a
-risk factor $R$ defined on a domain $D$ and\ whose spot level at time $t$ is
-noted $R_{t}$, this translates into 
+risk factor $R$ defined on a domain $D_{R}$ and\ whose spot level at time $t$
+is noted $R_{t}$, this translates into
 
 \begin{equation*}
 R_{t+1}=f(R_{t},R_{s+h},R_{s}),\text{ \ \ }t-\alpha \leq s<t-h
 \end{equation*}
 
-\bigskip 
-
 where function $f$ specifies how to measure past return between $s$ and $s+h$
 and how to apply it between $t$ and $t+1.$ Beyond statistical
-considerations, $f$ is said wheel defined on $D\times D\times D$ \ if the
-following criterias are satisfied:
+considerations, $f$ is said wheel defined on $D$\ if the following criterias
+are satisfied:
 
-\bigskip 
+\bigskip
 
 \begin{itemize}
-\item A total order exist on $D.$
+\item The image of $f$ is $D_{R}.$
 
-\item The image of $f$ is $D$
+\item A total order exist on $D_{R}.$
 
-\item 
+\item The order relation between $R_{s+h}$ and $R_{s}$is the same as between 
+$R_{t+1}$ and $R_{t}.$
 \end{itemize}
 
-\subsection{Absolute returns}
+This caracterisation enable to define standard econometric functions.
 
-The absolute return is defined as%
+\subsection{Absolute shock}
+
+Absolute return $\delta _{A}$ between $s$ and $s+h$ is defined by%
 \begin{eqnarray*}
-R_{t+1} &=&R_{t}+R_{s+h}-R_{s} \\
-&=&R_{t}+\delta _{A}
+\delta _{A} &=&R_{s+h}-R_{s} \\
+R_{t+1} &=&R_{t}+\delta _{A}
 \end{eqnarray*}
 
-\subsection{Relative returns}
+\subsection{Relative shock}
 
-\bigskip The reletive return is defined as%
+\bigskip The reletive return between $s$ and $s+h$ is defined as%
 \begin{eqnarray*}
+\delta _{R} &=&R_{t}.\frac{\left( R_{s+h}-R_{s}\right) }{R_{s}} \\
 R_{t+1} &=&R_{t}.\left( \frac{R_{s+h}}{R_{s}}\right)  \\
 &=&R_{t}+\delta _{R},\text{ \ \ }\delta _{R}=R_{t}.\frac{\left(
 R_{s+h}-R_{s}\right) }{R_{s}}
 \end{eqnarray*}
 
-\subsection{Absolute-Relative returns}
+\subsection{Mixed shock}
 
-\bigskip
-
-\subsubsection{Convexe combination}
-
-The most simple way to define an absolute-relative return is to use a
-convexe combination between theses two shocks with $\lambda \in \left[ 0,1%
-\right] $ 
+The most simple way to define a mixed -or absolute-relative- return is to
+use a convexe combination between absolute and relative shocks 
 \begin{equation*}
-\delta _{AR}=\lambda .\delta _{A}+(1-\lambda ).\delta _{R}
+\forall \text{ }\lambda \in \left[ 0,1\right] ,\text{ \ \ }\delta
+_{AR}=\lambda .\delta _{A}+(1-\lambda ).\delta _{R}
 \end{equation*}
 
-\subsubsection{p-Space}
-
-\bigskip
-
-\bigskip
-
-\bigskip
-
-The Lambert function is the inverse function of 
-\begin{equation*}
-y=x.\exp (x)\Longleftrightarrow x=W(y)
-\end{equation*}
-
-\bigskip using this function, it is possible to define a p-variable $Y_{t}$
-by
-
-\bigskip
-
-\begin{equation*}
-Y_{t}=p.X_{t}+(1-p).\ln (X_{t})
-\end{equation*}
-
-and then%
-\begin{equation*}
-X_{t}=\left\{ 
+It is\ not clear, however, to find a consistent domain with the above
+caracterisation (first statement break on $\mathbb{R}_{+}^{\ast }$ and third
+statement break on $\mathbb{R}$). Using the function $\phi _{p}$ defined $%
+\forall $ $p$ $\in \left[ 0,1\right] $ by%
+\begin{eqnarray*}
+\phi _{p} &:&\mathbb{R}_{+}^{\ast }\rightarrow \mathbb{R} \\
+x &\rightarrow &y=p.x+(1-p).\ln (x)
+\end{eqnarray*}%
+and its inverse 
+\begin{eqnarray*}
+\phi _{p}^{-1} &:&\mathbb{R}\rightarrow \mathbb{R}_{+}^{\ast } \\
+y &\rightarrow &x=\left\{ 
 \begin{array}{c}
-Y_{t},\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
-}p=1 \\ 
-\\ 
-\exp (Y_{t}),\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=0
+y,\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=1
 \\ 
 \\ 
-\left( \frac{1-p}{p}\right) .W\left( \frac{p}{1-p}.\exp \left( \frac{Y_{t}}{%
-1-p}\right) \right) ,\text{ }p\in \left] 0,1\right[%
+\exp (y),\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=0 \\ 
+\\ 
+\left( \frac{1-p}{p}\right) .W\left( \frac{p}{1-p}.\exp \left( \frac{y}{1-p}%
+\right) \right) ,\text{ }p\in \left] 0,1\right[ 
 \end{array}%
-\right.
-\end{equation*}
+\right. 
+\end{eqnarray*}
 
-\begin{equation*}
-y_{1}^{^{\prime }}=y_{1}+y_{2}-y_{3}
-\end{equation*}
-
-and then retrieve $\delta _{AR}$ by%
-\begin{equation*}
-\delta _{AR}=f^{-1}\left( y_{1}^{^{\prime }}\right) -x_{1}
-\end{equation*}
-
-\subsection{Case of bounded risk factors}
-
-\bigskip
-
-\bigskip
-
-\bigskip
-
-\bigskip
-
-\bigskip
-https://www.pwc.com/gx/en/advisory-services/basel-iv/basel-iv-revised-standardised-.pdf
-
-https://acpr.banque-france.fr/sites/default/files/medias/documents/eifr%
-\_acpr\_presentation\_frtb\_2019.pdf
-
-https://quanteam.fr/2018/07/interview-frtb-bale-iv/
-
-http://finance.sia-partners.com/trading-book-vs-banking-book-la-nouvelle-reglementation
-
-https://www.accenture.com/%
-\_acnmedia/pdf-56/accenture-fundamental-review-of-the-trading-book-theory-to-action.pdf
-
-https://www.agefi.fr/asset-management/actualites/video/20190621/natixis-paie-sensibilite-marches-risque-liquidite-277450
-
-https://www.bis.org/bcbs/publ/d457.pdf
-
-https://www.bis.org/bcbs/publ/d352.pdf
-
-https://www.clarusft.com/frtb-internal-models-or-standardised-approach/
-
-https://www.quantifisolutions.com/explaining-the-two-key-frtb-frameworks
-
-https://laithanomics.com/the-fundamental-review-of-the-trading-book-frtb/
-
-https://www.cfainstitute.org/membership/professional-development/refresher-readings/2019/measuring-and-managing-market-risk
-
-https://www.researchgate.net/publication/303719319\_Quelques\_conseils\_pour%
-\_ecrire\_un\_article\_scientifique\_en\_anglais
-
-https://www.clarusft.com/fundamental-review-of-the-trading-book-what-you-need-to-know/
-
-C:\TEXTsymbol{\backslash}Users\TEXTsymbol{\backslash}tmonedero\TEXTsymbol{%
-\backslash}Downloads\TEXTsymbol{\backslash}ddjp.pdf
+where $W$ is the Lambert function, it is possible to construct an
+absolute-relative return function on $\mathbb{R}_{+}^{\ast }$ through the
+following algorithm :
 
 \bigskip 
 
-statistical properties to satisfie how to measure past change of risk
-factors still remain to define
+\begin{itemize}
+\item Compute $R_{t}^{p},R_{s+h}^{p},$ and $R_{s}^{p}$ with 
+\begin{equation*}
+R^{p}=\phi _{p}(R)
+\end{equation*}
+
+\item Compute $R_{t+1}^{p}$ using absolute return 
+\begin{equation*}
+R_{t+1}^{p}=R_{t}^{p}+R_{s+h}^{p}-R_{s}^{p}
+\end{equation*}
+
+\item Retrieve $R_{t+1}$ and $\delta _{AR}$ by 
+\begin{eqnarray*}
+R_{t+1} &=&\phi _{p}^{-1}(R_{t+1}^{p}) \\
+\delta _{AR} &=&R_{t+1}-R_{t}
+\end{eqnarray*}
+\end{itemize}
+
+\subsection{Case of bounded risk factors}
+
+Another issue that needs to be tackled is related to bounded risk factors.
+To meet econometric function domain requirements, rescaling function of the
+form 
+\begin{equation*}
+\phi :D_{R}\rightarrow \mathbb{K}
+\end{equation*}
+
+with $\mathbb{K}$ = $\mathbb{R}$ or $\mathbb{R}_{+}^{\ast }$ can be used. In
+order to easily retieve risk factor after shock application and to avoid
+brute force truncature, rescaling function should be at least bijective with
+analitical inverse function. To limit composition function impact on the
+econometric, other features can be take into consideration such that 
+
+\begin{eqnarray*}
+\phi (R_{t}) &=&R_{t} \\
+\phi ^{\prime }(R_{t}) &=&1 \\
+\phi ^{\prime \prime }(R_{t}) &=&0
+\end{eqnarray*}
 
 \end{document}
