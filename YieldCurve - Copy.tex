@@ -1,0 +1,491 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Thursday, August 08, 2019 18:01:08}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{Yield Curve Econometric}
+\author{T.\ Monedero \\
+%EndAName
+Quantitative Research\\
+Fixed Income, Natixis\\
+}
+\maketitle
+
+\begin{abstract}
+The aim of this document is to provide some technical elements required for
+the Fundamental Review of the Trading Book and more specifically for the
+Internal Models Approach of the Yield Curve Econometric in the Historical
+Simulation framework.
+\end{abstract}
+
+\tableofcontents
+
+.
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Introduction}
+
+Defined by the Basel Committee of Banking Supervision, the Fundamental
+Review of the Trading Book (FRTB) aims to improve the Basel II.5 regulation
+rules and to build a new market risk framework as a response to the
+financial crisis. These new standards address a number of both qualitative
+and quantitative issues such as\ capital arbitrage between booking and
+trading books as well as under-capitalization of the trading book.
+
+\bigskip
+
+\subsection{Standardised Approach}
+
+The Standardised Approach (SA) refers to a set of general risk measurement
+techniques proposed in the FRTB, giving a market risk overview of all
+bankink institutions. Needed to be calculated and reported to the relevant
+supervisor on a monthly basis, this method provide minimum capital
+requirements as the sum of three metrics :
+
+\bigskip
+
+\begin{itemize}
+\item the Sensitivities-Based Method (SBM)
+
+\item the Default Risk Capital\ (DRC)
+
+\item the Residual Risk Add-On\ (RRAO)
+\end{itemize}
+
+\bigskip
+
+Through risk agregation rules, the SBM use the sensitivities of financial
+instruments to a predefined risk factor list for each risk classes (Interest
+Rate, Credit, Equity, Commodity and Foreign Exchange) to calculate the
+delta, vega and curvature risk capital requirements. The DRC is intented to
+capture jump-to-default risk that may not be captured by credit spread
+shocks under the SBM. To address possible limitations in the SA, the RRAO is
+introduced to ensure sufficient coverage of market risks.
+
+\bigskip
+
+\subsection{Internal Models Approach}
+
+In order to reduce capital requirements, banks can also use the Internal
+Models Approach (IMA) - at trading desk level - for a more accurate measure
+of their own market risks. This process, however, entails an additional
+calculation cost and a more complex methodology which is subject to the
+supervisory authority agreement. As a consequence, the suitability of an
+internal risk management model is assessed through the two following steps :
+
+\bigskip
+
+\begin{itemize}
+\item A P\&L Attribution test to determine the appropriateness of the
+choosen risk factors in relation to the material drivers of Actual P\&L
+
+\item A Backtesting test to determine how well trading desk risks are
+captured by the risk factors modelling
+\end{itemize}
+
+\bigskip
+
+At bank's level, a third test is apply in order to split eligible trading
+desks risk factors into the modellable risk factors (MRF) set and the non
+modelable risk factors (NMRF) set. As in the SA, total capital charge for
+market risk under the IMA is given by the sum of the following metrics :
+
+\bigskip
+
+\begin{itemize}
+\item the capital requirement for MRF (Expected Shortfall)
+
+\item the capital requirement for NMRF (Stress test)
+
+\item the Default Risk Capital for internal model
+
+\item the standardised capital charge for ineligible trading desks
+\end{itemize}
+
+\bigskip 
+
+In order to compare both approachs, banks should perform quantitative
+studies to measure their trading business impacts.
+
+\section{Yield Curve Econometric}
+
+\bigskip distinguer ce qui est observable (risk factors) de ce que l'on
+souhaite modeliser par des consideration techniques et functionelle fonction
+appliquer sur risk factor. contamination d'observabilit\'{e} =\TEXTsymbol{>}
+sur determination du systeme ???
+
+Hypoth\`{e}se du zero coupon traitable et observabilit\'{e} que de quelques
+instruments =\TEXTsymbol{>} systeme sous determin\'{e}
+
+Projection des instruments de taux par des raisonement d'arbitrage et des
+definition propre a chaque banque et algo Diffusion de la courbe de taux
+
+=\TEXTsymbol{>} Le vrai risque facteur : courbe des instruments de
+taux.(justification par donn\'{e}e re\'{e}llement observables).
+
+Interest rate modelling purpose is to describe the random dynamic of a set
+of zero coupon bond curves through time starting from an initial condition.
+Yield curve represents the global (majeur le plus important) risk for all
+interest rate instruments including derivatives by extension.
+
+\subsection{Par-Point}
+
+In this approach, all pillars of the yield curve are considered independents
+and the econometrics are directly applied to their facial values. Now, the
+question is how to compare theses values at different dates. In fact, (
+selon la date d'observation et la description des instruments (business days
+vs calendar days), on peut avoir d'es instrument differents)
+
+\bigskip
+
+The first way is to extract zero coupon curves from past dates and use them
+to value the current yield curve. (ajouter graph)$\times D$
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+The second way is to consider that rates with sliding maturities such as
+money market and swap rates, can be compared regardless the date of
+observation. For other rates induced by rolling securities such as Euribor
+futures whose maturities are fixed dates, an immediate comparison is
+impossible. An alternative can be to compute the current value of theses
+rates from the past yield curves using some interpolation rules.
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Historical Simulation Framework}
+
+Historical simulation is a method which assumes that probability law of a
+set of variable rely on their past evolution, allowing to capture stylized
+facts of financial time series such as fat tails or volatility clustering
+without modelling assumptions. For a given time horizion $\alpha $ and a
+risk factor $R$ defined on a domain $D_{R}$ and\ whose spot level at time $t$
+- taken to represents one business day- is noted $R_{t}$, this translates
+into
+
+\begin{equation*}
+R_{t+1}^{s,s+h}=f(R_{t},R_{s+h},R_{s}),\text{ \ \ }t-\alpha \leq s<t-h
+\end{equation*}
+
+where the shock function $f$ specifies how to measure past return between $s$
+and $s+h$ and how to apply it between $t$ and $t+1$.
+
+\bigskip 
+
+\subsection{Shock function characterisation}
+
+Beyond statistical considerations, the following statements give the
+necessary criteria to define a shock function on a set $D$:
+
+\begin{itemize}
+\item A total order exist on $D.$
+
+\item The image of $D^{3}$ under $f$ is $D$
+
+\item $\forall $ $(R_{t},R_{s+h},R_{s})\in D^{3}$, the order relation
+between $R_{s+h}$ and $R_{s}$is the same as between $R_{t+1}^{s,s+h}$ and $%
+R_{t}.$
+\end{itemize}
+
+\bigskip
+
+Through this caracterisation, it is possible to define major classes of
+shock functions.
+
+\subsubsection{Absolute shock}
+
+Absolute return $\delta _{A}^{s,s+h}$ between $s$ and $s+h$ is defined as%
+\begin{equation*}
+\delta _{A}^{s,s+h}=R_{s+h}-R_{s}
+\end{equation*}%
+Absolute shock function is relevant for risk factors whose domain is $%
+\mathbb{R}$ and the shocked value is given by 
+\begin{equation*}
+R_{t+1}^{s,s+h}=R_{t}+\delta _{A}
+\end{equation*}
+
+\subsubsection{Relative shock}
+
+The reletive return $\delta _{R}^{s,s+h}$ between $s$ and $s+h$ is defined as%
+\begin{equation*}
+\delta _{R}^{s,s+h}=R_{t}.\frac{\left( R_{s+h}-R_{s}\right) }{R_{s}}
+\end{equation*}%
+Absolute shock function is relevant for risk factors whose domain is $%
+\mathbb{R}_{+}^{\ast }$ and the shocked value is given by 
+\begin{equation*}
+R_{t+1}^{s,s+h}=R_{t}+\delta _{R}^{s,s+h}
+\end{equation*}
+
+\subsubsection{Mixed shock}
+
+The most intuitive way to define a mixed return is to use a convex
+combination between the absolute and relative shocks 
+\begin{equation*}
+\forall \text{ }\lambda \in \left[ 0,1\right] ,\text{ \ \ }\delta
+_{AR}=\lambda .\delta _{A}+(1-\lambda ).\delta _{R}
+\end{equation*}
+
+It is\ not clear, however, to find a consistent domain with the above
+characterisation ($\mathbb{R}_{+}^{\ast }$ and $\mathbb{R}$ sets are not
+suitable with regards to the first and third statements). 
+
+\bigskip 
+
+Using the function $\phi _{p}$ defined $\forall $ $p$ $\in \left[ 0,1\right[ 
+$ by%
+\begin{eqnarray*}
+\phi _{p} &:&\mathbb{R}_{+}^{\ast }\rightarrow \mathbb{R} \\
+x &\rightarrow &y=p.x+(1-p).\ln (x)
+\end{eqnarray*}%
+and its inverse 
+\begin{eqnarray*}
+\phi _{p}^{-1} &:&\mathbb{R}\rightarrow \mathbb{R}_{+}^{\ast } \\
+y &\rightarrow &x=\left\{ 
+\begin{array}{c}
+\exp (y),\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=0 \\ 
+\\ 
+\left( \frac{1-p}{p}\right) .W\left( \frac{p}{1-p}.\exp \left( \frac{y}{1-p}%
+\right) \right) ,\text{ }p\in \left] 0,1\right[ 
+\end{array}%
+\right. 
+\end{eqnarray*}
+
+where $W$ is the Lambert function, it is possible to construct a mixed shock
+function on $\mathbb{R}_{+}^{\ast }$ through the following steps :
+
+\bigskip
+
+\begin{itemize}
+\item Compute $R_{t}^{p},R_{s+h}^{p},$ and $R_{s}^{p}$ with 
+\begin{equation*}
+R^{p}=\phi _{p}(R)
+\end{equation*}
+
+\item Compute $R_{t+1}^{p}$ using absolute return 
+\begin{equation*}
+R_{t+1}^{p}=R_{t}^{p}+R_{s+h}^{p}-R_{s}^{p}
+\end{equation*}
+\end{itemize}
+
+\bigskip 
+
+The shocked value and the mixed return are then given by 
+\begin{eqnarray*}
+R_{t+1} &=&\phi _{p}^{-1}(R_{t+1}^{p}) \\
+\delta _{AR} &=&R_{t+1}-R_{t}
+\end{eqnarray*}
+
+\subsection{Bounded risk factors scaling}
+
+Before computing a shock, bounded risk factors must be adapted to the domain
+requirements of the function used. To achieve this, a composition of scaling
+and shock functions can be used
+
+\begin{eqnarray*}
+R_{t+1} &=&\tilde{f}_{[m,M]}\left( R_{t},R_{s+h},R_{s}\right)  \\
+&=&\eta \circ f_{\mathbb{K}}\left( \text{ }\zeta (R_{t}),\text{ }\zeta
+(R_{s+h}),\text{ }\zeta (R_{s})\text{ }\right) 
+\end{eqnarray*}
+
+\bigskip 
+
+with $\zeta :[m,M]\rightarrow \mathbb{K}$, $\eta :\mathbb{K}\rightarrow
+\lbrack m,M]$ and $f_{\mathbb{K}}$ a shock function on $\mathbb{K}$ = $%
+\mathbb{R}$ or $\mathbb{R}_{+}^{\ast }$. Assuming that $\forall $ $%
+(R_{t},R_{s+h},R_{s})\in \left[ m,M\right] ^{3}$, $R_{s+h}=R_{s}.$ To be a
+shock function on $[m,M],$ $\tilde{f}$ must verify : 
+\begin{eqnarray*}
+R_{t} &=&R_{t+1} \\
+&=&\tilde{f}_{[m,M]}\left( R_{t},R_{s+h},R_{s}\right)  \\
+&=&\eta \circ \zeta (R_{t})
+\end{eqnarray*}
+
+Meaning that $\zeta $ must\ be an invertble function and $\eta =\zeta ^{-1}.$
+and
+
+\begin{equation*}
+\tilde{f}_{[m,M]}\left( R_{t},R_{s+h},R_{s}\right) =\zeta ^{-1}\circ f_{%
+\mathbb{K}}\left( \text{ }\zeta (R_{t}),\text{ }\zeta (R_{s+h}),\text{ }%
+\zeta (R_{s})\text{ }\right) 
+\end{equation*}%
+If this condition is fulfilled, then $\zeta $ and $\zeta ^{-1}$ have the
+same monotony leading to $\forall $ $\left( R_{t},R_{s+h},R_{s}\right) \in %
+\left[ m,M\right] ^{3}$
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+In order to easily retieve risk factor after shock application and to avoid
+brute force truncature, rescaling function should be at least bijective with
+analitical inverse function. Noting $f_{\mathbb{K}}$ a suitable shock
+function on $\mathbb{K}$ and $R_{t}^{\zeta }=\zeta (R_{t)}$ the rescaling
+risk factor at time $t,$ the shocked risk factor is obtained by
+
+\begin{equation*}
+R_{t+1}=\zeta ^{-1}\circ f_{\mathbb{K}}(R_{t}^{\zeta },R_{s+h}^{\zeta
+},R_{s}^{\zeta })
+\end{equation*}%
+To limit composition function impact on the econometric, other features can
+be take into consideration such that
+
+\begin{eqnarray*}
+\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}(R_{t}) &=&R_{t} \\
+\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}^{\prime }(R_{t}) &=&1 \\
+\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}^{\prime \prime }(R_{t}) &=&0
+\end{eqnarray*}
+
+\bigskip 
+
+bounded risk factors must be adapted to the domain requirements of the
+function used
+
+\end{document}
