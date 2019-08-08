@@ -122,6 +122,7 @@ the non modelable risk factors (NMRF) set. As in the SA, total capital charge fo
 
 In order to compare both approachs,  banks should perform quantitative studies to measure the impacts on their trading business.
 
+\newpage
 \section{Yield Curve Econometric}
 
 \bigskip distinguer ce qui est observable (risk factors) de ce que l'on
@@ -249,7 +250,7 @@ where the shock function $f$ specifies how to measure past return between $s$
 and $s+h$ and how to apply it between $t$ and $t+1$.
 
 
-\subsection{Shock function caracterisation}
+\subsection{Shock function characterisation}
 Beyond statistical
 considerations, the following statements gives necessaries criterias to
 define such functions on a set $D$ :
@@ -257,56 +258,59 @@ define such functions on a set $D$ :
 \bigskip
 
 \begin{itemize}
-\item The image of $f$ is $D.$
-
 \item A total order exist on $D.$
-
-\item The order relation between $R_{s+h}$ and $R_{s}$is the same as between 
-$R_{t+1}^{s,s+h}$ and $R_{t}.$
+\item The image of $D^{3}$ under $f$ is $D.$
+\item $\forall $ $(R_{t},R_{s+h},R_{s})\in D^{3}$, the order relation
+between $R_{s+h}$ and $R_{s}$is the same as between $R_{t+1}^{s,s+h}$ and $%
+R_{t}.$
 \end{itemize}
 
 \bigskip 
 
-Through this caracterisation, it is possible to define major shock functions
-on their domain of application.
+Through this caracterisation, it is possible to define major classes of shock functions.
 
 \subsubsection{Absolute shock}
 
-Absolute return $\delta _{A}^{s,s+h}$ between $s$ and $s+h$ is defined on $%
-\mathbb{R}$ as%
+Absolute return $\delta _{A}^{s,s+h}$ between $s$ and $s+h$ is defined as%
 \begin{equation*}
 \delta _{A}^{s,s+h}=R_{s+h}-R_{s}
 \end{equation*}%
-The shocked value using absolute shift is obtened by 
+Absolute shock function is relevant for risk factors whose domain is $%
+\mathbb{R}$ and the shocked value is given by 
 \begin{equation*}
 R_{t+1}^{s,s+h}=R_{t}+\delta _{A}
 \end{equation*}
 
 \subsubsection{Relative shock}
 
-The reletive return $\delta _{R}^{s,s+h}$ between $s$ and $s+h$ is defined
-on $\mathbb{R}_{+}^{\ast }$ by%
+The reletive return $\delta _{R}^{s,s+h}$ between $s$ and $s+h$ is defined as%
 \begin{equation*}
 \delta _{R}^{s,s+h}=R_{t}.\frac{\left( R_{s+h}-R_{s}\right) }{R_{s}}
 \end{equation*}%
-The shocked value using relative shift is obtened by 
+Absolute shock function is relevant for risk factors whose domain is $%
+\mathbb{R}_{+}^{\ast }$ and the shocked value is given by 
 \begin{equation*}
 R_{t+1}^{s,s+h}=R_{t}+\delta _{R}^{s,s+h}
 \end{equation*}
 
 \subsubsection{Mixed shock}
 
-The most intuitive way to define a mixed -or absolute-relative- return is to
-use a convexe combination between absolute and relative shocks 
+The most intuitive way to define a mixed return is to use a convex
+combination between the absolute and relative shocks 
 \begin{equation*}
 \forall \text{ }\lambda \in \left[ 0,1\right] ,\text{ \ \ }\delta
 _{AR}=\lambda .\delta _{A}+(1-\lambda ).\delta _{R}
 \end{equation*}
 
-It is\ not clear, however, to find a consistent domain with the above
-caracterisation (first statement break on $\mathbb{R}_{+}^{\ast }$ and third
-statement break on $\mathbb{R}$). Using the function $\phi _{p}$ defined $%
-\forall $ $p$ $\in \left[ 0,1\right] $ by%
+It is unclear, however, to find a consistent domain with the above
+characterisation - $\mathbb{R}_{+}^{\ast }$ and $\mathbb{R}$ sets are not
+suitable with regards to the first and third statements -.\\ 
+
+\bigskip
+
+
+Using the function $\phi _{p}$ defined $\forall $ $p$ $\in \left[ 0,1\right[ 
+$ by%
 \begin{eqnarray*}
 \phi _{p} &:&\mathbb{R}_{+}^{\ast }\rightarrow \mathbb{R} \\
 x &\rightarrow &y=p.x+(1-p).\ln (x)
@@ -316,19 +320,16 @@ and its inverse
 \phi _{p}^{-1} &:&\mathbb{R}\rightarrow \mathbb{R}_{+}^{\ast } \\
 y &\rightarrow &x=\left\{ 
 \begin{array}{c}
-y,\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=1
-\\ 
-\\ 
 \exp (y),\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }p=0 \\ 
 \\ 
 \left( \frac{1-p}{p}\right) .W\left( \frac{p}{1-p}.\exp \left( \frac{y}{1-p}%
-\right) \right) ,\text{ }p\in \left] 0,1\right[%
+\right) \right) ,\text{ }p\in \left] 0,1\right[ 
 \end{array}%
-\right.
+\right. 
 \end{eqnarray*}
 
-where $W$ is the Lambert function, it is possible to construct a mixed
-return function on $\mathbb{R}_{+}^{\ast }$ through the following algorithm :
+where $W$ is the Lambert function, it is possible to construct a mixed shock
+function on $\mathbb{R}_{+}^{\ast }$ through the following steps :
 
 \bigskip
 
@@ -342,40 +343,48 @@ R^{p}=\phi _{p}(R)
 \begin{equation*}
 R_{t+1}^{p}=R_{t}^{p}+R_{s+h}^{p}-R_{s}^{p}
 \end{equation*}
-
-\item Retrieve $R_{t+1}$ and $\delta _{AR}$ by 
-\begin{eqnarray*}
-R_{t+1} &=&\phi _{p}^{-1}(R_{t+1}^{p}) \\
-\delta _{AR} &=&R_{t+1}-R_{t}
-\end{eqnarray*}
 \end{itemize}
 
-\subsection{Bounded risk factors scaling}
+\bigskip 
 
-Another issue that needs to be tackled is related to bounded risk factors.
-To meet shock function domain requirements, rescaling function of the form 
-\begin{equation*}
-\zeta :[m,M]\rightarrow \mathbb{K}
-\end{equation*}
+Mixed return is then given by $ \delta _{AR} =R_{t+1}-R_{t} $ with $ R_{t+1} =\phi _{p}^{-1}(R_{t+1}^{p}) $
 
-with $\mathbb{K}$ = $\mathbb{R}$ or $\mathbb{R}_{+}^{\ast }$ can be used. In
-order to easily retieve risk factor after shock application and to avoid
-brute force truncature, rescaling function should be at least bijective with
-analitical inverse function. Noting $f_{\mathbb{K}}$ a suitable shock
-function on $\mathbb{K}$ and $R_{t}^{\zeta }=\zeta (R_{t)}$ the rescaling
-risk factor at time $t,$ the shocked risk factor is obtained by
+\newpage
 
-\begin{equation*}
-R_{t+1}=\zeta ^{-1}\circ f_{\mathbb{K}}(R_{t}^{\zeta },R_{s+h}^{\zeta
-},R_{s}^{\zeta })
-\end{equation*}%
-To limit composition function impact on the econometric, other features can
-be take into consideration such that
+\subsection{Scaling function characterisation}
+
+Before computing a shock, bounded risk factors must be adapted to the domain
+requirements of the function used. To achieve this, a composition of scaling
+and shock functions can be used
 
 \begin{eqnarray*}
-\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}(R_{t}) &=&R_{t} \\
-\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}^{\prime }(R_{t}) &=&1 \\
-\zeta _{\alpha _{t},\beta _{t},\gamma _{t}}^{\prime \prime }(R_{t}) &=&0
+R_{t+1} &=&\tilde{f}_{[m,M]}\left( R_{t},R_{s+h},R_{s}\right)  \\
+&=&\eta \circ f_{\mathbb{K}}\left( \text{ }\zeta (R_{t}),\text{ }\zeta
+(R_{s+h}),\text{ }\zeta (R_{s})\text{ }\right) 
 \end{eqnarray*}
+
+\bigskip
+
+with $\zeta :[m,M]\rightarrow \mathbb{K}$, $\eta :\mathbb{K}\rightarrow
+\lbrack m,M]$ and $f_{\mathbb{K}}$ a shock function on $\mathbb{K}$ = $%
+\mathbb{R}$ or $\mathbb{R}_{+}^{\ast }$.
+
+\bigskip
+\bigskip
+
+ Assuming that $\forall $ $%
+(R_{t},R_{s+h},R_{s})\in \left[ m,M\right] ^{3}$, $R_{s+h}=R_{s}$, the third statement implies that to be a shock function on $[m,M],$ $\tilde{f}$ must verify : 
+
+\begin{eqnarray*}
+R_{t} &=&R_{t+1} \\
+&=&\tilde{f}_{[m,M]}\left( R_{t},R_{s+h},R_{s}\right)  \\
+&=&\eta \circ \zeta (R_{t})
+\end{eqnarray*}
+
+\bigskip
+
+involving that $\zeta $ must\ be an invertible function and $\eta =\zeta ^{-1}$. If this condition is fulfilled, then $\zeta $ and $\zeta ^{-1}$ have the same monotonicity leading to an order-preserving function $\tilde{f}$ on $\left[ m,M\right]^{3}$.
+
+
 
 \end{document}
