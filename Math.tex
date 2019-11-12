@@ -1,0 +1,285 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Tuesday, November 12, 2019 17:31:02}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{Math}
+\author{T.\ Monedero \\
+%EndAName
+Natixis Fixed Income Department:\\
+quantitative analysis }
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\section{Mesure et Integration}
+
+\bigskip
+
+\subsection{Mesure}
+
+\subsubsection{Espace Mesurable}
+
+\bigskip 
+
+\begin{definition}
+Soit $X$ un ensemble. On appelle tribu ou $\sigma $- alg\`{e}bre sur $X$ une
+famille $\mathcal{M}$ de partie de $X$ poss\'{e}dant les propri\'{e}t\'{e}s
+suivantes :
+
+\begin{itemize}
+\item  $X\in \mathcal{M}$.
+
+\item Si $A\in \mathcal{M}$, alors $A^{C}\in \mathcal{M}$ ( ou $A^{C}=X$ $%
+\backslash $ $A$ est le compl\'{e}mentaire de $A$ dans $X$ ).
+
+\item Si $A_{n}\in \mathcal{M}$, $\forall n\in \mathbb{N}$, alors $%
+\tbigcup\limits_{n\in \mathbb{N}}A_{n}\in \mathcal{M}$.
+
+Les \'{e}l\'{e}ments de $\mathcal{M}$ sont appel\'{e}s les parties
+mesurables de $X$. On dit que ($X,\mathcal{M}$) est un espace mesurable.
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+$\mathcal{M=}\left\{ \varnothing ,X\right\} $ est la plus petite tribu de $X$
+et $\mathcal{M=}\mathcal{P}(X)$ la plus grande. De plus, $\mathcal{M}$ est
+stable par union ou intersection finie. En effet, si $A_{n}\in \mathcal{M}$, 
+$\forall n\in \mathbb{N}$, alors $\tbigcap\limits_{n\in \mathbb{N}}A_{n}\in 
+\mathcal{M}$ car $\left( \tbigcap\limits_{n\in \mathbb{N}}A_{n}\right)
+^{C}=\tbigcup\limits_{n\in \mathbb{N}}A_{n}^{C}$. Enfin, si $A$ et $B$ sont
+mesurables, alors la diff\'{e}rence non sym\'{e}trique $A$ $\backslash $ $%
+B=A\tbigcap B^{C}\in \mathcal{M}$.
+
+\bigskip 
+
+\begin{lemma}
+Soit $\left\{ \mathcal{M}_{i}\right\} _{i\in I}$ une famille quelconque de
+tribus sur $X$. Alors $\mathcal{M=}\tbigcap_{i\in I}\mathcal{M}_{i}$ est
+encore une tribu sur $X$.
+\end{lemma}
+
+\bigskip 
+
+\begin{definition}
+Soit $F$ une famille de parties de $X\ $et $\left\{ \mathcal{M}%
+_{i}^{F}\right\} _{i\in I}$ la famille de tribus sur $X$ contenant $F$ ( i.e 
+$\forall i\in I$, $F\subset \mathcal{M}_{i}^{F}$ ). On note 
+\begin{equation*}
+\sigma (F)=\tbigcap_{i\in I}\mathcal{M}_{i}^{F}
+\end{equation*}%
+la tribu engendr\'{e}e par $F$ sur $X$. C'est le plus petite tribu sur $X$
+qui contient $F$.
+\end{definition}
+
+\bigskip 
+
+\begin{definition}
+Unt topologie sur $X\ $est une famille $\mathcal{T}$ de parties de $X$
+telles que :
+
+\begin{itemize}
+\item $\varnothing \in \mathcal{T},$ $X\in \mathcal{T}$.
+
+\item Si $O_{1},...,O_{n}\in \mathcal{T},$ alors $\tbigcap%
+\limits_{i=1}^{n}O_{i}\in \mathcal{T}$.
+
+\item Si $\left\{ O_{i}\right\} _{i\in I}$\ est une famille quelconque d'%
+\'{e}l\'{e}ments de $\mathcal{T}$ alors $\tbigcup_{i\in I}O_{i}\in \mathcal{T%
+}$.
+
+Les \'{e}l\'{e}ments de $\mathcal{T}$ s'appelent les ouverts de $X$. On dit
+que ( $X$, $\mathcal{T}$ ) est un espace topologique
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+\begin{definition}
+Soit ( $X$, $\mathcal{T}$ ) un espace topologique. On appelle tribu de Borel
+sur $X$ la tribu engendr\'{e}e par les ouverts de $X$ : $\mathcal{M}=\sigma (%
+\mathcal{T})$ . La tribu $\mathcal{B(}\mathbb{R}\mathcal{)}$ est engendr\'{e}%
+e par les intervalles $\left] a,+\infty \right[ $ pour $a\in \mathbb{R}.$
+\end{definition}
+
+\bigskip \bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\subsubsection{Mesure Positive}
+
+\bigskip 
+
+\begin{definition}
+Soit ($X,\mathcal{M}$) un espace mesurable. On appelle mesure positive sur $X
+$ une application $\mu :\mathcal{M\rightarrow }\left[ 0,+\infty \right[ $
+verifiant : 
+
+\begin{itemize}
+\item $\mu (\varnothing )=0$
+
+\item Additivit\'{e} d\'{e}nonbrable : si $\left\{ A_{n}\right\} _{n\in 
+\mathbb{N}}$ est une famille d\'{e}nombrable d'ensembles mesurables deux a
+deux disjoints alors%
+\begin{equation*}
+\mu \left( \tbigcup_{n\in \mathbb{N}}A_{n}\right) =\tsum_{n\in \mathbb{N}%
+}\mu \left( A_{n}\right) 
+\end{equation*}%
+On dit que ($X,\mathcal{M},\mu $) est un espace mesur\'{e}.
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+\begin{proposition}
+Une mesure positive poss\`{e}de les propri\`{e}t\'{e}s suivantes :
+
+\begin{itemize}
+\item Si $A,B\in \mathcal{M}$ et $A\subset B$, alors $\mu (A)\leqslant \mu
+\left( B\right) $\ ( Monotonie ).
+
+\item Si $A_{n}\in \mathcal{M}$, $\forall n\in \mathbb{N}$ alors $\mu \left(
+\tbigcup_{n\in \mathbb{N}}A_{n}\right) \leqslant \tsum_{n\in \mathbb{N}}\mu
+\left( A_{n}\right) $ ( Sous additivit\'{e} ).
+
+\item Si $A_{n}\in \mathcal{M}$, $\forall n\in \mathbb{N}$ et si $%
+A_{n}\subset A_{n+1},\forall n\in \mathbb{N}$ alors $\mu \left(
+\tbigcup_{n\in \mathbb{N}}A_{n}\right) =\underset{n\rightarrow +\infty }{%
+\lim }\mu \left( A_{n}\right) .$
+
+\item Si $A_{n}\in \mathcal{M}$, $\forall n\in \mathbb{N}$ et si $%
+A_{n}\supset A_{n+1},\forall n\in \mathbb{N}$ avec $\mu \left( A_{0}\right)
+<\infty $ alors $\mu \left( \tbigcap_{n\in \mathbb{N}}A_{n}\right) =\underset%
+{n\rightarrow +\infty }{\lim }\mu \left( A_{n}\right) .$
+\end{itemize}
+\end{proposition}
+
+\bigskip 
+
+\begin{theorem}
+Il existe une unique mesure positive sur $(\mathbb{R},\mathcal{B(\mathbb{R})}%
+)$, not\'{e}e $\lambda $, telle que 
+\begin{equation*}
+\lambda (\left] a,b\right[ )=b-a,\forall a,b\in \mathbb{R}\times \mathbb{R}%
+\text{ }\backslash \text{ }a<b
+\end{equation*}%
+$\lambda $ est appell\'{e}e mesure de Lebesgue sur $\mathbb{R}$. La mesure
+de Lebesgue est diffuse : $\forall x\in \mathbb{R}$, $\lambda (\left\{
+x\right\} )=0$. Par cons\'{e}quent,%
+\begin{equation*}
+\lambda (\left] a,b\right[ )=\lambda (\left[ a,b\right[ )=\lambda (\left] a,b%
+\right] )=\lambda (\left[ a,b\right] )=b-a,\text{ }a\leq b
+\end{equation*}
+\end{theorem}
+
+\subsubsection{Completion de Mesure}
+
+\bigskip 
+
+\subsubsection{Mesure de Lebesgue}
+
+\subsection{Th\'{e}orie de l'int\'{e}gration}
+
+\bigskip 
+
+\subsubsection{Fonction Mesurable}
+
+\bigskip
+
+\subsubsection{Integration Fonction Mesurable Positive}
+
+\bigskip 
+
+\bigskip 
+
+\section{Distribution}
+
+\bigskip
+
+\end{document}
