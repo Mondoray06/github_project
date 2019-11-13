@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Tuesday, November 12, 2019 17:31:02}
+%TCIDATA{LastRevised=Wednesday, November 13, 2019 17:56:45}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -240,6 +240,35 @@ A_{n}\supset A_{n+1},\forall n\in \mathbb{N}$ avec $\mu \left( A_{0}\right)
 \end{itemize}
 \end{proposition}
 
+\subsubsection{Completion de Mesure}
+
+\bigskip 
+
+\begin{definition}
+Soit ($X,\mathcal{M},\mu $) est un espace mesur\'{e}. On dit que
+
+\begin{itemize}
+\item $A\subset X$ est n\'{e}gligeable pour la mesure $\mu $ si $A\in 
+\mathcal{M}$ et $\mu (A)=0.$
+
+\item La mesure $\mu $ est compl\`{e}te si tout sous ensemble d'un ensemble n%
+\'{e}glig\'{e}able est encore n\'{e}glig\'{e}able.
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+\begin{proposition}
+Soit ($X,\mathcal{M},\mu $) est un espace mesur\'{e}. Soit $\mathcal{M}%
+^{\ast }$ l'ensemble de toutes les parties $E$ de $X$ telles qu'il existe $%
+A,B\in \mathcal{M}$ avec $A\subset E\subset B$ et $\mu (B$ $\backslash $ $%
+A)=0.$ On d\'{e}finit alors $\mu ^{\ast }(E)=\mu (A).$ Ainsi, $\mathcal{M}%
+^{\ast }$ est une tribu sur $X$ et $\mu ^{\ast }$ une mesure compl\`{e}te $%
+\mathcal{M}$ sur qui prolonge $\mu $.
+\end{proposition}
+
+\subsubsection{Mesure de Lebesgue}
+
 \bigskip 
 
 \begin{theorem}
@@ -258,11 +287,22 @@ x\right\} )=0$. Par cons\'{e}quent,%
 \end{equation*}
 \end{theorem}
 
-\subsubsection{Completion de Mesure}
+\bigskip 
+
+\begin{remark}
+La mesure de Lebesgue n'est pas compl\`{e}te sur $\mathcal{B(\mathbb{R})}$
+(cf Ensemble de Cantor).
+\end{remark}
 
 \bigskip 
 
-\subsubsection{Mesure de Lebesgue}
+\begin{definition}
+On appelle tribu de Lebesque sur $\mathbb{R}$ , et on note $\mathcal{L(}%
+\mathbb{R}\mathcal{)}$, la tribu qui compl\`{e}te la tribu de Borel $%
+\mathcal{B(}\mathbb{R}\mathcal{)}$ pour la mesure de Lebesgue $\lambda .$ On
+appelle encore mesure de Lebesgue la mesure compl\'{e}t\'{e}e $\lambda $: $%
+\mathcal{L(}\mathbb{R}\mathcal{)\rightarrow }\left[ 0,+\infty \right] .$
+\end{definition}
 
 \subsection{Th\'{e}orie de l'int\'{e}gration}
 
@@ -270,7 +310,103 @@ x\right\} )=0$. Par cons\'{e}quent,%
 
 \subsubsection{Fonction Mesurable}
 
-\bigskip
+\bigskip 
+
+\paragraph{Definitions}
+
+\bigskip 
+
+\begin{definition}
+Soit $(X,\mathcal{M},)$ et $(Y,\mathcal{N})$ deux espaces mesurables. On dit
+qu'une application $f:X\rightarrow Y$ est mesurable pour les tribus $%
+\mathcal{M}$ et $\mathcal{N}$\ si 
+\begin{equation*}
+f^{-1}(B)\in \mathcal{M}\text{, }\forall \text{ }B\in \mathcal{N}
+\end{equation*}
+\end{definition}
+
+\bigskip 
+
+\begin{remark}
+Etant donn\'{e}e deux espaces topologiques $(X,\mathcal{T})$ et $(Y,\mathcal{%
+S})$, la definition d'application continue pour les topologies $\mathcal{T}$
+et $\mathcal{S}$ est analogue \`{a} celle de mesurabilit\'{e}, i.e%
+\begin{equation*}
+f^{-1}(B)\in \mathcal{T}\text{, }\forall \text{ }B\in \mathcal{S}
+\end{equation*}
+\end{remark}
+
+\bigskip 
+
+\begin{remark}
+Si $Y$ est un ensemble quelconque, $\mathcal{N=}\left\{ \varnothing
+,Y\right\} $ est la plus petite tribu sur $Y$ rendant $f$ mesurable. La
+tribu image de $\mathcal{M}$ par $f\ $%
+\begin{equation*}
+\mathcal{N}^{\ast }\mathcal{=}\left\{ B\subset Y\text{ }|\text{ }%
+f^{-1}(B)\in \mathcal{M}\right\} 
+\end{equation*}%
+est la plus grande tribu sur $Y$ rendant $f$ mesurable. 
+\end{remark}
+
+\bigskip 
+
+\begin{remark}
+Si $X$ est un ensemble quelconque, $\mathcal{M=P}(X)$ est la plus grande
+tribu sur $X$ rendant $f$ mesurable. La tribu engendr\'{e}e par $f\ $%
+\begin{equation*}
+\mathcal{M}^{\ast }\mathcal{=}\left\{ \text{ }f^{-1}(B)|\text{ }B\in 
+\mathcal{N}\right\} 
+\end{equation*}%
+est la plus petite tribu sur $X$ rendant $f$ mesurable. 
+\end{remark}
+
+\paragraph{Stabilit\'{e}}
+
+\bigskip 
+
+\begin{itemize}
+\item Si $f:(X_{1},\mathcal{M}_{1})\rightarrow (X_{2},\mathcal{M}_{2})$ et $%
+g:(X_{2},\mathcal{M}_{2})\rightarrow (X_{3},\mathcal{M}_{3})$ sont
+mesurables, alors $g\circ f:(X_{1},\mathcal{M}_{1})\rightarrow (X_{3},%
+\mathcal{M}_{3})$ est mesurable.
+
+\item Soient $(X,\mathcal{M})$ un espace mesurable, $(Y,T)$ un espace
+topologique, $f_{1},f_{2}:X\rightarrow \mathbb{R}$ des applications
+mesurables et $\Phi :\mathbb{R}^{2}\rightarrow Y$ une application continue.
+Alors, $h:X\rightarrow Y$ definie par $\forall x\in X,$ $h(x)=\Phi
+(f_{1}(x),f_{2}(x))$ est mesurable.
+
+\item Soient $f,g:X\rightarrow \mathbb{R}$ deux fonctions mesurables. Alors $%
+f+g,$ $fg$, $\min (f,g)$, $\max (f,g)$ sont mesurables.
+
+\item Si $f:X\rightarrow \mathbb{R}$ est mesurable,. alors $f_{+}=\max (f,0),
+$ $f_{-}=\min (f,0)$ et $|f|$ $=f_{+}+f_{-}$ sont mesurables.
+
+\item Si $f:X\rightarrow \mathbb{R}$ est mesurable et si $\forall x\in X,$ $%
+f(x)\neq 0,$ alors $g$ d\'{e}finie par $g(x)=\frac{1}{f(x)}$ est mesurable.
+
+\item Soit $\mathbb{\bar{R}}=\mathbb{R}+\{-\infty ,+\infty \}.$ Les ouverts
+de $\mathbb{\bar{R}}$ sont les unions d'intervalles de la forme $\left[
+-\infty ,a\right[ ,\left] a,b\right[ ,\left] b,+\infty \right] ,$ $\forall
+a,b\in \mathbb{R}.$ Soit $(X,\mathcal{M})$ un espace mesurable et $%
+\{f_{n}\}_{n}$ une suite\ de fonctions de $X$ dnas $\mathbb{\bar{R}}$. Alors 
+$\underset{n}{\sup }f_{n},$ $\underset{n}{\inf }f_{n},$ $\underset{%
+n\rightarrow \infty }{\lim \sup }f_{n},$ $\underset{n\rightarrow \infty }{%
+\lim \inf }f_{n}:X\rightarrow \mathbb{\bar{R}}$ sont des applications
+mesurables avec $\forall x\in X$%
+\begin{eqnarray*}
+\left( \underset{n}{\sup }f_{n}\right) (x) &=&\underset{n}{\sup }f_{n}(x) \\
+\left( \underset{n\rightarrow \infty }{\lim \sup }f_{n}\right) (x) &=&%
+\underset{n\rightarrow \infty \text{ }k\geq n}{\lim \sup }f_{k}(x)
+\end{eqnarray*}
+\end{itemize}
+
+On definit de meme $\underset{n}{\inf }f_{n}$ et $\underset{n\rightarrow
+\infty }{\lim \inf }f_{n}.$ En particulier, si $f(x)=\underset{n\rightarrow
+\infty }{\lim }f_{n}(x)$ existe $\forall x\in X$ alors $f:X\rightarrow 
+\mathbb{\bar{R}}$ est mesurable. Plus generalement, l'ensemble $\{x\in X$ $|$
+$\underset{n\rightarrow \infty }{\lim }f_{n}(x)$ existe$\}$ est mesurable.
 
 \subsubsection{Integration Fonction Mesurable Positive}
 
