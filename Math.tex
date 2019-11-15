@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Thursday, November 14, 2019 17:03:07}
+%TCIDATA{LastRevised=Friday, November 15, 2019 16:56:17}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -287,14 +287,7 @@ x\right\} )=0$. Par cons\'{e}quent,%
 \end{equation*}
 \end{theorem}
 
-\bigskip
-
-\begin{remark}
-La mesure de Lebesgue n'est pas compl\`{e}te sur $\mathcal{B(\mathbb{R})}$
-(cf Ensemble de Cantor).
-\end{remark}
-
-\bigskip
+\bigskip 
 
 \begin{definition}
 On appelle tribu de Lebesque sur $\mathbb{R}$ , et on note $\mathcal{L(}%
@@ -303,6 +296,35 @@ On appelle tribu de Lebesque sur $\mathbb{R}$ , et on note $\mathcal{L(}%
 appelle encore mesure de Lebesgue la mesure compl\'{e}t\'{e}e $\lambda $: $%
 \mathcal{L(}\mathbb{R}\mathcal{)\rightarrow }\left[ 0,+\infty \right] .$
 \end{definition}
+
+\bigskip 
+
+\begin{definition}
+\end{definition}
+
+\bigskip 
+
+\begin{theorem}
+Il existe une unique mesure positive sur $(\mathbb{R}^{d},\mathcal{B(\mathbb{%
+R}}^{d}\mathcal{)})$, not\'{e}e $\lambda $, telle que pour tout pav\'{e} $P=%
+\left[ a_{1},b_{1}\right] \times \left[ a_{2},b_{2}\right] \times ...\times %
+\left[ a_{d},b_{d}\right] \subset \mathcal{\mathbb{R}}^{d},$ on ait 
+\begin{equation*}
+\lambda (P)=\tprod\limits_{i=1}^{d}(b_{i}-a_{i})
+\end{equation*}%
+Comme pr\'{e}cedemment, on peut compl\'{e}ter la tribu $\mathcal{B(\mathbb{R}%
+}^{d}\mathcal{)}$ et \'{e}tendre la mesure $\lambda $ \`{a} $\mathcal{L(%
+\mathbb{R}}^{d}\mathcal{)}$. La mesure de Lebesgue ( sur $\mathcal{B(\mathbb{%
+R}}^{d}\mathcal{)}$\ ou $\mathcal{L(\mathbb{R}}^{d}\mathcal{)}$\ ) poss\`{e}%
+de les priopri\`{e}t\'{e}s suivantes :
+
+\begin{itemize}
+\item $\lambda $ est invariante par translation et rotation
+
+\item $\lambda $ est r\'{e}guli\`{e}re, i.e mesurable on a par translation
+et rotation
+\end{itemize}
+\end{theorem}
 
 \subsection{Th\'{e}orie de l'int\'{e}gration}
 
@@ -623,14 +645,14 @@ d\mu =0
 \end{equation*}
 \end{theorem}
 
-\bigskip 
+\bigskip
 
 \begin{remark}
 Il est possible de relaxer l'hypoth\`{e}se $\forall x\in X$ par pour $\mu $
 presque tout $x\in X.$
 \end{remark}
 
-\bigskip 
+\bigskip
 
 \begin{corollary}
 Soit $f_{n}:X\rightarrow \mathbb{C}$ une suite de fonctions int\'{e}grables
@@ -639,11 +661,11 @@ la s\'{e}rie $\tsum\limits_{n\in \mathbb{N}}f_{n}(x)$\ converge absolument
 pour $\mu $ presque tout $x\in X$ vers une fonction $f$ int\'{e}grable et on
 a 
 \begin{equation*}
-\tint fd\mu =\tsum\limits_{n\in \mathbb{N}}\tint f_{n}d\mu 
+\tint fd\mu =\tsum\limits_{n\in \mathbb{N}}\tint f_{n}d\mu
 \end{equation*}
 \end{corollary}
 
-\bigskip 
+\bigskip
 
 \subsubsection{Integrale d\'{e}pendant d'un param\`{e}tre}
 
@@ -657,7 +679,7 @@ int\'{e}grable sur $X$ pour la mesure $\mu .$ On peut donc d\'{e}finir la
 fonction $F:\Lambda \rightarrow \mathbb{C}$ par%
 \begin{equation*}
 F(\lambda )=\tint_{X}f(x,\lambda )d\mu _{x}\equiv \tint_{X}f(x,\lambda )dx%
-\text{ }\forall \lambda \in \Lambda 
+\text{ }\forall \lambda \in \Lambda
 \end{equation*}%
 Afin d'harmoniser les notations, on notera pour une fonction $g:X\rightarrow 
 \mathbb{C}$ de facon equivalente 
@@ -665,29 +687,77 @@ Afin d'harmoniser les notations, on notera pour une fonction $g:X\rightarrow
 \tint gd\mu =\tint g(x)d\mu _{x}=\tint g(x)dx
 \end{equation*}
 
-\bigskip 
+\bigskip
 
 \begin{theorem}[de continuit\'{e} ]
 On suppose
 
 \begin{itemize}
-\item $\forall \lambda \in \Lambda ,$ la fonction $x\longmapsto f(x,\lambda )
-$ est int\'{e}grable ( mesurable suffisant car (3)) sur $X$.
+\item $\forall \lambda \in \Lambda ,$ la fonction $x\longmapsto f(x,\lambda
+) $ est int\'{e}grable ( mesurable suffisant car (3)) sur $X$.
 
 \item Pour $\mu $-presque tout $x\in X$, la fonction $\lambda \longmapsto
 f(x,\lambda )$\ est continue sur $\Lambda $
 
 \item Il existe $g:X\rightarrow \mathbb{R}_{+}$ int\'{e}grable telle que $%
 \forall \lambda \in \Lambda $ on ait $\left\vert f(x,\lambda )\right\vert
-\leq g(x)$ pour  $\mu $-presque tout $x\in X$
+\leq g(x)$ pour $\mu $-presque tout $x\in X$
 \end{itemize}
-Alors
+
+Alors la fonction $F:\Lambda \rightarrow \mathbb{C}$ d\'{e}finie par $%
+F(\lambda )=\tint_{X}f(x,\lambda )dx$ est continue sur $\Lambda .$
 \end{theorem}
 
+\bigskip 
+
+\begin{remark}
+Si l'on suppose seulement que $\lambda \longmapsto f(x,\lambda )$ est
+continue en un point $\lambda _{0}\in \Lambda $, on obtient que $F$ est
+continue en $\lambda _{0}.$
+\end{remark}
+
+\bigskip 
+
+\begin{theorem}[de d\'{e}rivabilit\'{e}]
+On suppose
+
+\begin{itemize}
+\item $\forall \lambda \in \Lambda ,$ la fonction $x\longmapsto f(x,\lambda )
+$ est int\'{e}grable sur $X$.
+
+\item Pour $\mu $-presque tout $x\in X$, la fonction $\lambda \longmapsto
+f(x,\lambda )$\ est d\'{e}rivable sur $\Lambda $
+
+\item Il existe $g:X\rightarrow \mathbb{R}_{+}$ int\'{e}grable telle que
+pour $\mu $-presque tout $x\in X,$ on ait $\left\vert \partial _{\lambda
+}f(x,\lambda )\right\vert \leq g(x)$ $\forall \lambda \in \Lambda $
+\end{itemize}
+
+Alors l'application $F:\Lambda \rightarrow \mathbb{C}$ d\'{e}finie par $%
+F(\lambda )=\tint_{X}f(x,\lambda )dx$ est d\'{e}rivable sur $\Lambda $ et 
+\begin{equation*}
+F^{^{\prime }}(\lambda )=\tint_{X}\partial _{\lambda }f(x,\lambda )dx
+\end{equation*}
+\end{theorem}
+
+\bigskip 
+
+\begin{remark}
+
+\begin{itemize}
+\item $\partial _{\lambda }f(x,\lambda )$ est d\'{e}finie presque partout en 
+$x$ et la ou elle ne l'est pas on lui met la valeur $0$.
+
+\item Si $\Lambda =\left[ a,b\right] ,$ "derivable sur $\Lambda $"\ signifie
+: derivable sur $\left] a,b\right[ $, derivable \`{a} droite en $a$ et d\'{e}%
+rivable \`{a} gauche en $b$.
+
+\item Meme si on souhaite la d\'{e}rivabilit\'{e} de $F$ qu'en un point $%
+\lambda _{0}\in \Lambda $, il faut quand meme supposer (3) pour $\forall
+\lambda \in \Lambda .$ 
+\end{itemize}
+\end{remark}
+
 \section{Distribution}
-
-Distribution
-
-\bigskip
 
 \end{document}
