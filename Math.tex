@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Friday, November 15, 2019 16:56:17}
+%TCIDATA{LastRevised=Monday, November 18, 2019 17:53:17}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -103,6 +103,47 @@ quantitative analysis }
 
 \bigskip
 
+\begin{definition}[Classes Monotones]
+Soit $X$ un sous-ensemble $\mathcal{N\subset }\mathcal{P}(X)$ appel\'{e} une
+classe monotone si :
+
+\begin{itemize}
+\item $X\in \mathcal{N}$.
+
+\item Si $A,B\in \mathcal{N}$, et $A\subset B$ alors $B$ $\backslash $ $A$ $%
+\in \mathcal{N}$
+
+\item Si $A_{n}\in \mathcal{N}$, $\forall n\in \mathbb{N}$, et que $%
+A_{n}\subset A_{n+1}$\ alors $\tbigcup\limits_{n\in \mathbb{N}}A_{n}\in 
+\mathcal{N}$.
+\end{itemize}
+\end{definition}
+
+\bigskip
+
+\begin{remark}
+\begin{itemize}
+\item Si $A\in \mathcal{N}$, alors $A^{C}=X$ $\backslash $ $A\in \mathcal{N}$
+
+\item Toute tribu est une classe monotone
+
+\item Une classe monotone est une tribu ssi elle est stable par intersection
+finie.
+
+\item Toute intersection de classe monotone est encore une classe monotone.
+Si $F$ est une famille de parties de $X$, on peut d\'{e}finir 
+\begin{equation*}
+\mathcal{N}(F)=\underset{\text{classe monotone sur }X,\text{ }F\subset 
+\mathcal{N}}{\bigcap \mathcal{N}}
+\end{equation*}%
+Alors, $\mathcal{N}(F)$ est une classe monotone sur $X$ appel\'{e}e la
+classe monotone engendr\'{e}e par $F.$ C'est la petite classe monotone sur $%
+X $ qui contient $F$.
+\end{itemize}
+\end{remark}
+
+\bigskip
+
 \begin{definition}
 Soit $X$ un ensemble. On appelle tribu ou $\sigma $- alg\`{e}bre sur $X$ une
 famille $\mathcal{M}$ de partie de $X$ poss\'{e}dant les propri\'{e}t\'{e}s
@@ -156,6 +197,53 @@ qui contient $F$.
 
 \bigskip
 
+\begin{lemma}
+Si $F\subset \mathcal{P}(X)$ est une famille de partie de$\ X$ stable par
+intersections finies alors $\mathcal{N}(F)=\mathcal{\sigma }(F).$
+\end{lemma}
+
+\bigskip
+
+\begin{corollary}
+Soit $(X,\mathcal{M})$ un espace mesurable muni de deux mesures $\mu $\ et$\
+\upsilon $. Supposons qu'il existe une famille $F$ de parties de $\mathcal{M}
+$\ telle que
+
+\begin{itemize}
+\item $F$ est stable par intersection finie et $\sigma (F)=\mathcal{M}$
+
+\item $\mu (A)=\upsilon (A),$ $\forall A\in F$
+\end{itemize}
+
+On suppose en outre que
+
+\begin{itemize}
+\item soit que $\mu (X)=\upsilon (X)<\infty $
+
+\item soit qu'il existeune famille $\left\{ E_{n}\right\} _{n\in \mathbb{N}}$%
+\ d'\'{e}l\'{e}ments de $F,$ telle que $E_{n}\subset E_{n+1},$ $%
+\bigcup_{n\in \mathbb{N}}E_{n}=X$ et $\mu (E_{n})=\upsilon (E_{n})<\infty $
+pour tout $n\in \mathbb{N}$ alors%
+\begin{equation*}
+\mu =\upsilon ,\text{ ie }\mu (A)=\upsilon (A)\text{, }\forall A\in \mathcal{%
+M}
+\end{equation*}
+\end{itemize}
+\end{corollary}
+
+\bigskip
+
+\begin{example}[Unicit\'{e} de la mesure de Lebesgue]
+On prend $X=\mathbb{R}^{d}$, $\mathcal{M}=\mathcal{B(}\mathbb{R}^{d}\mathcal{%
+)}$, $F$ la famille des pav\'{e}s ouverts et $E_{n}=\left] -n,n\right[ ^{d}$%
+. En appliquan le b) du corrolaire ci dessus, on voit qu'une mesure
+borelienne sur $\mathbb{R}^{d}$ finie sur les born\'{e}s est entierement d%
+\'{e}termin\'{e}e par ses valeurs sur les pav\'{e}s ouverts. Ceci montre
+donc l'unicit\'{e} de la mesure de Lebesgue sur $\mathbb{R}^{d}$.
+\end{example}
+
+\bigskip
+
 \begin{definition}
 Unt topologie sur $X\ $est une famille $\mathcal{T}$ de parties de $X$
 telles que :
@@ -193,6 +281,40 @@ e par les intervalles $\left] a,+\infty \right[ $ pour $a\in \mathbb{R}.$
 \bigskip
 
 \subsubsection{Mesure Positive}
+
+\bigskip
+
+\begin{definition}[Mesure Exterieure]
+Soit $X$ un esemble quelconque. On appelle mesure ext\'{e}rieur sur $X$ une
+application \ $\mu ^{\ast }:\mathcal{P(}\mathbb{X}\mathcal{)\rightarrow }%
+\left[ 0,+\infty \right] $ telle que
+
+\begin{itemize}
+\item $\mu ^{\ast }(\varnothing )=0$
+
+\item $\mu ^{\ast }\ $est croissante : $\mu ^{\ast }(A)=\mu ^{\ast }(B)$ si $%
+A\subset B$
+
+\item $\mu ^{\ast }\ $est sous additive : si $\left\{ A_{n}\right\} _{n}$
+est une famille de parties de $X$ alors : $\mu ^{\ast }\left(
+\tbigcup\limits_{n\in \mathbb{N}}A_{n}\right) \leq \tsum\limits_{n\in 
+\mathbb{N}}\mu ^{\ast }\left( A_{n}\right) $
+\end{itemize}
+\end{definition}
+
+\bigskip
+
+\begin{definition}[Regularit\'{e}]
+Soit $X$ un ensemble muni d'une mesure ext\'{e}rieure $\mu ^{\ast }$. On dit
+qu'une partie $B\subset X$ est $\mu ^{\ast }$-r\'{e}guli\`{e}re si pour
+toutes parties $A$ de $X$ on a 
+\begin{equation*}
+\mu ^{\ast }\left( A\right) =\mu ^{\ast }\left( A\cap B\right) +\mu ^{\ast
+}\left( A\cap B^{C}\right)
+\end{equation*}%
+On note $\mathcal{M(}\mu ^{\ast }\mathcal{)}$ l'ensemble des parties $\mu
+^{\ast }$-r\'{e}guli\`{e}re de X.
+\end{definition}
 
 \bigskip
 
@@ -238,6 +360,15 @@ A_{n}\supset A_{n+1},\forall n\in \mathbb{N}$ avec $\mu \left( A_{0}\right)
 <\infty $ alors $\mu \left( \tbigcap_{n\in \mathbb{N}}A_{n}\right) =\underset%
 {n\rightarrow +\infty }{\lim }\mu \left( A_{n}\right) .$
 \end{itemize}
+\end{proposition}
+
+\bigskip
+
+\begin{proposition}
+$\mathcal{M(}\mu ^{\ast }\mathcal{)}$ est une tribu sur $X$ contenant toutes
+les parties $B\subset X$ telles que $\mu ^{\ast }\left( B\right) =0$\ et la
+restriction de $\mu ^{\ast }$ \`{a} $\mathcal{M(}\mu ^{\ast }\mathcal{)}$
+est une mesure.
 \end{proposition}
 
 \subsubsection{Completion de Mesure}
@@ -287,7 +418,7 @@ x\right\} )=0$. Par cons\'{e}quent,%
 \end{equation*}
 \end{theorem}
 
-\bigskip 
+\bigskip
 
 \begin{definition}
 On appelle tribu de Lebesque sur $\mathbb{R}$ , et on note $\mathcal{L(}%
@@ -297,12 +428,63 @@ appelle encore mesure de Lebesgue la mesure compl\'{e}t\'{e}e $\lambda $: $%
 \mathcal{L(}\mathbb{R}\mathcal{)\rightarrow }\left[ 0,+\infty \right] .$
 \end{definition}
 
-\bigskip 
+\bigskip
 
 \begin{definition}
+Un pav\'{e} $P$ de $\mathcal{\mathbb{R}}^{d}$ est un produit \ dintervalles
+born\'{e}s $P=I_{1}\times I_{2}\times ...\times I_{d},$ $I_{j}\subset 
+\mathbb{R}$ intervalle born\'{e}. La mesure du pav\'{e} $P$ est not\'{e}e 
+\begin{equation*}
+mes(P)=l(I_{1})\cdot l(I_{2})\cdot ...\cdot l(I_{d})
+\end{equation*}%
+ou $l(I_{j})$ est la longueur du segment $I_{j}.$Pour toute partie $A$ de $%
+\mathbb{R}^{d}$, on d\'{e}finit 
+\begin{equation*}
+\lambda ^{\ast }(A)=\inf \left\{ \tsum\limits_{i\in \mathbb{N}}mes(P_{i})%
+\text{ }|\text{ }A\subset \tbigcup\limits_{i\in \mathbb{N}}P_{i},\text{ }%
+P_{i}\text{ pav\'{e} ouvert de }\mathbb{R}^{d}\right\}
+\end{equation*}%
+L'infimum est pris sur tous les recouvrements d\'{e}nombrables de $A$ par
+des pav\'{e}es ouverts.
 \end{definition}
 
-\bigskip 
+\bigskip
+
+\begin{theorem}
+On a les assertions suivantes :
+
+\begin{itemize}
+\item $\mathcal{\lambda ^{\ast }}$ est une mesure exterieue sur $\mathcal{%
+\mathbb{R}}^{d}$
+
+\item La tribu $\mathcal{M(\lambda ^{\ast })}$\ contient la tribu de Borel $%
+\mathcal{B(\mathbb{R}}^{d}\mathcal{)}$
+
+\item $\lambda ^{\ast }(P)=mes(P)$, pour tout pav\'{e} $P\subset \mathcal{%
+\mathbb{R}}^{d}$
+\end{itemize}
+\end{theorem}
+
+\bigskip
+
+\begin{definition}
+On appelle mesure de Lebesgue sur $\mathcal{\mathbb{R}}^{d}$\ la
+restriction, not\'{e}e $\lambda $, de la mesure exterieure $\mathcal{\lambda
+^{\ast }}$ \`{a} $\mathcal{B(\mathbb{R}}^{d}\mathcal{)}$ ou \`{a} $\mathcal{%
+M(\lambda ^{\ast })}$.
+\end{definition}
+
+\bigskip
+
+\begin{lemma}
+Si $P,P_{1},...,P_{N}$ sont des pav\'{e}s de $\mathbb{R}^{d}$\ avec $%
+P\subset $ $\bigcup_{i=1}^{N}Pi$ alors%
+\begin{equation*}
+mes(P)\leq \sum_{i=1}^{N}mes(Pi)
+\end{equation*}
+\end{lemma}
+
+\bigskip
 
 \begin{theorem}
 Il existe une unique mesure positive sur $(\mathbb{R}^{d},\mathcal{B(\mathbb{%
@@ -321,10 +503,78 @@ de les priopri\`{e}t\'{e}s suivantes :
 \begin{itemize}
 \item $\lambda $ est invariante par translation et rotation
 
-\item $\lambda $ est r\'{e}guli\`{e}re, i.e mesurable on a par translation
-et rotation
+\item $\lambda $ est r\'{e}guli\`{e}re, i.e $\forall E\subset \mathcal{%
+\mathbb{R}}^{d}$ mesurable on a : \newline
+
+\begin{itemize}
+\item $\lambda (P)=\sup \left\{ \lambda (K)\text{ }|\text{\ }K\text{
+compact, }K\subset E\right\} $ ( regularit\'{e} int\'{e}rieure ).
+
+\item $\lambda (P)=\inf \left\{ \lambda (V)\text{ }|\text{\ }V\text{ ouvert, 
+}V\supset E\right\} $ ( regularit\'{e} exterieure ).
+\end{itemize}
 \end{itemize}
 \end{theorem}
+
+\bigskip
+
+On sait que $\lambda $ se prolonge en une mesure sur $\mathcal{L(}\mathbb{R}%
+^{d}\mathcal{)}$ avec $\mathcal{L(}\mathbb{R}^{d}\mathcal{)=\sigma (\mathcal{%
+B(}}\mathbb{R}^{d}\mathcal{\mathcal{)}},N\mathcal{)}$ ou $N=\left\{ A\subset 
+\mathcal{\mathbb{R}}^{d}\text{ }|\text{\ }\exists B\in \mathcal{\mathcal{B(}}%
+\mathbb{R}^{d}\mathcal{\mathcal{)}}\text{ avec }A\subset b\text{\ et }%
+\lambda (B)=0\right\} $ est l'ensemble des parties n\'{e}glig\'{e}ables.
+
+On sait aussi que $\lambda $ se prolonge a la tribu $\mathcal{M(}\lambda
+^{\ast })\supset \mathcal{\mathcal{B(}}\mathbb{R}^{d}\mathcal{\mathcal{)}}$
+avec $\mathcal{M(}\lambda ^{\ast })=\left\{ B\subset \mathbb{R}^{d}\text{ }|%
+\text{ }\lambda ^{\ast }(A)=\lambda ^{\ast }(A\cap B)+\lambda ^{\ast }(A\cap
+B^{C}),\text{ }\forall A\subset \mathbb{R}^{d}\right\} .$ On peut se
+demander si $\mathcal{M(}\lambda ^{\ast })$ est beaucoup plus grande que la
+tribu $\mathcal{B(\mathbb{R}}^{d}\mathcal{)}$\ et si elle \`{a} un lien avec
+la tribu compl\'{e}t\'{e}e $\mathcal{L(\mathbb{R}}^{d}\mathcal{)}$.
+
+\bigskip 
+
+\begin{proposition}
+
+\begin{itemize}
+\item On a $\mathcal{M(}\lambda ^{\ast })=\mathcal{L(\mathbb{R}}^{d}\mathcal{%
+)}$.
+
+\item Soit $\mathcal{M=\mathcal{B(}}\mathbb{R}^{d}\mathcal{\mathcal{)}}$ ou $%
+\mathcal{L(}\mathbb{R}^{d}\mathcal{)}$. La mesure de Lebesgue est invariante
+par translation au sens ou pour tout $A\in \mathcal{M}$ et $x\in \mathbb{R}%
+^{d},$ on a $x+A\in \mathcal{M}$ et $\lambda (x+A)=\lambda (A).$
+
+\item Si $\mu :\mathcal{\mathcal{B(}}\mathbb{R}^{d}\mathcal{\mathcal{)}%
+\rightarrow }\left[ 0,+\infty \right] $ est une mesure invaiante par
+translation et finie sur les born\'{e}s alors il existe une constante $c\geq
+0$ telle que $\mu =c\lambda $
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}
+\begin{itemize}
+\item $\forall A\subset \mathcal{L(}\mathbb{R}^{d}\mathcal{)}$ on a : 
+\newline
+
+\begin{itemize}
+\item $\lambda (A)=\sup \left\{ \lambda (K)\text{ }|\text{\ }K\text{
+compact, }K\subset A\right\} $ ( regularit\'{e} int\'{e}rieure ).
+
+\item $\lambda (A)=\inf \left\{ \lambda (U)\text{ }|\text{\ }U\text{ ouvert, 
+}U\supset A\right\} $ ( regularit\'{e} exterieure ).
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\bigskip 
+
+\subsubsection{Repr\'{e}sentation de Riez et comparaison avec l'int\'{e}%
+grale de Rieman }
+
+\bigskip 
 
 \subsection{Th\'{e}orie de l'int\'{e}gration}
 
@@ -708,7 +958,7 @@ Alors la fonction $F:\Lambda \rightarrow \mathbb{C}$ d\'{e}finie par $%
 F(\lambda )=\tint_{X}f(x,\lambda )dx$ est continue sur $\Lambda .$
 \end{theorem}
 
-\bigskip 
+\bigskip
 
 \begin{remark}
 Si l'on suppose seulement que $\lambda \longmapsto f(x,\lambda )$ est
@@ -716,14 +966,14 @@ continue en un point $\lambda _{0}\in \Lambda $, on obtient que $F$ est
 continue en $\lambda _{0}.$
 \end{remark}
 
-\bigskip 
+\bigskip
 
 \begin{theorem}[de d\'{e}rivabilit\'{e}]
 On suppose
 
 \begin{itemize}
-\item $\forall \lambda \in \Lambda ,$ la fonction $x\longmapsto f(x,\lambda )
-$ est int\'{e}grable sur $X$.
+\item $\forall \lambda \in \Lambda ,$ la fonction $x\longmapsto f(x,\lambda
+) $ est int\'{e}grable sur $X$.
 
 \item Pour $\mu $-presque tout $x\in X$, la fonction $\lambda \longmapsto
 f(x,\lambda )$\ est d\'{e}rivable sur $\Lambda $
@@ -740,10 +990,9 @@ F^{^{\prime }}(\lambda )=\tint_{X}\partial _{\lambda }f(x,\lambda )dx
 \end{equation*}
 \end{theorem}
 
-\bigskip 
+\bigskip
 
 \begin{remark}
-
 \begin{itemize}
 \item $\partial _{\lambda }f(x,\lambda )$ est d\'{e}finie presque partout en 
 $x$ et la ou elle ne l'est pas on lui met la valeur $0$.
@@ -754,9 +1003,47 @@ rivable \`{a} gauche en $b$.
 
 \item Meme si on souhaite la d\'{e}rivabilit\'{e} de $F$ qu'en un point $%
 \lambda _{0}\in \Lambda $, il faut quand meme supposer (3) pour $\forall
-\lambda \in \Lambda .$ 
+\lambda \in \Lambda .$
 \end{itemize}
 \end{remark}
+
+\bigskip
+
+\bigskip 
+
+\subsection{Int\'{e}gration sur les espaces produits}
+
+\bigskip 
+
+\subsubsection{Produit d'espaces mesurables}
+
+\bigskip 
+
+\subsubsection{Mesure Produit}
+
+\bigskip 
+
+\subsubsection{Th\'{e}oremes de Fubini}
+
+\bigskip 
+
+\subsubsection{Compl\'{e}tion des mesures produits}
+
+\bigskip 
+
+\bigskip 
+
+\subsection{Changement de variable dans $\mathbb{R}^{d}$}
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
 
 \section{Distribution}
 
