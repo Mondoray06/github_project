@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Monday, November 18, 2019 17:53:17}
+%TCIDATA{LastRevised=Tuesday, November 19, 2019 18:02:22}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -534,10 +534,9 @@ demander si $\mathcal{M(}\lambda ^{\ast })$ est beaucoup plus grande que la
 tribu $\mathcal{B(\mathbb{R}}^{d}\mathcal{)}$\ et si elle \`{a} un lien avec
 la tribu compl\'{e}t\'{e}e $\mathcal{L(\mathbb{R}}^{d}\mathcal{)}$.
 
-\bigskip 
+\bigskip
 
 \begin{proposition}
-
 \begin{itemize}
 \item On a $\mathcal{M(}\lambda ^{\ast })=\mathcal{L(\mathbb{R}}^{d}\mathcal{%
 )}$.
@@ -569,12 +568,12 @@ compact, }K\subset A\right\} $ ( regularit\'{e} int\'{e}rieure ).
 \end{itemize}
 \end{theorem}
 
-\bigskip 
+\bigskip
 
 \subsubsection{Repr\'{e}sentation de Riez et comparaison avec l'int\'{e}%
-grale de Rieman }
+grale de Rieman}
 
-\bigskip 
+\bigskip
 
 \subsection{Th\'{e}orie de l'int\'{e}gration}
 
@@ -999,7 +998,7 @@ $x$ et la ou elle ne l'est pas on lui met la valeur $0$.
 
 \item Si $\Lambda =\left[ a,b\right] ,$ "derivable sur $\Lambda $"\ signifie
 : derivable sur $\left] a,b\right[ $, derivable \`{a} droite en $a$ et d\'{e}%
-rivable \`{a} gauche en $b$.
+rivable \`{a} gauch e en $b$.
 
 \item Meme si on souhaite la d\'{e}rivabilit\'{e} de $F$ qu'en un point $%
 \lambda _{0}\in \Lambda $, il faut quand meme supposer (3) pour $\forall
@@ -1009,41 +1008,305 @@ rivable \`{a} gauche en $b$.
 
 \bigskip
 
+\subsubsection{Epigraphe d'une fonction mesurable}
+
+\bigskip 
+
+Ici encore, on identifiera $\mathbb{R}^{d+1}$ avec $\mathbb{R}^{d}\times 
+\mathbb{R}$ et si $x\in \mathbb{R}^{d}$, on notera $x_{1},...,x_{d}$ ses
+coordonn\'{e}es.
+
+\bigskip 
+
+\begin{proposition}
+Soit $f:\mathbb{R}^{d}\rightarrow \lbrack 0,+\infty ]$. On d\'{e}finit $%
+E\subset \mathbb{R}^{d+1}$ par $E=\left\{ (x,t)\in \mathbb{R}^{d+1}\text{ }|%
+\text{ }0\leq t\leq f(x)\right\} .$ $E$ est appel\'{e} l'\'{e}pigraphe de $f.
+$ Alors $f$ est mesurable si et seulement si $E$ est mesurable et dans ce
+cas 
+\begin{equation*}
+\lambda (E)=\tint_{\mathbb{R}^{d}}f(x)dx
+\end{equation*}
+\end{proposition}
+
 \bigskip 
 
 \subsection{Int\'{e}gration sur les espaces produits}
 
-\bigskip 
+\bigskip
 
 \subsubsection{Produit d'espaces mesurables}
 
+Etant donn\'{e} deux espaces mesurables, on veut d\'{e}finir une tribu sur
+le produit cart\'{e}sien de ces espaces. Soient $(X_{1},\mathcal{M}_{1})$ et 
+$(X_{2},\mathcal{M}_{2})$ deux espaces mesurables. On munit le produit $%
+X_{1}\times X_{2}$ de la tribu produit $\mathcal{M}_{1}\otimes \mathcal{M}%
+_{2}$ d\'{e}finie par : $\mathcal{M}_{1}\otimes \mathcal{M}_{2}=\sigma
+(A_{1}\times A_{2}$ $|$ $A_{1}\in \mathcal{M}_{1},A_{2}\in \mathcal{M}_{2}).$
+$A_{1}\times \ A_{2}$, $A_{1}\in \mathcal{M}_{1},A_{2}\in \mathcal{M}_{2}$
+est appel\'{e} un rectangle mesurable, et l'ensemble des rectangles
+mesurables n'est pas une tribu en g\'{e}n\'{e}ral. Montrons quelques propri%
+\'{e}t\'{e}s de la tribu produit :
+
+\begin{itemize}
+\item La tribu $\mathcal{M}_{1}\otimes \mathcal{M}_{2}$ est la plus petite
+tribu sur $X_{1}\times X_{2}$ qui rende mesurable les deux projections
+canoniques $\pi _{1}:X_{1}\times X_{2}\rightarrow X_{1}$ et $\pi
+_{2}:X_{1}\times X_{2}\rightarrow X_{2}$.
+
+\item Soit $(X,\mathcal{M})$ un autre espace mesurable, et soit $%
+f=(f_{1},f_{2})$ une application de $X$ dans $X_{1}\times X_{2}$. Alors $%
+f:(X,\mathcal{M})\rightarrow (X_{1}\times X_{2},\mathcal{M}_{1}\otimes 
+\mathcal{M}_{2})$ est mesurable si et seulement si $f_{i}:(X,\mathcal{M}%
+)\rightarrow (X_{i},\mathcal{M}_{i})$ est mesurable pour $i=1,2$.
+\end{itemize}
+
 \bigskip 
+
+On \'{e}tend facilement la d\'{e}finition de la tribu produit pour un nombre
+fini d'espaces mesurables $(X_{1},\mathcal{M}_{1}),...,(X_{n},\mathcal{M}%
+_{n})$ en posant%
+\begin{equation*}
+\mathcal{M}_{1}\otimes \mathcal{M}_{2}\otimes \text{\textperiodcentered
+\textperiodcentered \textperiodcentered }\otimes \mathcal{M}_{n}=\sigma
+(A_{1}\times A_{2}\times \text{\textperiodcentered \textperiodcentered
+\textperiodcentered }\times A_{n}\text{ }|\text{ }A_{i}\in \mathcal{M}%
+_{i},\forall i\in \{1,2,...,n\})
+\end{equation*}
+
+et on a la propri\'{e}t\'{e} d'associativit\'{e}" suivante :%
+\begin{equation*}
+(\mathcal{M}_{1}\otimes \mathcal{M}_{2})\otimes \mathcal{M}_{3}=\mathcal{M}%
+_{1}\otimes (\mathcal{M}_{2}\otimes \mathcal{M}_{3})=\mathcal{M}_{1}\otimes 
+\mathcal{M}_{2}\otimes \mathcal{M}_{3}
+\end{equation*}
+
+\bigskip 
+
+\begin{proposition}
+Soient $X_{1}$ et $X_{2}$ deux espaces topologiques, munis de leur tribu bor%
+\'{e}lienne. Alors 
+
+\begin{itemize}
+\item $\mathcal{B}(X_{1}\times X_{2})\supset \mathcal{B}(X_{1})\otimes 
+\mathcal{B}(X_{2})$.
+
+\item Si $X_{1}$ et $X_{2}$ sont des espaces m\'{e}triques s\'{e}parables,
+alors on a :$B(X_{1}\times X_{2})\supset B(X_{1})\otimes B(X_{2})$.
+\end{itemize}
+\end{proposition}
+
+\bigskip 
+
+Introduisons les notations suivantes. Si $(X,\mathcal{M})$ et $(Y,\mathcal{N}%
+)$ sont deux espaces mesurables quelconques et si $E\subset X\times Y$, on
+note :%
+\begin{eqnarray*}
+E_{x} &=&\{y\in Y\text{ }|\text{ }(x,y)\in E\}\text{ pour }x\in X \\
+E^{y} &=&\{x\in X\text{ }|\text{ }(x,y)\in E\}\text{ pour }y\in Y
+\end{eqnarray*}%
+Et si $f:X\times Y\rightarrow Z$ (espace quelconque), on d\'{e}finit 
+\begin{eqnarray*}
+f_{x} &:&Y\rightarrow Z\text{ par }fx(y)=f(x,y)\text{ pour }x\in X \\
+f_{y} &:&X\rightarrow Z\text{ par }f_{y}(x)=f(x,y)\text{ pour }y\in Y
+\end{eqnarray*}
+
+\begin{proposition}
+Soient $(X,\mathcal{M})$ et $(Y,\mathcal{N})$ deux espaces mesurables.
+
+\begin{itemize}
+\item $i)$ Si $E\in \mathcal{M}\otimes \mathcal{N}$, alors $E_{x}\in 
+\mathcal{N}$, $\forall x\in X$ et $E^{y}\in \mathcal{M}$, $\forall y\in Y$ .
+
+\item $ii)$ Si$f:X\times Y\rightarrow Z$ (espace mesurable quelconque) est
+mesurable pour la tribu produit $\mathcal{M}\otimes \mathcal{N}$, alors%
+\begin{eqnarray*}
+\forall x &\in &X,\text{ }f_{x}:Y\rightarrow Z\text{ est mesurable} \\
+\forall y &\in &Y,\text{ }f_{y}:X\rightarrow Z\text{ est mesurable}
+\end{eqnarray*}
+\end{itemize}
+\end{proposition}
 
 \subsubsection{Mesure Produit}
 
+On veut maintenant construire une mesure sur l'espace produit X \times\ Y o%
+\`{u} X et Y sont des espaces mesur\'{e}s.
+
 \bigskip 
+
+\begin{definition}
+On dit qu'un espace mesur\'{e} $(X,\mathcal{M},\mu )$ est $\sigma $-fini
+s'il existe une suite croissante de parties mesurables $E_{n}$ telle que $%
+X=\bigcup_{n\in \mathbb{N}}$ $E_{n}$ et $\mu (E_{n})<\infty $ pour tout $%
+n\in N$.
+\end{definition}
+
+\bigskip 
+
+\begin{definition}
+Soient $(X,\mathcal{M},\mu )$ et $(Y,\mathcal{N},\upsilon )$ deux espaces
+mesur\'{e}s $\sigma $-finis. Alors :
+
+\begin{itemize}
+\item $i)$ Il existe une unique mesure $m$ sur $(X\times Y,\mathcal{M}%
+\otimes \mathcal{N})$ telle que $m(A\times B)=\mu (A)\nu (B)$ $\forall A\in
+M,\forall B\in N$
+
+\item $ii)$ Pour tout $E\in \mathcal{M}\otimes \mathcal{N}$, on a : $%
+m(E)=\int_{X}\nu (E_{x})d\mu _{x}=\int_{Y}\mu (E^{y})d\nu _{y}$
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+\begin{remark}
+
+\begin{itemize}
+\item Par le m\^{e}me proc\'{e}d\'{e}, on peut d\'{e}finir le produit de
+nmesures $\sigma $-finies $\mu _{1},...,\mu _{n}$ en posant par exemple $\mu
+_{1}\otimes $\textperiodcentered \textperiodcentered \textperiodcentered $%
+\otimes \mu _{n}=\mu _{1}\otimes (\mu _{2}\otimes ($\textperiodcentered
+\textperiodcentered \textperiodcentered $\otimes \mu _{n})).$ L'ordre des
+parenth\`{e}ses n'a pas d'importance, car la mesure produit est enti\`{e}%
+rement d\'{e}finie par sa valeur sur les pav\'{e}s mesurables : $(\mu
+_{1}\otimes $\textperiodcentered \textperiodcentered \textperiodcentered $%
+\otimes \mu _{n})(A_{1}\times $\textperiodcentered \textperiodcentered
+\textperiodcentered $\times A_{n})=\mu _{1}(A_{1})$\textperiodcentered
+\textperiodcentered \textperiodcentered $\mu _{n}(A_{n})$
+
+\item Si $(X,\mathcal{M},\mu )=(Y,\mathcal{N},\upsilon )=(\mathbb{R},%
+\mathcal{B}(\mathbb{R}),\lambda )$, alors $X\times Y=\mathbb{R}^{2},\mathcal{%
+M}\otimes \mathcal{N}=\mathcal{B}(\mathbb{R}^{2})$ et $\mu \otimes \nu
+=\lambda _{2}$ la mesure de Lebesgue sur $\mathbb{R}^{2}$. En effet, la derni%
+\`{e}re \'{e}galit\'{e} provient du fait que les mesures prennent les m\^{e}%
+mes valeurs sur les pav\'{e}s mesurables. De m\^{e}me, $\lambda _{d}=\lambda
+_{1}\otimes $\textperiodcentered \textperiodcentered \textperiodcentered $%
+\otimes \lambda _{1}$ ($d$ fois). Ainsi, on aurait pu se contenter de
+montrer l'existence de la mesure de Lebesgue sur $\mathbb{R}$ et g\'{e}n\'{e}%
+raliser sur $\mathbb{R}^{d}$ avec cette remarque.
+
+\item L'hypoth\`{e}se de $\sigma $-finitude est n\'{e}cessaire. En effet,
+soit $(X,\mathcal{M})=(Y,\mathcal{N})=(\mathbb{R},\mathcal{B}(\mathbb{R}%
+)),\mu =\lambda $ la mesure de Lebesgue et $\upsilon $ la mesure de comptage
+(non $\sigma $-finie). Soit $E=\left\{ (x,y)\in \mathbb{R}^{2}\text{ }|\text{
+}x=y\right\} \in \mathcal{M}\otimes \mathcal{N}=\mathcal{B}(\mathbb{R}^{2}).$
+On a $\upsilon (E_{x})=1$, $\forall x\in X$ et $\mu (E^{y})=0$, $\forall
+y\in Y$. Or%
+\begin{equation*}
+\infty =\int_{X}\upsilon (E_{x})d\mu _{x}\neq \int_{Y}\mu (E^{y})d\upsilon
+_{y}=0
+\end{equation*}
+\end{itemize}
+\end{remark}
 
 \subsubsection{Th\'{e}oremes de Fubini}
 
 \bigskip 
 
+\begin{theorem}[Fubini-Tonelli]
+Soient $(X,\mathcal{M},\mu )$ et $(Y,\mathcal{N},\upsilon )$ deux espaces
+mesur\'{e}s $\sigma $-finis, et soit $f:X\times Y\rightarrow \lbrack
+0,+\infty ]$ une fonction $\mathcal{M}\otimes \mathcal{N}$-mesurable. Alors :
+
+\begin{itemize}
+\item les fonctions $%
+\begin{array}{c}
+(X,\mathcal{M)\rightarrow }\left[ 0,+\infty \right]  \\ 
+x\mapsto \int_{Y}f(x,y)d\upsilon _{y}%
+\end{array}%
+$ et\ $%
+\begin{array}{c}
+(Y,\mathcal{N)\rightarrow }\left[ 0,+\infty \right]  \\ 
+y\mapsto \int_{X}f(x,y)d\mu _{x}%
+\end{array}%
+$\ sont mesurables.
+
+\item On a les \'{e}galit\'{e}s suivantes :%
+\begin{equation*}
+\int_{X\times Y}f(x,y)d(\mu \otimes \upsilon )=\int_{X}\left(
+\int_{Y}f(x,y)d\upsilon _{y}\right) d\mu _{x}=\int_{Y}\left(
+\int_{X}f(x,y)d\mu _{x}\upsilon _{y}\right) d\upsilon _{y}\in \left[
+0,+\infty \right] 
+\end{equation*}
+\end{itemize}
+\end{theorem}
+
+\bigskip 
+
+\begin{theorem}[Fubini-Lebesgue]
+Soient $(X,\mathcal{M},\mu )$ et $(Y,\mathcal{N},\upsilon )$ deux espaces
+mesur\'{e}s $\sigma $-finis, et soit $f:X\times Y\rightarrow \mathbb{R}$ ou $%
+\mathbb{C}$ une fonction int\'{e}grable, i.e $f\in \mathcal{L}(X\times Y,%
+\mathcal{M}\otimes \mathcal{N},\mu \otimes \upsilon )$. Alors :
+
+\begin{itemize}
+\item Pour presque tout $x\in X$ ( resp $y\in Y$\ ), la fonction $y\mapsto
+f(x,y)$ ( resp $x\mapsto $\ ) est dans $\mathcal{L}^{1}(Y,\mathcal{N}%
+,\upsilon )$ ( resp $\mathcal{L}^{1}(X,\mathcal{M},\mu )$ ).
+
+\item La fonction $x\mapsto \int_{Y}f(x,y)d\upsilon _{y}$\ ( resp $y\mapsto $%
+\ $\int_{X}f(x,y)d\mu _{x}$ )\ d\'{e}finie $\mu $ ( resp $\upsilon $\ )
+-presque partout est dans $\mathcal{L}^{1}(X,\mathcal{M},\mu )$ ( resp $%
+\mathcal{L}^{1}(Y,\mathcal{N},\upsilon )$ )
+
+\item On a les \'{e}galit\'{e}s suivantes 
+\begin{equation*}
+\int_{X\times Y}f(x,y)d(\mu \otimes \upsilon )=\int_{X}\left(
+\int_{Y}f(x,y)d\upsilon _{y}\right) d\mu _{x}=\int_{Y}\left(
+\int_{X}f(x,y)d\mu _{x}\upsilon _{y}\right) d\upsilon _{y}
+\end{equation*}
+\end{itemize}
+\end{theorem}
+
+\bigskip 
+
 \subsubsection{Compl\'{e}tion des mesures produits}
 
-\bigskip 
+Soient $(X,\mathcal{M},\mu )$ et $(Y,\mathcal{N},\upsilon )$ deux espaces
+mesur\'{e}s, $\sigma $-finis et complets ( leur mesure associ\'{e}e est compl%
+\`{e}te ). En general, la mesure $\mu \otimes \upsilon $\ sur $X\times Y$\
+n'est pas compl\`{e}te.
 
 \bigskip 
 
-\subsection{Changement de variable dans $\mathbb{R}^{d}$}
+\begin{proposition}
+Soit $d\geq 2$ et $k,l$ des entiers tels que $d=k+l$. Alors la mesure de
+Lebesgue $\lambda _{d}$ sur $\mathcal{L}(\mathbb{R}^{d})$ est la compl\'{e}t%
+\'{e}e de la mesure produit $\lambda _{k}\otimes \lambda _{l}$\ sur $%
+\mathcal{L}(\mathbb{R}^{d})\otimes \mathcal{L}(\mathbb{R}^{d})$.
+\end{proposition}
 
 \bigskip 
 
-\bigskip 
+\begin{proposition}
+Soient $(X,\mathcal{M},\mu )$ et $(Y,\mathcal{N},\upsilon )$ deux espaces
+mesur\'{e}s, $\sigma $-finis et complets. Soit $f:X\times Y\rightarrow 
+\mathbb{R}$ ou $\mathbb{C}$ une fonction mesurable pour la tribu produit
+compl\'{e}t\'{e}e $(\mathcal{M}\otimes \mathcal{N})\ast $. Alors :
 
-\bigskip 
+\begin{itemize}
+\item $i)$ Le th\'{e}or\`{e}me de Fubini-Tonelli s'applique si $f\geq 0$, 
+\`{a} la diff\'{e}rence pr\`{e}s que les fonction $f_{x}:y\mapsto f(x,y)$ et 
+$f^{y}:x\mapsto f(x,y)$ sont simplement mesurables pour presque tous les $x$
+ou $y$.
 
-\bigskip 
+\item $ii)$ Le th\'{e}or\`{e}me de Fubini-Lebesgue s'applique tel qu'il a 
+\'{e}t\'{e} \'{e}nonc\'{e}.
+\end{itemize}
+\end{proposition}
 
-\bigskip 
+\subsection{Integration par partie et Changement de variable dans $\mathbb{R}%
+^{d}$}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
 
 \section{Distribution}
 
