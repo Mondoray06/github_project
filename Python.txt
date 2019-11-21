@@ -1,0 +1,125 @@
+Below a detailed installation guide.
+
+A good explanation for all supported OS is given here:
+https://docs.anaconda.com/anaconda/install/
+
+There you can also find explanations for the graphical installers in addition to the command line installation that we recommend. Further down a slightly more detailed explanation.
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+Linux:
+
+1) Download the Anaconda installer (the python 3 version which also allows the usage of python 2 later) from 
+
+https://www.anaconda.com/distribution/#linux
+
+or create a folder (e.g. called Anaconda) in which you save the installer via
+
+wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
+
+where you should change the link to a newer version if available.
+
+2) Open the folder with the downloaded file in a terminal and run it via
+
+bash Anaconda3-2019.10-Linux-x86_64.sh
+
+where again you might need to change the version number accordingly.
+
+3) Follow the instructions of the installer and agree with the license. You can accept the default location of the installation or you can specify a new location you prefer
+
+4) When the installer asks 
+
+“Do you wish the installer to initialize Anaconda3 by running conda init?”
+
+answer with yes
+
+5) Close the terminal and open a new one. Type 
+
+conda config --set auto_activate_base False
+
+6) Close again the terminal and open a new one. Anaconda is now installed and we can create a new environment
+
+7) To create a new environment, we will calle at myenv in the sequel but you can choose any other name you prefer, let us first activate conda by typing
+
+conda activate
+
+Next create the environment with 
+
+conda create --name myenv
+
+and activate it by typing 
+
+conda activate myenv
+
+You should see a "(myenv)" at the beginning of the prompt indicating which environment is active.
+
+8) We now install the packages we want in this environment. First, we don't yet have a python distribution installed, hence the python used is the standard system wide one (you can check with "which python") to see the path of the python used.
+
+Hence, if we want to install python x.y, we just need to type
+
+conda install python=x.y
+
+and follow the instructions. Type yes when asked. Any other package called package1 can be installed via
+
+conda install package1
+
+and anaconda takes care of compatibility of the packages between each other. If however you want to use a version that is older then the newest one, let us say e.g. tensorflow 1.12, you can simply install this via
+
+conda install tensorflow=1.12
+
+the same goes with numpy etc where you should only specify a version number when you are sure this is needed, otherwise anaconda will take care of it for you.
+
+9) After installing all required packages, you should have a working environment. Just make sure you have the correct one activated when running conda install packagename since conda installs a package into the currently activated environment.
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+For MacOS:
+
+Download the MacOS installer instead of the Linux one. The rest is then like the installation above.
+
+https://www.anaconda.com/distribution/
+
+In case you encounter a dying kernel error in your code, you can fix this with
+
+conda install -c akode gym
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+Download the Windows installer from 
+
+https://www.anaconda.com/distribution/
+
+and run it. This will install the Anaconda prompt that will function as you terminal. There, you just repeat from step 7 above where you can skip the step 
+
+conda activate
+
+as in the anaconda prompt, the default environment is always active.
+
+
+
+
+
+Dear colleagues,
+
+Please find a collection of materials for Friday's seminar at the webpage of Josef Teichmann:
+
+https://people.math.ethz.ch/~jteichma/index.php?content=teach_mlf2019
+
+Let me explain how to use this webpage:
+
+(1) For beginners: install python, keras and tensorflow on your notebook and try to run the first notebook of Lecture 1 (Viennese or Zurich). Pay attention on the python version (3.6!) as well as the tensorflow (1.8.0) and keras versions (2.0.8). Take a look at the 'Deep Hedging' paper in the references at the end of the webpage.
+
+(2) for semi-advanced people: with your running versions of python run Lecture 1 and 2 (Vienne or Zurich). Try to run the simple task implementation of Lecture 3 (Zurich lecture) and understand how the model is built. Take a look at the 'Deep Hedging' paper in the references.
+
+(3) for advanced people: with your running versions of python run Lecture 1, 2, 3 and 4. Try to run all four examples of Lecture 3 and 4 (Zurich
+lecture) and analyze how well it performs in comparison to classical algorithms. Take a look at the 'Deep neural networks, generic universal interpolation, and controlled ODEs' paper in the references and at the first of my two talks.
+
+Josef Teichmann will meet the interests of all three groups of participants, i.e., we shall analyze basic concepts of universal approximation and we shall work towards more advanced ideas on different levels. All concepts will be accompanied by fascinating examples of interest from finance.
+
+Looking forward to seeing you on Friday,
+
+Michel
+
