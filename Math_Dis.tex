@@ -1,0 +1,488 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Tuesday, November 26, 2019 16:52:53}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{Math}
+\author{T.\ Monedero \\
+%EndAName
+Natixis Fixed Income Department:\\
+quantitative analysis }
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Distribution}
+
+\bigskip
+
+\subsection{Fonctions Test}
+
+\bigskip
+
+Dans tout ce chapitre, $\Omega $ d\'{e}signe un ouvert de $\mathbb{R}^{d}$, $%
+k$ est un entier naturel ou le symbole $\infty $. On d%
+%TCIMACRO{\U{b4}}%
+%BeginExpansion
+\'{}%
+%EndExpansion
+esigne par $C^{0}(\Omega )$ l'espace des fonctions continues sur $\Omega $
+et par $C^{k}(\Omega )$ l'espace des fonctions $k$ fois d\'{e}rivables et
+dont les d\'{e}riv\'{e}es $k-i$\`{e}mes sont continues sur $\Omega $.
+
+\bigskip
+
+\begin{notation}[Multi-Indicielles]
+Un multi-indice $\alpha $ est un $d$-uplet d'entiers, $\alpha =(\alpha
+_{1},...,\alpha _{d})\in \mathbb{N}^{d}$. On appelle longueur de $\alpha $
+l'entier $\left\vert \alpha \right\vert =\alpha _{1}+...+\alpha _{d}$. On d%
+\'{e}finit la factorielle de $\alpha $ par $\alpha !=\alpha _{1}!...\alpha
+_{d}!$. Si $x\in \mathbb{R}^{d}$ on pose aussi $x^{\alpha }=x_{1}^{\alpha
+_{1}}...x_{d}^{\alpha _{d}}$. Si $\alpha $ et $\beta $ sont deux
+multi-indices, on dit que $\alpha \leq \beta $ lorsque $\alpha _{i}\leq
+\beta _{i}$ pour tout $i\in \left\{ 1,...,d\right\} $. On pose aussi%
+\begin{eqnarray*}
+&& \\
+\begin{pmatrix}
+\alpha \\ 
+\beta%
+\end{pmatrix}
+&=&\frac{\alpha !}{\beta !(\alpha -\beta )!}\text{ \ \ \ \ et \ \ \ }%
+\partial ^{\alpha }=\left( \frac{\partial }{\partial x_{1}}\right) ^{\alpha
+_{1}}...\text{ }\left( \frac{\partial }{\partial x_{d}}\right) ^{\alpha _{d}}
+\end{eqnarray*}%
+Alors, une fonction $\varphi \in C^{k}(\Omega )$ si pour tout $\alpha \in 
+\mathbb{N}^{d}$ tel que $\left\vert \alpha \right\vert \leq k$, la fonction $%
+\partial ^{\alpha }\varphi $ est dans $C^{0}(\Omega ).$
+\end{notation}
+
+\bigskip
+
+\begin{definition}[Formule de Leibniz]
+Soient $k\geq 1,\varphi ,\psi \in C^{k}(\Omega )$. Alors, pour tout
+multi-indice $\alpha $ de longueur inf\'{e}rieure ou \'{e}gale \`{a} $k$,%
+\begin{equation*}
+\partial ^{\alpha }\left( \varphi \cdot \psi \right) =\sum_{\beta \leq
+\alpha }%
+\begin{pmatrix}
+\alpha \\ 
+\beta%
+\end{pmatrix}%
+\partial ^{\beta }\varphi \cdot \partial ^{\alpha -\beta }\psi
+\end{equation*}
+\end{definition}
+
+\bigskip
+
+\begin{definition}[Formule de Taylor avec reste int\'{e}gral]
+Soit $\Omega $ un ouvert de $\mathbb{R}^{d}$, $n\geq 1$ un entier et $%
+\varphi $ une fonction de classe $C^{n}$ sur $\Omega $. Soient $x$ et $y$
+deux points de $\Omega $ tels que le segment $[x,y]$ soit contenu dans $%
+\Omega $. Alors :%
+\begin{equation*}
+\varphi (x)=\sum_{\left\vert \alpha \right\vert \leq n-1}\frac{1}{\alpha !}%
+\partial ^{\alpha }\varphi (y)(x-y)^{\alpha }+\sum_{\left\vert \alpha
+\right\vert =n}\frac{n}{\alpha !}(x-y)^{\alpha
+}\int_{0}^{1}(1-t)^{n-1}\partial ^{\alpha }\varphi (tx+(1-t)y)dt
+\end{equation*}
+\end{definition}
+
+\bigskip
+
+\subsubsection{Fonctions de classe $C^{\infty }$ \`{a} support compact}
+
+\bigskip
+
+\paragraph{Support d'une fonction continue}
+
+~\newline
+
+\begin{definition}
+Le support d'une fonction $\varphi \in C^{0}(\Omega )$ est le sous-ensemble
+ferm\'{e} de $\mathbb{R}^{d}$ not\'{e} $supp$ $\varphi $ et d\'{e}fini par
+l'une des assertions \'{e}quivalentes suivantes :
+
+\begin{itemize}
+\item $supp$ $\varphi =\left\{ x\in \Omega \text{ \TEXTsymbol{\vert} }%
+\varphi (x)\neq 0\right\} $
+
+\item $\left( supp\text{ }\varphi \right) ^{c}$ est le plus grand ouvert ou
+la fonction $\varphi $ est nulle.
+
+\item $x_{0}\notin \sup p$ $\varphi $ si et seulement si il existe un
+voisinage $V_{x_{0}}$ de $x_{0}$ tel que : $\forall x\in V_{x_{0}},$ $%
+\varphi (x)=0.$
+\end{itemize}
+\end{definition}
+
+\bigskip
+
+\begin{remark}
+On a alors :
+
+\begin{itemize}
+\item $supp$ $\varphi =\varnothing \Leftrightarrow \varphi \equiv 0$ dans $%
+\Omega .$
+
+\item $supp\left( \varphi \cdot \psi \right) \subset supp$ $\varphi \cap
+supp $ $\psi $
+
+\item Si $\varphi \in C^{k}(\Omega ),$ alors , pour tout $\alpha \in \mathbb{%
+N}^{d}$ tel que $\left\vert \alpha \right\vert \leq k$, $supp$ $\partial
+^{\alpha }\varphi \subset supp$ $\varphi .$
+\end{itemize}
+\end{remark}
+
+\bigskip
+
+\paragraph{Espace des fonctions test}
+
+~\newline
+
+\begin{definition}
+L'espace des fonctions test, not\'{e} $C_{0}^{\infty }(\Omega ),$ est
+l'ensemble des fonctions $\varphi $ de classe $C^{\infty }$ telles qu'il
+existe un compact $K\subset \Omega ,$ $K=supp$ $\varphi $. On notera pour un
+compact fix\'{e} $K\subset \Omega $ :%
+\begin{equation*}
+C_{K}^{\infty }(\Omega )=\left\{ \varphi \in C_{0}^{\infty }(\Omega )\text{ 
+\TEXTsymbol{\vert} }\sup p\text{ }\varphi \subset K\right\}
+\end{equation*}
+\end{definition}
+
+\bigskip
+
+\begin{example}[canonique]
+On d\'{e}finit la fonction \`{a} support compact canonique $\varphi _{_{0}}$
+par%
+\begin{equation*}
+\forall x\in \mathbb{R}^{d},\text{ }\varphi _{0}(x)=\left\{ 
+\begin{array}{c}
+\exp \left( -\frac{\left\vert x\right\vert ^{2}}{1-\left\vert x\right\vert
+^{2}}\right) \text{ \ \ \ \ \ \ si }\left\vert x\right\vert \leq 1 \\ 
+0\text{ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ si }\left\vert
+x\right\vert \geq 1%
+\end{array}%
+\right.
+\end{equation*}%
+Cette fonction est dans $C_{0}^{\infty }(\mathbb{R}^{d})$, elle est positive
+et on a $supp$ $\varphi _{0}\subset \left\{ x\in \mathbb{R}^{d}\text{ 
+\TEXTsymbol{\vert} }\left\vert x\right\vert \leq 1\right\} $. De plus, $%
+\int_{\mathbb{R}^{d}}\varphi _{0}(x)dx>0.$
+\end{example}
+
+\bigskip
+
+\paragraph{Topologie de $C_{0}^{\infty }(\Omega )$}
+
+~\newline
+
+Pour d\'{e}finir la topologie de l'espace $C_{0}^{\infty }(\Omega )$, nous
+allons d\'{e}finir la notion de convergence des suites d'\'{e}l\'{e}ments de
+cet espace.
+
+\bigskip
+
+\begin{definition}
+Une suite $\left( \varphi _{n}\right) _{n\in \mathbb{N}}$ d'\'{e}l\'{e}ments
+de $C_{0}^{\infty }(\Omega )$ tend vers $\varphi $ dans $C_{0}^{\infty
+}(\Omega )$ lorsque :
+
+\begin{itemize}
+\item il existe un compact fixe $K\subset \Omega $ tel que : $\forall n\in 
+\mathbb{N}$, supp $\varphi _{n}\subset K,$
+
+\item la suite $\left( \varphi _{n}\right) _{n\in \mathbb{N}}$\ et toutes
+les suites $\left( \partial ^{\alpha }\varphi _{n}\right) _{n\in \mathbb{N}}$%
+\ convergent uniformement respectivement vers $\varphi $\ et $\partial
+^{\alpha }\varphi $\ sur $K$.
+\end{itemize}
+\end{definition}
+
+\bigskip 
+
+\begin{proposition}
+Pour $K$ un compact fix\'{e} de $\Omega $, l'espace $C_{K}^{\infty }(\Omega )
+$ est m\'{e}trisable \`{a} l'aide d'une famille d\'{e}nombrable de
+semi-normes.
+\end{proposition}
+
+\bigskip 
+
+\begin{lemma}
+L'ouvert $\Omega $ peut s'\'{e}crire comme une r\'{e}union croissante d\'{e}%
+nombrable de compacts. En effet, il existe une famille $(K_{i})_{i\geq 1}$de
+compacts de $\Omega $ telle que :
+
+\begin{itemize}
+\item pour tout $i\geq 1,$ $K_{i}\subset \mathring{K}_{i+1},$
+
+\item $\Omega =\bigcup_{i=1}^{\infty }K_{i}=\bigcup_{i=2}^{\infty }\mathring{%
+K}_{i}$
+
+\item pour tout compact $K$ de $\Omega ,$ il existe $i_{0}\geq 1$ tel que $%
+K\subset K_{i_{0}}.$
+\end{itemize}
+\end{lemma}
+
+\bigskip 
+
+A partir de ces compacts $(K_{i})_{i\geq 1}$, on peut d\'{e}finir, pour $%
+i\geq 1$,%
+\begin{equation*}
+\left\{ 
+\begin{array}{c}
+p_{K_{i}}(\varphi )=\sum_{\left\vert \alpha \right\vert \leq k}\underset{%
+x\in K_{i}}{\sup }\left\vert \partial ^{\alpha }\varphi (x)\right\vert ,%
+\text{ \ \ si }\varphi \in C^{k}(\Omega ),k\in \mathbb{N} \\ 
+p_{K_{i}}(\varphi )=\sum_{\left\vert \alpha \right\vert \leq i}\underset{%
+x\in K_{i}}{\sup }\left\vert \partial ^{\alpha }\varphi (x)\right\vert \text{
+\ \ si }\varphi \in C^{\infty }(\Omega )%
+\end{array}%
+\right. 
+\end{equation*}%
+Chaque $p_{K_{i}}$ est une semi-norme sur $C^{k}(\Omega )$, $k\in \mathbb{%
+N\cap }\left\{ \infty \right\} $. Elles induisent par restriction des
+semi-normes sur $C_{0}^{k}(\Omega )$ et $C_{0}^{\infty }(\Omega ).$ On peut
+alors d\'{e}finir sur chacun de ces espaces la distance suivante :%
+\begin{equation*}
+d(\varphi ,\psi )=\sum\limits_{i=0}^{+\infty }\frac{1}{2^{i}}\frac{%
+p_{K_{i}}(\varphi -\psi )}{1+p_{K_{i}}(\varphi -\psi )}
+\end{equation*}%
+Les espaces $(C^{k}(\Omega ),d)$ sont complets. De plus, si $K\subset \Omega 
+$ est un compact, $(C_{K}^{\infty }(\Omega ),d)$ est complet comme
+sous-espace ferm\'{e} de $(C^{\infty }(\Omega ),d)$. Toutefois $%
+(C_{0}^{\infty }(\Omega ),d)$ ne l'est pas. La distance $d$ caract\'{e}rise
+la convergence dans $(C_{K}^{\infty }(\Omega ),d)$, mais pas dans $%
+(C_{0}^{\infty }(\Omega ),d)$. En effet, il peut y avoir des probl\`{e}mes
+aux bords pour les supports. La distance $d$ ne \textquotedblleft
+contient\textquotedblright\ pas le point (i) de la d\'{e}finition de la
+convergence dans $C_{0}^{\infty }(\Omega ).$
+
+\bigskip 
+
+Comme on peut 
+%TCIMACRO{\U{b4}}%
+%BeginExpansion
+\'{}%
+%EndExpansion
+ecrire que $C_{0}^{\infty }(\Omega )=\bigcup\nolimits_{i\geq
+1}C_{K_{i}}^{\infty }(\Omega )$, la topologie que l'on a d%
+%TCIMACRO{\U{b4}}%
+%BeginExpansion
+\'{}%
+%EndExpansion
+efinie sur $C_{0}^{\infty }(\Omega )$ n'est autre que la limite inductive
+stricte des topologies d\'{e}finies par la distance ci-dessus sur chaque $%
+C_{K_{i}}^{\infty }(\Omega )$ Toutefois, $C_{0}^{\infty }(\Omega )$ n'est
+pas m\'{e}trisable, seul chacun des $C_{K_{i}}^{\infty }(\Omega )$ l'est.
+
+\bigskip 
+
+\paragraph{Fonction "Pic"}
+
+\bigskip 
+
+\begin{definition}
+Soit $x_{0}\in \Omega $ et soit $\varepsilon >0$ tel que $%
+B(x_{0},\varepsilon )\subset \Omega $. Alors, il existe une fonction $\rho
+\in C_{0}^{\infty }(\Omega )$ positive, de support inclus dans $%
+B(x_{0},\varepsilon )$et d'int\'{e}grale sur $\mathbb{R}^{d}$ \'{e}gale \`{a}
+1. Une telle fonction $\rho $ est appel\'{e}e fonction pic sur la boule $%
+B(x_{0},\varepsilon )$.
+\end{definition}
+
+\bigskip 
+
+Si l'on consid\`{e}re les fonctions d\'{e}finies sur $\Omega $ par%
+\begin{equation*}
+\forall x\in \Omega ,\text{ }\rho _{0}(x)=\frac{\varphi _{0}(x)}{\int_{%
+\mathbb{R}^{d}}\varphi _{0}(x)dx}
+\end{equation*}%
+puis 
+\begin{equation*}
+\forall x\in \Omega ,\text{ }\rho (x)=\frac{1}{\varepsilon ^{d}}\rho
+_{0}\left( \frac{x-x_{0}}{\varepsilon }\right) 
+\end{equation*}%
+alors $\rho $ convient \`{a} la d\'{e}finition ci dessus.
+
+\subsubsection{Densit\'{e} par troncature et r\'{e}gularisation}
+
+Dans cette partie, nous allons montrer que l'espace des fonctions test $%
+C_{0}^{\infty }(\Omega )$ est dense dans l'espace des fonctions continues ou
+dans les espaces $L^{p}$.
+
+\bigskip 
+
+\paragraph{Troncature}
+
+\bigskip 
+
+\begin{proposition}
+
+\begin{itemize}
+\item Pour $1\leq p<+\infty ,$ l'espace $L_{c}^{p}(\Omega )=\left\{ u\in
+L^{p}(\Omega ):u=0\text{ hors d'un compact}\right\} $ est dense dans $%
+L^{p}(\Omega ).$
+
+\item Pour $0\leq k<+\infty ,$ $C_{0}^{k}(\Omega )$ est dense dans $%
+C^{k}(\Omega ).$
+\end{itemize}
+\end{proposition}
+
+\bigskip 
+
+\paragraph{Produit de convolution}
+
+On se place dans l'espace mesure $(\mathbb{R}^{d},\mathcal{M}_{L}(\mathbb{R}%
+^{d}),\lambda _{d})$. On veut d\'{e}finir le produit de convolution de deux
+fonctions $f$ et $g$ par la formule%
+\begin{equation*}
+\forall x\in \mathbb{R}^{d},\text{ }(f\ast g)=\int_{\mathbb{R}%
+^{d}}f(x-y)g(y)dy
+\end{equation*}%
+Dans le cas de fonctions $f$ et $g$ positives, leur mesurabilit\'{e} suffit
+pour que cette formule ait un sens. Sans cette hyptoh\`{e}se de positivit%
+\'{e}, on peut encore d\'{e}finir le produit de convolution de $f$ et de $g$ 
+\`{a} condition de supposer, en plus de leur mesurabilit\'{e}, une r\'{e}%
+gularit\'{e} $L^{p}$.
+
+\bigskip 
+
+\begin{proposition}
+Soit $p\in \left[ 1,+\infty \right] $. Soient $f\in L^{p}(\mathbb{R}^{d})$
+et $g\in L^{1}(\mathbb{R}^{d})$. Pour presque tout $x\in \mathbb{R}^{d}$, la
+fonction $y\mapsto f(x-y)g(y)$ est int\'{e}grable. Alors le produit de
+convolution $f\ast g$ est d\'{e}fini presque partout, $f\ast g\in L^{p}(%
+\mathbb{R}^{d})$ et $\left\vert \left\vert f\ast g\right\vert \right\vert
+_{p}\leq \left\vert \left\vert f\right\vert \right\vert _{p}\left\vert
+\left\vert g\right\vert \right\vert _{1}.$ De plus, $f\ast g=g\ast f$.
+\end{proposition}
+
+\bigskip 
+
+La d\'{e}riv\'{e}e se comporte bien vis-\`{a}-vis du produit de convolution.
+C'est une cons\'{e}quence du th\'{e}or\`{e}me de d\'{e}rivation sous le
+signe $\int .$
+
+\bigskip 
+
+\begin{proposition}
+Soient $f\in L^{p}(\mathbb{R}^{d})$ et $g\in L^{1}(\mathbb{R}^{d})$ et $k\in 
+\mathbb{N\cup }\left\{ \infty \right\} $. On suppose que $f$ est de classe $%
+C^{k}$ et que ses d\'{e}riv\'{e}es partielles de tout ordres sont born\'{e}%
+es. Alors $f\ast g$ est de classe $C^{k}$ et pour tout $\alpha \in \mathbb{N}%
+^{d},$%
+\begin{equation*}
+\partial ^{\alpha }\left( f\ast g\right) =\partial ^{\alpha }\left( f\right)
+\ast g
+\end{equation*}
+\end{proposition}
+
+\bigskip 
+
+\begin{proposition}
+Soient $\varphi \in C_{0}^{\infty }(\mathbb{R}^{d})$ et $f\in L_{c}^{p}(%
+\mathbb{R}^{d}).$ Alors $\varphi \ast f\in C_{0}^{\infty }(\mathbb{R}^{d}).$
+\end{proposition}
+
+\bigskip 
+
+\paragraph{R\'{e}gularisation}
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+\end{document}
