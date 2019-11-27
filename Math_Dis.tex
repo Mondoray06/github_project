@@ -12,7 +12,7 @@
 %TCIDATA{OutputFilter=LATEX.DLL}
 %TCIDATA{Version=4.10.0.2347}
 %TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
-%TCIDATA{LastRevised=Tuesday, November 26, 2019 16:52:53}
+%TCIDATA{LastRevised=Wednesday, November 27, 2019 15:57:33}
 %TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
 %TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
 %TCIDATA{Language=American English}
@@ -192,8 +192,8 @@ ferm\'{e} de $\mathbb{R}^{d}$ not\'{e} $supp$ $\varphi $ et d\'{e}fini par
 l'une des assertions \'{e}quivalentes suivantes :
 
 \begin{itemize}
-\item $supp$ $\varphi =\left\{ x\in \Omega \text{ \TEXTsymbol{\vert} }%
-\varphi (x)\neq 0\right\} $
+\item $supp$ $\varphi =\overset{-------}{\left\{ x\in \Omega \text{ 
+\TEXTsymbol{\vert} }\varphi (x)\neq 0\right\} }$
 
 \item $\left( supp\text{ }\varphi \right) ^{c}$ est le plus grand ouvert ou
 la fonction $\varphi $ est nulle.
@@ -481,8 +481,240 @@ Soient $\varphi \in C_{0}^{\infty }(\mathbb{R}^{d})$ et $f\in L_{c}^{p}(%
 
 \bigskip 
 
+On consid\'{e}re une fonction \textquotedblleft pic\textquotedblright\ $\rho 
+$ dont le support est inclus dans $B(0,1)$ et dont l'int\'{e}grale sur $%
+\mathbb{R}^{d}$ vaut 1. Pour $\varepsilon >0$ on pose : $\rho _{\varepsilon
+}=\varepsilon ^{-d}\rho (\varepsilon ^{-1})$. La suite $\rho _{\varepsilon }$
+est appel\'{e}e une \textquotedblleft approximation de l'unit\'{e}%
+\textquotedblright .
+
+\bigskip 
+
+\begin{proposition}
+
+\begin{itemize}
+\item Si $u\in C_{0}^{k}(\mathbb{R}^{d}),k\in \mathbb{N}$, pour tout $\alpha
+\in \mathbb{N}^{d},$ $\left\vert \alpha \right\vert \leq k,$ $\left(
+\partial ^{\alpha }\left( \rho _{\varepsilon }\ast u\right) \right) $
+converge vers $\partial ^{\alpha }u$ uniformement sur $\mathbb{R}^{d}$\
+lorsque $\varepsilon \rightarrow 0.$
+
+\item Si $u\in L_{c}^{p}(\mathbb{R}^{d}),$ $\left( \rho _{\varepsilon }\ast
+u\right) $ converge vers $u$ dans $L^{p}(\mathbb{R}^{d})$\ lorsque $%
+\varepsilon \rightarrow 0$, pour tout $1\leq p<+\infty $
+\end{itemize}
+\end{proposition}
+
+\bigskip ,
+
+\begin{theorem}
+$C_{0}^{\infty }(\mathbb{\Omega })$ est dense dans $C^{k}(\mathbb{\Omega })$
+pour tout $k\in \mathbb{N}$ et dans $L^{p}(\mathbb{\Omega })$ pour tout $%
+1\leq p<+\infty .$
+\end{theorem}
+
+\bigskip 
+
+\paragraph{Lemme de Dubois-Reymond}
+
+\bigskip 
+
+\begin{lemma}
+Soit $f\in L_{loc}^{1}(\Omega ).$ On suppose que, pour toute $\varphi \in
+C_{0}^{\infty }(\Omega ),$ $\int_{\Omega }f(x)\varphi (x)dx=0.$ Alors $f=0$
+presque partout.
+\end{lemma}
+
+\bigskip 
+
+\subsection{Distributions sur un ouvert de $\mathbb{R}^{d}$}
+
+\bigskip 
+
+Une distribution sur l'ouvert $\Omega $ est une forme lin\'{e}aire $%
+T:C_{0}^{\infty }(\Omega )\rightarrow \mathbb{C}$ continue en $0$, i.e.
+telle que, pour toute suite ($\varphi _{n})_{n\in \mathbb{N}}$ d'%
+%TCIMACRO{\U{b4}}%
+%BeginExpansion
+\'{}%
+%EndExpansion
+el\'{e}ments de $C_{0}^{\infty }(\Omega )$qui converge vers $0$, $%
+\left\langle T,\varphi _{n}\right\rangle \underset{n\rightarrow +\infty }{%
+\rightarrow }0$\ On notera $D^{\prime }(\Omega )$ l'ensemble des
+distributions sur $\Omega $. Le symbole $\left\langle T,\varphi
+_{n}\right\rangle $ d\'{e}signe ici un crochet de dualit\'{e}, il signifie
+simplement l'action de $T$ sur $\varphi _{n}$ $:T(\varphi _{n})$. $D^{\prime
+}(\Omega )$ n'est autre que le dual topologique de $C_{0}^{\infty }(\Omega ).
+$
+
+\bigskip 
+
+\begin{proposition}
+Une forme lin\'{e}aire $T$ sur $C_{0}^{\infty }(\Omega )$ est une
+distribution sur $\Omega $ si et seulement si, pour tout compact $K$ de $%
+\Omega $, il existe $m\in \mathbb{N}$ et $C_{K,m}>0$ tels que, pour toute
+fonction test $\varphi \in C_{0}^{\infty }(\Omega )$ telle que supp $\varphi
+\subset K$,%
+\begin{equation*}
+\left\vert \left\langle T,\varphi \right\rangle \right\vert \leq C_{K,m}%
+\underset{\left\vert \alpha \right\vert \leq m}{\max }\text{ }\underset{x\in
+K}{\max }\left\vert \partial ^{\alpha }\varphi (x)\right\vert 
+\end{equation*}
+\end{proposition}
+
+\bigskip 
+
+Cette caract\'{e}risation des distributions sera constamment utilis\'{e}e
+par la suite. Elle m\`{e}ne aussi directement \`{a} la notion d'ordre d'une
+distribution.
+
+\bigskip 
+
+\begin{definition}[Ordre]
+Une forme lin\'{e}aire $T$ sur $C_{0}^{\infty }(\Omega )$ est une
+distribution d'ordre fini au plus $m$ sur $\Omega $ lorsqu'il existe $m\in 
+\mathbb{N}$  tel que, pour tout compact $K$ de $\Omega ,$ il existe $C_{K}>0$
+telle que, pour toute fonction test $\varphi \in C_{0}^{\infty }(\Omega ),$
+supp $\varphi \subset K$,%
+\begin{equation*}
+\left\vert \left\langle T,\varphi \right\rangle \right\vert \leq C_{K}%
+\underset{\left\vert \alpha \right\vert \leq m}{\max }\text{ }\underset{x\in
+K}{\max }\left\vert \partial ^{\alpha }\varphi (x)\right\vert 
+\end{equation*}%
+Le plus petit entier $m$ possible est appel\'{e} l'ordre de la distribution $%
+T$.
+\end{definition}
+
 \bigskip 
 
 \bigskip 
+
+\subsubsection{Distributions usuelles}
+
+\paragraph{Distribution associ\'{e}e \`{a} une fonction $L_{loc}^{1}$}
+
+~\newline
+
+Une des premi\`{e}res choses \`{a} v\'{e}rifier est que la th\'{e}orie des
+distributions g\'{e}n\'{e}ralise bien la th\'{e}orie des fonctions
+classiques, typiquement des fonctions int\'{e}grables. On va donc montrer
+comment les fonctions $L_{loc}^{1}(\Omega )$ s'injectent dans $D^{\prime
+}(\Omega )$.
+
+\bigskip 
+
+\begin{proposition}
+Soit $f\in L_{loc}^{1}.$ On peut lui associer une distribution sur $%
+C_{0}^{\infty }(\Omega )$, not\'{e}e $T_{f}$ , telle que%
+\begin{equation*}
+\forall \varphi \in C_{0}^{\infty }(\Omega ),\text{ }\left\langle
+T_{f},\varphi \right\rangle =\int_{\Omega }f\varphi dx
+\end{equation*}%
+Cette distribution est d'ordre $0$. 
+\end{proposition}
+
+\bigskip 
+
+Par ailleurs, le lemme de Dubois-Reymond nous permet d'identifier $T_{f}$ 
+\`{a} la fonction $f$ de mani\`{e}re unique. L'application $f\rightarrow
+T_{f}$ est une injection de $L_{loc}^{1}$ dans $D^{\prime }(\Omega )$. Dans
+la suite nous ferons donc presque toujours l'abus de langage qui consiste 
+\`{a} identifier $T_{f}$ \`{a} $f$.
+
+\bigskip 
+
+\paragraph{Distribution de Dirac}
+
+\bigskip 
+
+\begin{definition}
+Soit $a\in \Omega .$ La forme lin\'{e}aire $\delta _{a}:C_{0}^{\infty
+}(\Omega )\rightarrow \mathbb{C}$ d\'{e}finie par%
+\begin{equation*}
+\forall \varphi \in C_{0}^{\infty }(\Omega ),\text{ }\left\langle \delta
+_{a},\varphi \right\rangle =\varphi (a)
+\end{equation*}%
+est une distribution sur $\Omega ,$ d'ordre $0$.
+\end{definition}
+
+\bigskip 
+
+La distribution de Dirac est un nouvel objet de la th\'{e}orie d$\left\vert
+x\right\vert $es distributions. En effet, on peut montrer qu'il n'existe pas
+de fonction $f\in L_{loc}^{1}$ telle que $\delta _{a}=T_{f}$. Si cela \'{e}%
+tait le cas, en fixant un compact $K\subset \Omega $, on aurait :%
+\begin{equation*}
+\forall \varphi \in C_{0}^{\infty }(\Omega ),\text{ }supp\text{ }\varphi
+\subset K,\text{ }\left\langle \delta _{a},\varphi \right\rangle =\varphi
+(a)=\int_{K}f(x)\varphi (x)dx
+\end{equation*}%
+Alors, si $a\in supp$ $\varphi ,$ $\int_{K}f(x)\varphi (x)dx=0$. Donc, pour
+toute $\varphi \in C_{0}^{\infty }(\Omega $ $\backslash $ $\left\{ a\right\}
+),$ $\int_{K}f(x)\varphi (x)dx=0.$ Par le lemme de Dubois-Reymond, $f=0$ pp
+sur $\Omega $ $\backslash $ $\left\{ a\right\} $, donc sur $\Omega $. Mais
+alors, pour toute $\varphi \in C_{0}^{\infty }(\Omega )$, $%
+\int_{K}f(x)\varphi (x)dx=\int_{K}0.\varphi (x)dx=0=\varphi (a)$. En
+choisissant $\varphi $ telle que $\varphi (a)\neq 0$ on aboutit \`{a} une
+contradiction.
+
+\bigskip 
+
+\paragraph{Distribution de Dirac d\'{e}riv\'{e}e}
+
+~\newline
+
+Nous pouvons aussi d\'{e}finir sur le mod\`{e}le de la distribution de Dirac
+une distribution d'ordre fini de n'importe quel ordre. Soient Soit $a\in
+\Omega $ et $\alpha \in \mathbb{N}^{d}$. Posons, pour toute $\varphi \in
+C_{0}^{\infty }(\Omega ),$%
+\begin{equation*}
+\left\langle T,\varphi \right\rangle =\partial ^{\alpha }\varphi (a)
+\end{equation*}%
+Montrons que $T$ ainsi d\'{e}finie est une distribution d'ordre exactement $%
+\left\vert \alpha \right\vert .$ Tout d'abord, il est clair que c'est bien
+une distribution d'ordre au plus $\left\vert \alpha \right\vert $. En effet,
+si $K$ est un compact de $\Omega $, on a%
+\begin{equation*}
+\left\vert \left\langle T,\varphi \right\rangle \right\vert =\left\vert
+\partial ^{\alpha }\varphi (a)\right\vert \leq \left\vert \left\vert
+\partial ^{\alpha }\varphi \right\vert \right\vert _{\infty }
+\end{equation*}%
+Soit $k<\left\vert \alpha \right\vert $. Montrons que $T$ n'est pas d'ordre $%
+k$. On raisonne par l'absurde. Supposons que, pour tout compact $K$ de $%
+\Omega $, il existe $C_{K}>0$ telle que :%
+\begin{equation*}
+\forall \varphi \in C_{0}^{\infty }(\Omega ),\text{ }supp\text{ }\varphi
+\subset K,\text{ }\left\vert \partial ^{\alpha }\varphi (a)\right\vert \leq
+C_{K}\underset{\left\vert \beta \right\vert \leq k}{\max }\left\vert
+\left\vert \partial ^{\beta }\varphi \right\vert \right\vert _{\infty }
+\end{equation*}%
+Soit $\varepsilon >0$ et prenons comme compact $K=\overset{-------}{%
+B(a,\varepsilon )}.$ Fixons $\psi _{0}\in C_{0}^{\infty }(B(0,\varepsilon ))$
+telle que $\psi _{0}(x)=1$ pour $\left\vert x\right\vert \leq \frac{%
+\varepsilon }{2}.$ Posons alors $\psi (x)=\frac{x^{\alpha }}{\alpha !}\psi
+_{0}(x).$ Par la formulde de Leibniz, on a $\partial ^{\alpha }\psi (0)=\psi
+_{0}(0)=1.$ Posons enfin, $\varphi (x)=\psi (\lambda (x-a))$ ou $\lambda
+\geq 1.$ Comme supp$\varphi \subset B\left( a,\frac{\epsilon }{\lambda }%
+\right) \subset B\left( a,\varepsilon \right) \subset K,$ on a bien supp$%
+\varphi \subset K.$ De plus, $\partial ^{\alpha }\varphi (a)=\lambda
+^{\left\vert \alpha \right\vert }\partial ^{\alpha }\psi (0)=\lambda
+^{\left\vert \alpha \right\vert }.$ Pour $\left\vert \beta \right\vert \leq
+k,$%
+\begin{equation*}
+\left\vert \partial ^{\beta }\varphi (x)\right\vert =\lambda ^{\left\vert
+\beta \right\vert }\partial ^{\beta }\psi (\lambda (x-a))\leq \lambda
+^{k}\left\vert \left\vert \partial ^{\beta }\psi \right\vert \right\vert
+_{\infty }
+\end{equation*}%
+Alors, pour tout $\lambda \geq 1,$ on devrait avoir%
+\begin{equation*}
+\lambda ^{\left\vert \alpha \right\vert -k}\leq C_{K}\underset{\left\vert
+\beta \right\vert \leq k}{\max }\left\vert \left\vert \partial ^{\beta }\psi
+\right\vert \right\vert _{\infty }<+\infty 
+\end{equation*}%
+On aboutit \`{a} une contradiction en faisant tendre $\lambda $ vers $%
++\infty $ puisque $\left\vert \alpha \right\vert -k\geq 1$. Donc $T$ ne peut
+pas etre d'ordre $k<\left\vert \alpha \right\vert $, donc $T$ est d'ordre
+exactement $\left\vert \alpha \right\vert .$
 
 \end{document}
