@@ -1,0 +1,379 @@
+
+\documentclass[3pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amscd}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=4.10.0.2347}
+%TCIDATA{Created=Wednesday, March 19, 2008 18:21:16}
+%TCIDATA{LastRevised=Friday, May 15, 2020 09:33:58}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\JEEP -  A General Purpose Vehicle">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+
+\geometry{ hmargin=1.5cm, vmargin=1.5cm }
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{D\'{e}finition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remarque}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{Proof}[1][Proof]{\noindent\textbf{Proof} }{\ \rule{0.5em}{0.5em}}
+\input{tcilatex}
+
+\begin{document}
+
+\title{CMS Spread Option}
+\author{T.\ Monedero \\
+%EndAName
+Natixis Fixed Income Department:\\
+quantitative analysis }
+\maketitle
+
+\begin{abstract}
+The aim of this document is to provide some technical elements required for
+the reconstruction of Cms Spread Option implied correlation time series
+according to today's market conventions.
+\end{abstract}
+
+\tableofcontents
+
+.
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip +
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\section{Introduction}
+
+\subsection{Notations}
+
+$\ \ \ \ \ D(t,T)$ : Stochastic discount factor at time $t$ for the maturity 
+$T$.
+
+\bigskip
+
+$P(t,T)$ : $T$-maturity zero coupon bond value at time $t\leq T$.
+
+\bigskip
+
+$L(T_{R},T_{S,}T_{S}+\tau )$ : Simply compounded Libor rate resetting at
+time $T_{R}$ for the start date $T_{S}$ and the tenor $\tau $.
+
+\bigskip
+
+$S(T_{R},T_{S,}T_{E})$ : Swap rate resetting at time $T_{R}$ for the start
+date $T_{S}$ and the end date $T_{E}$.
+
+\subsection{Payoff}
+
+A CMS spread option is a financial instrument whose payoff is a function of
+the spread between two swap rates of different tenor.
+
+\subsubsection{SingleLook }
+
+For a given maturity $T$ and a strike $K$, a single look CMS spread option
+is a one year basis caplet with fixing and payment in arrears 
+
+\bigskip 
+
+\bigskip 
+
+\bigskip 
+
+Its forward premium value at time $t$ is therefore given by%
+\begin{eqnarray*}
+&& \\
+V_{SL}^{SO}(t,T,K) &=&\frac{1}{P^{d}(t,T)}\mathbb{E}_{t}^{Q_{d}}\left[
+D^{d}(t,T)\left( S_{T}^{i}-S_{T}^{j}-K\right) _{+}\right] =\mathbb{E}%
+_{t}^{Q_{d}^{T}}\left[ \left( S_{T}^{i}-S_{T}^{j}-K\right) _{+}\right]  \\
+&&
+\end{eqnarray*}
+
+\subsubsection{Cap Floor}
+
+A CMS spread cap is a strip of three month basis caplets with fixing in
+advance and in arrears payment.
+
+\bigskip 
+
+\bigskip
+
+Its value at time $t$ is given by%
+\begin{eqnarray*}
+&& \\
+V_{CAP}^{SO}(t) &=&\mathbb{E}_{t}^{Q_{d}}\left[ \tsum\limits_{l=1}^{N}\tau
+_{l}D^{d}(t,T_{E}^{l})\left( S_{T_{l}}^{i}-S_{T_{l}}^{j}-K\right) _{+}\right]
+=\tsum\limits_{l=1}^{N}\tau _{l}P^{d}(t,T_{E}^{l})\mathbb{E}%
+_{t}^{Q_{d}^{T_{E}^{l}}}\left[ \left( S_{T_{l}}^{i}-S_{T_{l}}^{j}-K\right)
+_{+}\right]  \\
+&&
+\end{eqnarray*}%
+\bigskip 
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip \bigskip 
+
+\bigskip
+
+\bigskip
+
+\bigskip 
+
+\bigskip \bigskip Market quotes
+
+Both types are quoted by brokers such as Tullet. Both products allow the
+investor a view on the shape of the yield curve.\bigskip \bigskip 
+
+and $S_{T}=S(T,T_{S,}T_{E})$ the swap forward rate
+
+\section{CMS Spread Modelling}
+
+\bigskip
+
+\subsection{Convexity Adjusted CMS}
+
+The convexity adjusted constant maturity swap rate is classicaly defined by $%
+CMS_{t}\overset{\Delta }{=}\mathbb{E}_{t}^{Q_{d}^{T}}\left[ S_{T}\right] .$
+Using the fact that $CMS_{T}=S_{T}$, a single look CMS spread option value
+rewrites as 
+\begin{eqnarray*}
+&& \\
+V_{SL}^{SO}(t,T,K) &=&\mathbb{E}_{t}^{Q_{d}^{T}}\left[ \left(
+CMS_{T}^{1}-CMS_{T}^{2}-K\right) _{+}\right] 
+\end{eqnarray*}
+
+\subsection{Gaussian CMS Spread Model}
+
+Assuming that each convexity adjusted CMS rates is gaussian such that $%
+dCMS_{t}^{i}=\sigma _{N}^{i}$ $dW_{t}^{i}$ with $\forall i\neq j,$ $%
+\left\langle dW_{t}^{i},dW_{t}^{j}\right\rangle =$ $\rho _{ij}dt$, the $%
+\mathcal{F}_{t}$\ conditional law of the convexity adjusted CMS spread $%
+X_{T}=CMS_{T}^{i}-CMS_{T}^{j}$ is given by 
+\begin{eqnarray*}
+&& \\
+X_{T}\overset{d}{=}\mathcal{N}\left( X_{t},\sigma _{N}\sqrt{T-t}\right) ,%
+\text{ \ \ }\sigma _{N} &=&\sqrt{\left( \sigma _{N}^{i}\right) ^{2}+(\sigma
+_{N}^{j})^{2}-2\rho _{ij}\sigma _{N}^{i}\sigma _{N}^{j}} \\
+&&
+\end{eqnarray*}%
+The gaussian model provides a convenient common langage for quoting spread
+options and gives an analytical expression of the correlation $\rho _{ij}$
+between $CMS^{i}$ and $CMS^{j}$ which is the natural risk factor for this
+kind of product. In practice, $\sigma _{N}^{i,j}$ are choosen as atm
+swaption implied gaussian volatilities and the convexity adjusted CMS spread 
+$X_{t}$ is  obtened by replication. If the CMS spread is assumed to have a
+Gaussian distribution, the price of a $T$-maturity caplet spread option \
+with a strike $K$ is given by the Bachelier's formula : 
+
+\begin{equation*}
+C_{t}^{N}(X_{t},T,K,\sigma _{N\text{ }})=\left( X_{t}-K\right) \text{ }\Phi
+\left( \frac{X_{t}-K}{\sigma _{N\text{ }}\sqrt{T-t}}\right) +\sigma _{N\text{
+}}\sqrt{T-t}\text{ }\phi \left( \frac{X_{t}-K}{\sigma _{N\text{ }}\sqrt{T-t}}%
+\right) 
+\end{equation*}
+
+\subsection{Smiled Implied Correlation}
+
+For a given maturity $T,$ a natural cubic correlation spline $\rho (T,K_{i})$%
+\ is used to fit\ a set of CMS Spread\ option market prices $\left(
+V_{SL}^{SO\ast }\right) _{i=1..n}$, i.e such that 
+\begin{eqnarray*}
+\forall i &=&1...n,\text{ \ }V_{SL}^{SO\ast
+}(t,T,K_{i})=C_{t}^{N}(X_{t},T,K_{i},\sigma _{N\text{ }}(K_{i},T)) \\
+&&
+\end{eqnarray*}%
+The CMS Spread distribution is then projected on a dynamic range - wrt the
+money - by building another relative correlation spline for a set of
+predefined moneyness strike $K_{j}^{m}\in \left[ K_{\min }^{m},K_{\max }^{m}%
+\right] $ : 
+\begin{eqnarray*}
+\rho _{Atm}^{T} &=&\rho (T,K=X_{t}) \\
+\rho _{m}(T,K_{j}^{m}) &=&\rho (T,X_{t}+K_{j}^{m})-\rho _{Atm}^{T}
+\end{eqnarray*}
+
+\subsection{Cap Floor Pricing}
+
+\subsubsection{Paylag Adjustment}
+
+\bigskip 
+
+\subsubsection{Term Structure Interpolation}
+
+\section{CMS Spread Correlation Time series}
+
+For Butterfly Arbitrage, maturity dependency can be omitted
+
+\bigskip 
+
+\begin{itemize}
+\item fit quickly
+
+\item compliant with the cubic spline
+
+\item compliant with the cubic splineproduce butterfly arbitrage free prices
+\end{itemize}
+
+\subsection{Butterfly Arbitrage condition}
+
+\bigskip 
+
+Setting $\xi (K)=\frac{X_{t}-K}{\sigma _{N}(T,K)\sqrt{T-t}},$ Bachelier's
+formula rewrittes as%
+\begin{eqnarray*}
+&& \\
+C_{t}^{N}(X_{t},T,K,\sigma _{N\text{ }}(K,T)) &=&\sigma _{N\text{ }}(K,T)%
+\sqrt{T-t}\left( \phi (\xi )+\xi \Phi (\xi )\right)  \\
+&&
+\end{eqnarray*}%
+Assuming $\sigma _{N\text{ }}:\mathbb{R\rightarrow R}_{+}$ and\ $\sigma _{N%
+\text{ }}\in \mathcal{C}^{2}\mathbb{(}\mathbb{R})\ $CMS spread Cdf and Pdf
+can be deduced as follow :
+
+\begin{eqnarray*}
+\frac{\partial C_{t}^{N}}{\partial K} &=&\frac{\sigma _{N\text{ }}^{^{\prime
+}}(K)}{\sigma _{N\text{ }}(K)}C_{t}^{N}+\sigma _{N\text{ }}(K)\Phi (\xi )%
+\frac{\partial \xi }{\partial K} \\
+&& \\
+\frac{\partial ^{2}C_{t}^{N}}{\partial K^{2}} &=&2\sigma _{N\text{ }%
+}^{^{\prime }}(K)\Phi (\xi )\frac{\partial \xi }{\partial K}+\sigma _{N\text{
+}}^{^{\prime \prime }}(K)\left( \phi (\xi )+\xi \Phi (\xi )\right) +\sigma
+_{N\text{ }}(K)\phi (\xi )\left( \frac{\partial \xi }{\partial K}\right)
+^{2}+\sigma _{N\text{ }}(K)\Phi (\xi )\frac{\partial ^{2}\xi }{\partial K^{2}%
+} \\
+&&
+\end{eqnarray*}
+
+Computing first and second derivatives of $\xi $
+
+\begin{eqnarray*}
+\frac{\partial \xi }{\partial K} &=&-\frac{1}{\sigma _{N\text{ }}(K)}\left(
+1+\sigma _{N\text{ }}^{^{\prime }}(K)\xi \right)  \\
+\frac{\partial ^{2}\xi }{\partial K^{2}} &=&-\frac{1}{\sigma _{N\text{ }}(K)}%
+\left( \sigma _{N\text{ }}^{^{\prime \prime }}(K)\xi +2\sigma _{N\text{ }%
+}^{^{\prime }}(K)\frac{\partial \xi }{\partial K}\right)  \\
+&&
+\end{eqnarray*}%
+leads to the equivalence reliatioship between the price convexity and the
+gaussian volatility convexity for the butterfly arbitrage condition
+
+\begin{eqnarray*}
+\frac{\partial ^{2}C_{t}^{N}}{\partial K^{2}} &=&\phi (\xi )\left( \sigma _{N%
+\text{ }}^{^{\prime \prime }}(K)+\frac{\left( 1+\sigma _{N\text{ }%
+}^{^{\prime }}(K)\xi \right) ^{2}}{\sigma _{N\text{ }}(kK)}\right) \text{ \
+\ and \ \ }\frac{\partial ^{2}C_{B}}{\partial K^{2}}>0\Leftrightarrow \sigma
+_{N\text{ }}^{^{\prime \prime }}(K)>0 \\
+&&
+\end{eqnarray*}
+
+\subsection{Implied Correlation Parametrization}
+
+As seen before, the relationship between gaussian CMS spread implied
+volatility and gaussian CMS implied correlation is of the following form
+
+\begin{equation*}
+\sigma _{N}(K)=\sqrt{\alpha ^{2}+\beta ^{2}-2\alpha \beta \rho (K)},\text{ \
+\ (}\alpha ,\beta )\in (\mathbb{R}_{+})^{2}
+\end{equation*}%
+then%
+\begin{eqnarray*}
+\sigma _{N}(K) &>&0\Leftrightarrow \rho (K)<1+\frac{\left( \alpha -\beta
+\right) ^{2}}{2\alpha \beta }\text{ }\forall K \\
+&&
+\end{eqnarray*}
+that is always true since $\forall K,$ $\left\vert \rho (K)\right\vert <1$.
+The Butterfly arbitrage condition in terms of implied correlation is
+adressed through the following equations
+
+\QTP{Body Math}
+\begin{eqnarray*}
+\sigma _{N}^{^{\prime }}(K) &=&-\alpha \beta \frac{\rho ^{^{\prime }}(K)}{%
+\sigma _{N}(K)} \\
+\sigma _{N}^{^{\prime \prime }}(K) &=&-\frac{\alpha \beta }{\sigma
+_{N}^{2}(K)}\left( \rho ^{^{^{\prime \prime }}}(K)\sigma _{N}(K)+\alpha
+\beta \frac{\left( \rho ^{^{\prime }}(K)\right) ^{2}}{\sigma _{N}(K)}\right) 
+\\
+&&
+\end{eqnarray*}%
+Obviously $\rho \in \mathcal{C}^{2}(\mathbb{R})$ implies that $\sigma
+_{N}\in \mathcal{C}^{2}(\mathbb{R})$ and the volatility convexity is
+equivalent to 
+\begin{eqnarray*}
+&& \\
+\forall K,\text{ \ \ }\rho ^{^{^{\prime \prime }}}(K)\sigma
+_{N}(K)^{2}+\alpha \beta \rho ^{^{\prime }}(K)^{2} &<&0 \\
+&&
+\end{eqnarray*}%
+Given a parabolic parametrization of the correlation $\rho
+(K)=aK^{2}+bK+\rho _{atm},$ this condition rewrittes as%
+\begin{eqnarray*}
+&& \\
+2a\left( \alpha ^{2}+\beta ^{2}-2\alpha \beta \rho _{atm}\right) +\alpha
+\beta b^{2} &<&0 \\
+&&
+\end{eqnarray*}
+
+\QTP{Body Math}
+that is strike independante and equivelent to $\rho _{\max }=\left( \rho
+_{atm}-\frac{b^{2}}{4a}\right) <\frac{\alpha ^{2}+\beta ^{2}}{2\alpha \beta }%
+.$
+
+\QTP{Body Math}
+$\bigskip $
+
+\begin{remark}
+As $\left\vert \rho _{atm}\right\vert \leq 1,$ $\alpha ^{2}+\beta
+^{2}-2\alpha \beta \rho _{atm}\geq \alpha ^{2}+\beta ^{2}-2\alpha \beta
+=(\alpha -\beta )^{2}>0$ then inevitably $a<0.$
+\end{remark}
+
+\end{document}
