@@ -1,0 +1,435 @@
+\documentclass[serif]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs, comment}
+\usepackage[absolute, overlay]{textpos}
+\useoutertheme{infolines}
+\setbeamercolor{title in head/foot}{bg=internationalorange}
+\setbeamercolor{author in head/foot}{bg=dodgerblue}
+\usepackage{csquotes}
+\usepackage[style=verbose-ibid,backend=bibtex]{biblatex}
+\bibliography{bibfile}
+\usepackage{libertine}
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\newtheorem{proposition}[theorem]{\translate{Proposition}}
+\usepackage{mathtools}
+\usepackage{bigstrut}
+\usepackage{tikz}
+\usepackage{dsfont}
+\usetikzlibrary{arrows,automata}
+\usetheme{Madrid}
+\definecolor{myuniversity}{RGB}{0, 60, 113}
+\definecolor{internationalorange}{RGB}{231, 93,  42}
+ 	\definecolor{dodgerblue}{RGB}{0, 119,202}
+\usecolortheme[named=myuniversity]{structure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+
+\newcommand\Qmkt{Q^{(\mathrm{mkt})}}
+\newcommand\Pmkt{\tilde P^{(\mathrm{mkt})}}
+\newcommand\Nmkt{\tilde N^{(\mathrm{mkt})}}
+\newcommand\Lmkt{\tilde L^{(\mathrm{mkt})}}
+\newcommand\LGD {\mathrm{\textsc{lgd}}}
+\newcommand\CDS {\textsc{cds }}
+\newcommand\EE {\mathbb{E}}
+\newcommand\PP {\mathbb{P}}
+\newcommand\QQ {\mathbb{Q}}
+\newcommand\A {\mathbb{A}}
+\newcommand\F {\mathcal{F}}
+\newcommand\G {\mathcal{G}}
+\newcommand\RR {\mathbb{R}}
+\newcommand \dQmkt[1]{\partial_{#1}\Qmkt_{0{#1}}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\numberwithin{equation}{section}
+\newcommand\tP{\tilde P}
+\newcommand\du{\mathrm{d}u\,}
+\newcommand\dv{\mathrm{d}v\,}
+\newcommand\ds{\mathrm{d}s\,}
+\newcommand\ie{\textit{i.e.}\,}
+\newcommand\tbe{\tilde\beta}
+\newcommand\imax{\lambda^{\mathrm{(max)}}}
+\newcommand\imkt{\lambda^{\mathrm{(mkt)}}}
+
+%\usepackage{textpos}
+
+\title[PIM]{Markovian Positive Intensity Model}
+%\subtitle{(Introduction to Turbulence - ENGR5005G)}
+\institute[]{Mechanical Engineering \\Ontario Tech University }
+\titlegraphic{}
+\author[Fixed Income]{
+	Omar ABDELMOULA, Ludovic CONTAMINE, Tiphaine MONEDERO
+}
+
+
+\institute[]{Fixed Income Quantitative Research, \\Natixis}
+\date{\today}
+
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\begin{document}
+\begin{frame}
+ \titlepage
+\end{frame}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Introduction }
+We look for a credit intensity model that has the following  properties:
+
+~\newline
+
+ \begin{enumerate}
+ \item<1-> Guarantee non-negative default intensities,
+ \item<2-> Fit the initial default probabilities curve,
+ \item<3->  Can be easily simulated,
+ \item<4-> Risky Bond prices have a Markovian representation,
+ \item<5-> CDS Options have an analytical closed formula,
+ \item<6-> Produce Volatility Smile.
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Positive Intensity Framework}
+
+\subsection{Default Intensity Rate Dynamics}
+
+\begin{frame}{Undiscounted Risky Bond}
+\begin{Definition} \em{
+We denote by $\tbe_{t}$  the default-risk 'saving account'. i.e.
+$$\forall t \in \RR^+,\quad \tbe_t \triangleq \exp\left(\int_0^t {\du \lambda_u}\right)$$}
+\end{Definition}
+
+
+\begin{Definition}[Undiscounted Risky Bond] \em{
+We write $\tP_{tT}$ for the random value at time $t$ of a undiscounted risky bond that matures at time $T$, where $0 \leq t \leq T$. i.e.
+$$\tP_{tT} \triangleq \EE^\QQ\left[\frac{\beta_t}{\beta_T}\big|\F_t\right]$$}
+\end{Definition}
+\end{frame}
+
+\begin{frame}{Positive Intensity Model}
+
+\begin{Definition}[PIM] \em{
+
+ \begin{equation}\label{eq::rbondformula}
+\forall\; 0 \leq t \leq T \leq T^\star, \quad  Q_{tT} =\frac{N_t}{N_T}=\frac{\Qmkt_{0T^\star}+\int_T^{T^\star}{(- \partial_u \Qmkt_{0u}) \xi_t^u\du}}{\Qmkt_{0T^\star}+\int_t^{T^\star}{(-\partial_u \Qmkt_{0u}) \xi_t^u}\du}
+\end{equation}
+
+with $\xi_t^u$ a family of positive martingales such that $ \xi_0^u \equiv 1 $ under the probability $\mathbb{P}$ defined by the numeraire $N$.}
+\end{Definition}
+
+\begin{Definition}[2-Factors Variance Swap Curve] \em{
+
+\begin{eqnarray}\label{eq::rbondformula}
+\forall a_u \in [0,1], ~~\xi_t^u &=& a_uX_t + (1-a_u)Y_t
+\end{eqnarray}
+
+with $X_t$ and $Y_t$ two positive martingales such that $X_0 = Y_0 =1$ under $\mathbb{P}$ and $a_u$ a mixing parameter.}
+
+\end{Definition}
+
+
+ \end{frame}
+
+
+
+\section{Model Specification}
+
+
+\section{A  2-Factors Model}
+
+
+
+
+\subsection{Reconstitution Formulas}
+
+\begin{frame}{Risky Bond Prices and Default Intensity Formulas}
+We introduce the following notations
+\begin{eqnarray*}
+A_t&=&\int_t^{T^\star}{ a_u (-\dQmkt{u})\du}, ~ B_t  = \int_t^{T^\star}{ (1-a_u)  (-\dQmkt{u})\du}
+\end{eqnarray*} \pause
+
+\begin{lemma}
+The undiscounted risky bond prices and the default intensities under the 2 factors model are given for each $t \leq T \leq T^\star$ by the following formulas
+\begin{eqnarray}
+   Q_{t,T}&=& \frac{\Qmkt_{0T^\star}+A_T X_t + B_T Y_t }{\Qmkt_{0T^\star}+A_t X_t + B_tY_t } \label{eq::LNI2F_RiskyBonds}\\
+\lambda_t &=&-\partial_t \Qmkt_{0t} \frac{ a_t X_t + (1-a_t) Y_t}{\Qmkt_{0T^\star}+A_t X_t + B_tY_t }
+\end{eqnarray}
+\end{lemma}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{CDS Spread Formula}
+
+\subsubsection{Description}
+
+\begin{frame}{Description}
+ \begin{enumerate}
+ \item<1->  start date $T_S$,
+ \item<1->  end date $T_E$,
+ \item<1->  constant recovery $R \in [0,1]$,
+ \item<1->  constant spread margin $s  \geq 0$,
+ \item<1->  margin payment dates $T_1 < T_2 < \cdots < T_E$.
+ \item<2->  the forward \textsc{cds} spread $s_{t}^{T_S,T_E}$ is then given by
+\begin{eqnarray*}
+\forall t \in [0, T_S], \; s_{t}^{T_S,T_E}&=& \frac{(1-R)\int_{T_S}^{T_E}{\EE^\QQ\left[\du \lambda_u e^{-\int_{t}^{u}{\ds (r_s+\lambda_s)}}\Big|\F_t\right] } }{\int_{]T_S,T_E]}{d\theta(u) \;\;\EE^\QQ\left[ e^{-\int_{t}^{u}{\ds (r_s+\lambda_s)}}\Big|\F_t\right]}}\\
+\end{eqnarray*}
+\end{enumerate}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Forward CDS Spread Formula}
+
+\begin{frame}{Forward CDS Spread Formula}
+
+
+We introduce the following notations
+
+\begin{eqnarray*}
+\hat A_t &=& \int_{t}^{T^\star}{a_uP^{\mathrm{(mkt)}}_{0,u}(-\partial_u Q^{\mathrm{(mkt)}}_{0,u})\du}, \quad A^{(\theta)}_{tT} = \int_{[t,T]}{A_uP^{\mathrm{(mkt)}}_{0,u} } d\theta(u)\\
+\hat B_t &=& \int_t^{T^\star}{ (1-a_u)P^{\mathrm{(mkt)}}_{0,u}(-\partial_u Q^{\mathrm{(mkt)}}_{0,u})\du},\;
+B^{(\theta)}_{tT} = \int_{[t,T]}{B_uP^{\mathrm{(mkt)}}_{0,u} } d\theta(u)
+\end{eqnarray*}\pause
+
+\begin{proposition}\emph{ Under deterministic interest rates, the forward \textsc{cds} spread is given  for each $0\leq t\leq T_S$ by
+\begin{eqnarray}\label{eq::CDS_Forward}
+s_{t}^{T_S,T_E}&=& (1-R)\frac{ (\hat A_{T_S}-\hat A_{T_E})X_t +(\hat B_{T_S}-\hat B_{T_E}) Y_t }{ c^{(\theta)}_{T_S,T_E} + A^{(\theta)}_{T_S,T_E} X_t + B^{(\theta)}_{T_S,T_E}Y_t }
+ \end{eqnarray}
+where $c^{(\theta)}_{T_S,T_E}=\Qmkt_{0T^\star}\int_{]T_S,T_E]}{P^{(\mathrm{mkt})}_{0u}d\theta(u)}$
+}
+\end{proposition}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Risky Bonds, Intensity and CDS Spread Bounds}
+
+\begin{frame}{Risky Bonds, Intensity and CDS Spread Bounds}
+ \begin{enumerate}
+ \item<1->  Risky Bond Prices and Intensity have a rational form of $X$ and $Y$,
+ \item<2->  $(X,Y)\in (\RR^\star_+)^2 \Rightarrow$ find the upper and lower bounds of $Q_{t,T}$, $\lambda_t$ and $s_{t}^{T_S,T_E}$
+
+\end{enumerate}
+\begin{proposition}\label{Proposition::bounds}
+\emph{
+$\text{For each } t\leq T < T^\star$, the default intensity $\lambda_t$ and the undiscounted risky bond $Q_{t,T}$ are bounded above and below by the following bounds
+\begin{equation}
+ \min\left( \frac{A_T}{A_t}, \frac{B_T}{B_t}\right) < Q_{t,T} \leq 1
+\end{equation}
+\begin{equation}
+ 0 <\lambda_t < \max\left(-\partial_t\ln{A_t}, -\partial_t \ln B_t\right)
+\end{equation}}
+ \begin{equation}
+ 0 <s_{t}^{T_S,T_E} < (1-R)\max\left(\frac{ \hat A_{T_S}-\hat A_{T_E}}{A^{(\theta)}_{T_ST_E}}, \frac{ \hat B_{T_S}-\hat B_{T_E}}{B^{(\theta)}_{T_ST_E}}\right)
+\end{equation}
+\end{proposition}
+
+\end{frame}
+
+
+%\begin{figure}[!htb]
+%    \centering
+%    \resizebox{1\textwidth}{!}{%
+%    \begin{tikzpicture}
+%        \begin{axis}[
+%        xlabel ={$time$},
+%        ylabel ={\textit{Relative Upper Bounds}},
+%legend style={at={(0.165,.99)},anchor=north,ymax=15,},
+%     ]
+%            \addplot[color = yellow,mark=star] table[x=Time,y=Upper_Bound_3] {effect_k_Tm_50.dat};
+%  	   \addplot[color = red,mark=star] table[x=Time,y=Upper_Bound_7] {effect_k_Tm_50.dat};
+%	    \addplot[color = blue,mark=star] table[x=Time,y=Upper_Bound_10] {effect_k_Tm_50.dat};
+%	     \legend{$k=3$,$k=7$,$k=10$},
+%        \end{axis}
+%    \end{tikzpicture}
+%
+%      \hspace{0.2cm}
+%
+%    \begin{tikzpicture}
+%        \begin{axis}[
+%        xlabel ={$time$},
+%          ylabel ={\textit{Relative Upper Bounds}},
+%legend style={at={(0.165,0.99)},anchor=north,cells={align=right},ymax=15,},
+%     ]
+%            \addplot[color = yellow,mark=star] table[x=Time,y=Upper_Bound_3] {effect_k_Tm_20.dat};
+%  	   \addplot[color = red,mark=star] table[x=Time,y=Upper_Bound_7] {effect_k_Tm_20.dat};
+%	    \addplot[color = blue,mark=star] table[x=Time,y=Upper_Bound_10] {effect_k_Tm_20.dat};
+%	   \legend{$k=3$,$k=7$,$k=10$},
+%        \end{axis}
+%    \end{tikzpicture}
+%    }%
+%    \caption{5Y-CDS spreads upper bound/CDS forward spread when varying the scaling parameter $k$ ($a_0=1$). Left figure with  $T^\star = 50$ and right figure with $T^\star=20$. }
+%\end{figure}
+
+
+
+\subsection{CDS Option Pricing}
+
+\begin{frame}{CDS Option Formula}
+
+\begin{proposition}
+\small{
+\emph{
+The price of Knock out Credit Default Swaption with expiry $T \leq T_S$, strike $K$ and tenor $\delta =  T_E-T_S$ equals, for every $t \leq T$,
+\begin{eqnarray*} \label{eq::CDSknockOutFormula}
+V_t^{\delta}(T,K) &=&{\mathds{1}_{\{ \tau > t\}}}\frac{N_t}{ P^{(\mathrm{mkt})}_{0,t}}\EE^\PP\left[\left( \alpha X_{T} + \beta Y_{T}- \tilde K\right)_+\Big| \F_t\right]\\\\
+\tilde K = K~C^{(\theta)}_{T_ST_E}, ~~~~ \alpha  &=&  (1-R) \hat A_{T_ST_E} - K~A^{(\theta)}_{T_ST_E},~~~~  \beta    =  (1-R) \hat B_{T_ST_E} - K~B^{(\theta)}_{T_ST_E}
+\end{eqnarray*}
+}
+ Writting
+\begin{equation} \label{eq::CDSknockOutFormula}
+U_A = (1-R)\frac{ \hat A_{T_S}-\hat A_{T_E}}{A^{(\theta)}_{T_ST_E}} \text{ \ \ and \ \ } U_B = (1-R)\frac{ \hat B_{T_S}-\hat B_{T_E}}{B^{(\theta)}_{T_ST_E}}
+\end{equation}
+
+ the model independent price boundaries are given by
+
+\begin{equation*}
+V_t^{\delta}(T,K) \leq \left\{
+\begin{array}{c}
+0 \text{ \ \ \ \ \ \ \ \ \ \ }, K \geq K_U = \max(U_A, U_B)\\
+\alpha + \beta \text{  \
+}, K \leq K_L = \min(U_A, U_B)
+\\
+\max(\alpha, \beta)\text{ \ \ \ \ }, K_L \leq K \leq K_U
+\end{array}%
+\right.
+\end{equation*}
+ }
+\end{proposition}
+
+
+\end{frame}
+
+\section{Lognormal Intensity 2F Model (LNI2F) }
+
+\begin{frame}{Smile Calibration}
+
+ \begin{enumerate}
+ \item<1->  Choose diffusion of $X_t$ and $Y_t$
+ \item<2->  Specify the mixing parameter $a_u$
+ \item<3->  Generate Break Even Volatility smiles 
+ \item<4->  Proceed to calibration of targeted assets
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{LNI2F Model}
+\begin{proposition}
+\small{
+Assuming a 2-lognormal diffusions with deterministic volatility such that
+\begin{eqnarray*}
+       dX_t  = \sigma_X(t)X(t)d{W_t}^{\mathbb P}, ~~ dY_t  = \sigma_Y(t)Y(t)d{Z_t}^{\mathbb P}, ~~ d\langle {W}^{\mathbb P},{Z}^{\mathbb P}\rangle_t =\rho dt,
+ \end{eqnarray*}
+ the price of Knock-out Credit Default Option rewrittes as
+\begin{equation*} \label{eq::CDSoptionFormula}
+V_t^{\delta}(T,K) = \frac{N_t}{P^{(\mathrm{mkt})}_{0,t}}\int_{-\infty}^{\infty} \alpha e^{-\frac{1}{2}\left(\frac{\rho \Sigma_{XY}^2}{\Sigma_Y}\right)^2+\frac{\rho \Sigma_{XY}^2}{\Sigma_Y} u} \mathrm{BS}\left(X_t,\hat K(u), \Sigma_X \sqrt{1-\rho_{XY}^2}\right) n(u){\du}
+\end{equation*}
+where
+\begin{eqnarray*}
+\Sigma_X^2 &=& \int_t^{T}{\du \sigma_X^2(u)},\,
+\Sigma_Y^2 = \int_t^{T}{\du \sigma_Y^2(u)}, \,
+\Sigma_{XY}^2 = \int_t^{T}{\du \sigma_X(u) \sigma_Y(u)} \\
+\rho_{XY} &=&\rho \frac{ \Sigma_{XY}^2}{\Sigma_X \Sigma_Y},\;
+\tilde K(u) = \frac{\tilde K -\beta \, Y_t e^{-\frac{\Sigma_Y^2}{2}+\Sigma_Y u}} {\alpha e^{-\frac{1}{2}\left(\frac{\rho \Sigma_{XY}^2}{\Sigma_Y}\right)^2+\frac{\rho \Sigma_{XY}^2}{\Sigma_Y} u}} , \;
+n(u) = \frac{e^{-x^2/2}}{\sqrt{2\pi}}
+\end{eqnarray*}
+}
+\end{proposition}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Mixing Parameter}
+
+
+\end{frame}
+
+
+
+
+
+\subsection{CDS Option Pricing}
+\begin{frame}{Break Even Volatility Smile Calibration}
+
+\begin{figure}[!htb]
+   \centering
+    \resizebox{1\textwidth}{!}{%
+
+
+      \begin{tikzpicture}
+        \begin{axis}[
+     xlabel = {$\mathrm{relative\; strike\;} (1mx5y)$},
+        ylabel ={{Implied volatilities}},ymax=63,
+  legend columns=2,transpose legend,
+legend style={at={(0.46,.99)},anchor=north},
+ yticklabel={$\pgfmathprintnumber{\tick}\%$},
+     ]
+            \addplot[color = yellow,mark=*] table[x=Strike,y=sigmaY_20] {effect_sigmaY_1Mx5Y.dat};
+  	   \addplot[color = orange,mark=triangle*] table[x=Strike,y=sigmaY_50] {effect_sigmaY_1Mx5Y.dat};
+	    \addplot[color = red, mark=star] table[x=Strike,y=sigmaY_80] {effect_sigmaY_1Mx5Y.dat};
+	    \addplot[color = brown, mark=o] table[x=Strike,y=sigmaY_110] {effect_sigmaY_1Mx5Y.dat};
+	     \legend{$\sigma_Y=20\%$,$\sigma_Y=50\%$,$\sigma_Y=80\%$,$\sigma_X=110\%$},
+	
+        \end{axis}
+    \end{tikzpicture}
+      \hspace{0.2cm}
+
+       \begin{tikzpicture}
+        \begin{axis}[
+     xlabel = {$\mathrm{relative\; strike\;} (3mx5y)$},
+        ylabel ={{Implied volatilities}},ymax=63,
+  legend columns=2,transpose legend,
+legend style={at={(0.46,.99)},anchor=north},
+ yticklabel={$\pgfmathprintnumber{\tick}\%$},
+     ]
+            \addplot[color = yellow,mark=*] table[x=Strike,y=sigmaY_20] {effect_sigmaY_3Mx5Y.dat};
+  	   \addplot[color = orange,mark=triangle*] table[x=Strike,y=sigmaY_50] {effect_sigmaY_3Mx5Y.dat};
+	    \addplot[color = red, mark=star] table[x=Strike,y=sigmaY_80] {effect_sigmaY_3Mx5Y.dat};
+	    \addplot[color = brown, mark=o] table[x=Strike,y=sigmaY_110] {effect_sigmaY_3Mx5Y.dat};
+	     \legend{$\sigma_Y=20\%$,$\sigma_Y=50\%$,$\sigma_Y=80\%$,$\sigma_Y=110\%$},
+	
+        \end{axis}
+    \end{tikzpicture}
+        }%
+    \caption{5Y-CDS volatility smiles with ($a_0=1, k=7, \sigma_X\equiv80\%, \rho=0, T^\star=30$). }
+\end{figure}
+
+
+\end{frame}
+
+
+\begin{frame}{Conclusions }
+
+
+
+
+\end{frame}
+
+\begin{frame}{References}
+   \printbibliography
+\end{frame}
+
+\end{document}
